@@ -1,0 +1,10 @@
+.DS_Store
+firebase.json
+node_modules/
+.firebase/
+.firebaserc
+.parcel-cache/
+dist/
+src/old
+firebase-debug.log
+yarn.lock

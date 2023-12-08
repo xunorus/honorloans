@@ -1,0 +1,6472 @@
+<!DOCTYPE html>
+  <html class="no-js" lang="en">
+    <head>
+		<meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <title>TROK</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="description" content="Slopy Elements with CSS3" />
+        <meta name="keywords" content="inclined, skew, sloping, html5, slopy, css3, web design, elements, div, section, background, rotate, transform" />
+        <meta name="author" content="Codrops" />
+
+       
+    <!-- TROK -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" ></script>
+    <script src="js/sweetalert2.all.min.js"></script>
+    <!-- <script src="js/ethers-5.2.umd.min.js" type="application/javascript"></script> -->
+    <script src="js/qr-code-styling.js"></script>
+
+
+ 
+    <style>
+
+
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+@font-face {
+  font-family: 'Major Mono Display';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Major Mono Display'), local('MajorMonoDisplay-Regular'),
+       url('https://fonts.gstatic.com/s/majormonodisplay/v7/RrQUboN_5JNPc90HdV3U5AwUe3m3EIXISsZuyu_mnAo.ttf') format('truetype');
+  unicode-range: U+0043, U+0052, U+0059, U+0050, U+0054, U+004F, U+0048, U+0041;
+}
+
+/* Deep Blue: */
+
+/* Hex: #001F3F
+RGB: rgb(0, 31, 63)
+HSL: hsl(210, 100%, 12%)
+Gold:
+
+Hex: #FFD700
+RGB: rgb(255, 215, 0)
+HSL: hsl(51, 100%, 50%)
+Teal:
+
+Hex: #008080
+RGB: rgb(0, 128, 128)
+HSL: hsl(180, 100%, 25%) */
+:root {
+      --background:#00bc8c;
+    
+      /* deep blue */
+      --c0: #001F3F;
+      --c0b: #222;
+
+      /* Gold */
+      --c1: #b79b00;
+      /* --c1: #FFD700; */
+
+      /* teal */
+      --c2: #008080;
+      /* --c2: #008080; */
+
+      --c3: #fff;
+      --c4: #eee;
+      --bk: linear-gradient(var(--c0), var(--c0b));
+
+
+      --qr : red;
+      --contrast: #000	linear-gradient(var(--c3), var(--c2));
+      --bckmodal:#262626;
+      --font:lawngreen;
+      --navbar :var(--c1);
+      /* --navbar : #375a7f; */
+      --qrbackground:transparent;
+      
+     
+      --font1: #fff;
+      --font2: #00bc8c;
+      --font3: #2196f3;
+      --hover: #d000ff;
+      --mainTitle: var(--font1);
+      /* --font: #fff; */
+      --secondarybuttonhover: #375a7f;
+      --main: #4f4ee8;
+      --modalshadow: #dc3545;
+      /* --secondary: rgb(46, 167,227); */
+      --background:#fff;
+      --bimage : linear-gradient(90deg, rgba(46,167,227, 1) 0%, rgba(46, 167,227,1) 10%, rgb(4, 96, 254) 90%);
+      /* --c2: #6463ef;
+      --c5: #4255d4; */
+      --reversable: #000;
+      --darkcontrast: #eaeaea;
+      --card: #e4e4e4;
+      --upbackground: #fff;
+      --tableHover: #6f96f1;
+      --buttonHover: #3a00ff;
+      --nabvcolors: #fff;
+      --navborder: #fd4310;
+      --navshadow: #241b19;
+
+
+  }
+  
+  
+   
+   
+   .dark-mode {
+  
+	--background:#fff;
+  --c0: #672f0d;
+      --c1: #f35621;
+	--c2: #212529;
+    --c3: #222;
+	--c4: rgb(21, 104, 176);
+	/* --qr : #1568B0; */
+	--contrast: #000	linear-gradient(var(--c3), var(--c2));
+	--bckmodal:#262626;
+   }
+
+   
+/* COLORED TOASTS */
+
+.colored-toast.swal2-icon-success {
+	background-color: #45bb00 !important;
+  }
+  
+  .colored-toast.swal2-icon-error {
+	background-color: #f27474 !important;
+  }
+  
+  .colored-toast.swal2-icon-warning {
+	background-color: #f8bb86 !important;
+  }
+  
+  .colored-toast.swal2-icon-info {
+	background-color: #3fc3ee !important;
+  }
+  
+  .colored-toast.swal2-icon-question {
+	background-color: #87adbd !important;
+  }
+  
+  .colored-toast .swal2-title {
+	color: white;
+  }
+  
+  .colored-toast .swal2-close {
+	color: white;
+  }
+  
+  .colored-toast .swal2-html-container {
+	color: white;
+  }
+   .container{
+	width: 100%;
+	position: relative;
+	text-align: center;
+}
+
+      body {
+        /* padding: 2em; */
+          background-color: black;
+          color: lawngreen;
+          font-size: 0.88em;
+        }
+        #qrcode{
+            height: 300px;
+    width: 300px;
+        }
+        .centered-qr {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1em;
+        }
+        .centered-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 1em;
+        }
+        
+.light-icon {
+  width: 25px;
+  height: 25px;
+  position: fixed;
+  top: 2em;
+  left: 1em;
+  /* right: 1em; */
+  border-radius: 50%;
+  background-color: red;
+  transition: background-color 0.5s;
+}
+
+#address,#vsigner, #vaddress {width: 400px!important;}
+#address2 {width: 400px!important;}
+#vnonce {width: 146!important;}
+#hash, #sig2verify, #verifywhash ,#sig2verifywhash {
+  /* width: 551px!important; */
+word-wrap: break-word;
+}
+.card{
+  background: none;
+  border: 1px solid var(--c1);
+
+}
+
+
+.modal-content{
+    background-color: var(--bckmodal);
+    box-shadow: 0 0 10px var(--c3);
+    /* border: 1px solid; */
+    border: 1px solid var(--c1);
+  
+  }
+.window{
+  
+      overflow: hidden;
+    white-space: inherit;
+    width: auto;
+
+}
+
+.card-body {
+    width: auto;
+    overflow: hidden;
+
+}
+
+
+
+pre{
+    white-space: break-spaces;
+}
+
+select{
+background: none!important;
+    border: none;
+    /* border: solid 1px var(--c1) ; */
+    color: var(--c0);
+  }
+
+  input{
+  background-color: transparent;
+  border: none;
+    padding: 1rem;
+
+	padding:3px 5px 4px;
+	color:#979797!important;
+	/* color:var(--font)!important; */
+	width:190px;
+}
+ 
+#headMessages{
+
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
+  position: fixed;
+}
+
+.glow {   
+  text-shadow: 0 0 10px var(--shadow1), 0 0 20px var(--shadow1), 0 0 30px var(--shadow1), 0 0 40px var(--shadow2), 0 0 70px var(--shadow2), 0 0 80px var(--shadow2), 0 0 100px var(--shadow2), 0 0 150px var(--shadow2);
+  }
+
+  #troqamount{
+    font-family: var(--bs-font-monospace);
+    font-size: 2em;
+    direction: ltr;
+    unicode-bidi: bidi-override;
+  }
+  #ethamount{
+    font-size: 0.91em;
+  }
+
+  .responsive-svg {
+        width: 100%;
+        height: auto;
+    }
+
+    .btn-approve {
+      background-color: #28a745;
+      border-color: #28a745;
+    }
+    
+    .btn-approve:hover {
+      background-color: #218838;
+      border-color: #1e7e34;
+    }
+    
+    .btn-reject {
+      background-color: #dc3545;
+      border-color: #dc3545;
+    }
+    
+    .btn-reject:hover {
+      background-color: #c82333;
+      border-color: #bd2130;
+    }
+
+
+    #yourAddress{
+      font-family: var(--bs-font-monospace);
+    direction: ltr;
+    unicode-bidi: bidi-override;
+    font-size: 2em;
+    }
+
+.codrops-top{
+  padding: 4em;
+
+}
+
+.chatwindow{
+    width: 100vw;
+    padding: 0;
+}
+
+#copyAddress path{
+    fill: var(--font);
+}
+#copyAddress{
+    cursor: pointer;
+}
+
+
+
+body {
+    background: var(--bk);
+    height: 100vh;
+ 
+ }  
+header, main  {
+ 
+ }
+
+
+ 
+
+
+
+
+
+
+
+/* --------------------- */
+
+/* -------- */
+
+#navbar {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ position: fixed;
+ top: 0;
+ left: 0;
+ right: 0;
+ /* height: 60px; */
+ height: 82.235px;
+ padding: 0 20px;
+
+ color: var(--nabvcolors);
+ background-color: var(--navbar)!important;
+    z-index: 2;
+ 
+}
+
+ 
+ .center {
+   margin: 0 auto;
+   width: 200px; 
+   flex-grow: 4;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+ }
+
+
+#usrAddr {
+   margin-right: auto;
+   margin-left: 10px;
+   width: 130px;
+   cursor: pointer;
+ }
+ 
+
+.translation {
+ margin-left: 10px;
+ margin-top: 8px;
+}
+
+
+.btn {
+ margin-left: 10px;
+} 
+
+ 
+ svg.darklight  {
+   fill: transparent;
+   transition: 0.5s;
+
+   
+  }
+ .darklight {
+   margin-left: 10px;
+   margin-right: auto;
+   height:30px;
+   padding: 0 10px;
+   display: flex;
+   align-items: center;
+   cursor: pointer;
+ }
+  
+
+ /* SIDEBAR */
+ 
+  
+  /*!
+   * Hamburgers
+   * @description Tasty CSS-animated hamburgers
+   * @author Jonathan Suh @jonsuh
+   * @site https://jonsuh.com/hamburgers
+   * @link https://github.com/jonsuh/hamburgers
+   */
+   .hamburger {
+    padding: 15px 15px;
+    display: inline-block;
+    cursor: pointer;
+    transition-property: opacity, -webkit-filter, opacity, filter;
+    transition-property: opacity, filter;
+    transition-duration: 0.15s;
+    transition-timing-function: linear;
+    font: inherit;
+    color: inherit;
+    text-transform: none;
+    background-color: transparent;
+    border: 0;
+    margin: 0;
+    overflow: visible;
+    transition: 0.3s;
+    outline: none; }
+  
+  .hamburger:hover {
+    opacity: 0.7; }
+  
+  .hamburger.is-active:hover {
+    opacity: 0.7; }
+  
+  .is-active {
+    -webkit-transform: translate(12px, 0);
+            transform: translate(12px, 0); }
+  
+  .hamburger-box {
+    width: 40px;
+    height: 24px;
+    display: inline-block;
+    position: relative; }
+  
+  .hamburger-inner {
+    display: block;
+    top: 50%;
+    margin-top: -2px; }
+  
+  .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+    width: 40px;
+    height: 4px;
+    background-color: #eee;
+    border-radius: 4px;
+    position: absolute;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease; }
+  
+  .hamburger-inner::before, .hamburger-inner::after {
+    content: "";
+    display: block; }
+  
+  .hamburger-inner::before {
+    top: -10px; }
+  
+  .hamburger-inner::after {
+    bottom: -10px; }
+  
+  /* * Elastic */
+  .hamburger--elastic .hamburger-inner {
+    top: 2px;
+    transition-duration: 0.275s;
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+  
+  .hamburger--elastic .hamburger-inner::before {
+    top: 10px;
+    transition: opacity 0.125s 0.275s ease; }
+  
+  .hamburger--elastic .hamburger-inner::after {
+    top: 20px;
+    transition: -webkit-transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+  
+  .hamburger--elastic.is-active .hamburger-inner {
+    -webkit-transform: translate3d(0, 10px, 0) rotate(135deg);
+            transform: translate3d(0, 10px, 0) rotate(135deg);
+    transition-delay: 0.075s; }
+  
+  .hamburger--elastic.is-active .hamburger-inner::before {
+    transition-delay: 0s;
+    opacity: 0; }
+  
+  .hamburger--elastic.is-active .hamburger-inner::after {
+    -webkit-transform: translate3d(0, -20px, 0) rotate(-270deg);
+            transform: translate3d(0, -20px, 0) rotate(-270deg);
+    transition-delay: 0.075s; }
+  
+  /*
+       * Elastic Reverse
+       */
+  .hamburger--elastic-r .hamburger-inner {
+    top: 2px;
+    transition-duration: 0.275s;
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+  
+  .hamburger--elastic-r .hamburger-inner::before {
+    top: 10px;
+    transition: opacity 0.125s 0.275s ease; }
+  
+  .hamburger--elastic-r .hamburger-inner::after {
+    top: 20px;
+    transition: -webkit-transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+  
+  .hamburger--elastic-r.is-active .hamburger-inner {
+    -webkit-transform: translate3d(0, 10px, 0) rotate(-135deg);
+            transform: translate3d(0, 10px, 0) rotate(-135deg);
+    transition-delay: 0.075s; }
+  
+  .hamburger--elastic-r.is-active .hamburger-inner::before {
+    transition-delay: 0s;
+    opacity: 0; }
+  
+  .hamburger--elastic-r.is-active .hamburger-inner::after {
+    -webkit-transform: translate3d(0, -20px, 0) rotate(270deg);
+            transform: translate3d(0, -20px, 0) rotate(270deg);
+    transition-delay: 0.075s; }
+  
+  
+  
+         /* NEW NAVBAR */
+         .sidebar::after {
+          display: none; 
+        }
+        
+        .sidebar {
+          position: fixed;
+          width: 220px;
+          right: 0;
+          top: 0;
+          opacity: 1;
+          transition: -webkit-transform 0.5s;
+          transition: transform 0.5s;
+          -webkit-transform: translate3d(100%, 0, 0);
+          transform: translate3d(100%, 0, 0);
+          background: #000;
+          z-index: 1;
+          height: 100vh;
+          overflow: auto;
+          border-left: 1px solid #595a5f; 
+      
+          /* top: 60px; */
+          top: 81px;
+          z-index: 99;
+        }
+  
+        
+        
+        .sidebar.isOpen {
+          visibility: visible;
+          transition: -webkit-transform 0.5s;
+          transition: transform 0.5s;
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+          border-left: 1px solid var(--navborder);
+          /* box-shadow: 0 10px 0  var(--navshadow);  */
+        }
+        
+        .mini {
+          font-size: 0.6em;
+          padding: 3em;
+          display: block; }
+        
+        .content::before {
+          content: "";
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          position: absolute;
+          z-index: -1; }
+        
+        .content:after {
+          content: "";
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          position: absolute;
+          z-index: -1; }
+        
+        
+        @keyframes fadein {
+          from {
+            opacity: 0; }
+          to {
+            opacity: 1; } }
+        
+        /* Firefox < 16 */
+        
+        /* Safari, Chrome and Opera > 12.1 */
+        @-webkit-keyframes fadein {
+          from {
+            opacity: 0; }
+          to {
+            opacity: 1; } }
+        
+        /* Internet Explorer */
+        @-ms-keyframes fadein {
+          from {
+            opacity: 0; }
+          to {
+            opacity: 1; } }
+        
+        /* Opera < 12.1 */
+        .content.isOpen {
+          -webkit-transform: translate3d(0, 0, -300px);
+          transform: translate3d(0, 0, -300px);
+          opacity: 0.6;
+          transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+          transition: -webkit-transform 0.3s;
+          transition: transform 0.3s; }
+  
+        
+         
+        .nav {
+
+        }
+        .nav li {
+          list-style-type: none; 
+        width: 100%;
+        }
+        .nav li a img {
+            height: 25px;
+            width: 25px;
+            padding: 1px;
+        }
+        .nav li a {
+          position: relative;
+          display: block;
+          padding: 15px 15px 15px 15px;
+          border-bottom: 1px solid #343538;
+          text-decoration: none; 
+        }
+        
+        
+        .nav {
+          padding: 0; }
+        
+        .nav li a:hover {
+          background: rebeccapurple; }
+        
+        .nav li a.active {
+          box-shadow: inset 5px 0 0 #5b5, inset 6px 0 0 #222;
+          background: #444; }
+        
+
+   #fontlogo{
+    font-family: 'Major Mono Display', monospace!important;
+    }
+
+
+
+    .swal2-modal{
+      background-color: var(--bckmodal);
+    color: var(--reversable);
+    border: 1px solid var(--main);
+      box-shadow: 0 0 10px var(--modalshadow)
+      /* box-shadow: 0 0 10px var(--c3) */
+    }  
+    .taskInput,.form-control:disabled, .form-control[readonly]{
+      background-color: transparent;
+      color: var(--reversable);
+      border: 1px solid var(--main);
+    }
+    .modal-header{
+      border-bottom: 1px solid var(--main);
+    }
+    .modal-footer{
+      border-top: 1px solid var(--main);
+    }
+  
+    .swal2-title,.swal2-content{
+      color: var(--main);
+    }
+    .form-control{
+      border: 1px solid var(--main);
+      
+    }
+    .form-control::placeholder{ color: var(--main); }
+  
+
+    
+/* OVERLAY */
+
+ .overlay{
+  transition:opacity 1000ms;
+  opacity:0;
+  visibility:hidden ;
+   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, .3)), to(#141414));
+    background-image: -webkit-linear-gradient(rgba(0, 0, 0, .3), #141414);
+    background-image: linear-gradient(rgba(0, 0, 0, .3), #141414);
+    position: fixed;
+    width: 100vw;
+    height: calc(100% - 81px);
+    overflow-y: scroll;
+    margin-top: 81px;
+ 
+}
+.overlayisOpen{
+    opacity:1;
+    transition:opacity 1000ms;
+    visibility: visible;
+    z-index: 3;
+
+}
+
+
+/* CHAT */
+#chatcontainer {
+  display: flex;
+  flex-direction: column;
+  /* height: 100vh;  */
+   height: calc(100vh - 81px);
+  margin-top: 81px;
+}
+#qrtroqcontainer{
+    height: calc(100vh - 81px);
+  margin-top: 81px;
+}
+
+#chatheader{
+  font: x-large;
+  background-color: var(--bckmodal);
+}
+#chatheader, #chatfooter {
+  /* background-color: #f0f0f0;  */
+  /* Add your desired background color */
+  padding: 10px;
+}
+/* #overlayfix{
+    background: transparent;
+    height: 100vh;
+    min-height: 100%;
+
+} */
+#chat-box {
+  flex-grow: 1; 
+  /* Make chat-box take up all available vertical space */
+  /* overflow-y: auto; */
+   /* Add a scrollbar if content overflows */
+  padding: 1em;
+    width: 100%;
+    /* height: 100%; */
+    height: calc(100% - 90px);
+    /* ESTO LO ROMPE */
+    /* background: red; */
+    overflow: hidden;
+    overflow-y: scroll;
+    touch-action: pan-y!important;
+    
+}
+.swiper-slide {
+  touch-action: pan-y!important;
+}
+.timestamp{
+  font-size: 0.61em;
+    /* color: lightgreen; */
+    color: blue;
+}
+/* .swiper{
+  width: 100%!important;
+} */
+#chatfooter {
+  position: sticky;
+  bottom: 0;
+}
+swiper-container{
+    /* padding-top: 6em; */
+    /* padding-top: 82px; */
+}
+/* .swiperSlide */
+#troqContainer{
+    /* height: calc(100% - 81px);
+    position: fixed;
+    top: 0;
+    margin-bottom: 0; */
+}
+
+
+
+
+.sidenavbutton{
+    background: var(--c2)!important;
+}
+
+/* FIX */
+
+.modal-body {
+    /* padding: 0!important; */
+}
+
+   /* FIXES 2 */
+   .alert{ margin-bottom: 0!important; }
+    .modal-content{
+      background-color: var(--bckmodal);
+      box-shadow: 0 0 10px var(--c3);
+      border: 1px solid var(--border);
+    }
+
+
+
+
+    /* ESCANEADO */
+    .success-message {
+  text-align: center;
+  max-width: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.success-message__icon {
+  max-width: 75px;
+}
+
+.success-message__title {
+  color: #3DC480;
+  transform: translateY(25px);
+  opacity: 0;
+  transition: all 200ms ease;
+}
+.active .success-message__title {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.success-message__content {
+  color: #B8BABB;
+  transform: translateY(25px);
+  opacity: 0;
+  transition: all 200ms ease;
+  transition-delay: 50ms;
+}
+.active .success-message__content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.icon-checkmark circle {
+  fill: #3DC480;
+  transform-origin: 50% 50%;
+  transform: scale(0);
+  transition: transform 200ms cubic-bezier(0.22, 0.96, 0.38, 0.98);
+}
+.icon-checkmark path {
+  transition: stroke-dashoffset 350ms ease;
+  transition-delay: 100ms;
+}
+.active .icon-checkmark circle {
+  transform: scale(1);
+}
+.uiicon{
+  cursor: pointer;
+}
+
+
+/* CUSTOM AMOUNT */
+.custom-input-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        #amount2{
+            background: transparent!important;
+
+        }
+        #address2{
+            border: 1px solid var(--main);
+        }
+
+        .custom-input-group .input-group-text {
+            min-width: 60px;
+        }
+
+        .custom-input-group input[type="number"] {
+            flex: 1;
+            width: 100%;
+            max-width: 100px;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+        }
+        .input-group {
+        text-align: center;
+            justify-content: center; /* Add this line */
+
+    }
+
+    .input-group .input-group-text,
+    .input-group .form-control {
+        display: inline-block;
+    }
+
+    #sendResult{
+height: 30vh;
+    /* width: 100%;
+    height: 63vh; */
+    }
+
+
+
+    /* #FIX */
+
+
+/* Stack the layout on small devices/viewports. */
+@media all and (min-width: 575px) {
+ 
+  #qrtroqcontainer {
+  max-height: calc(100vh - 81px)!important;
+  margin-top: 81px!important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  }
+}
+
+
+
+    #miniversion{
+      font-size: 0.35em;
+    }
+
+
+    #qrScanVideo{
+
+    }
+
+    #chatBadge{
+        position: absolute;
+        top: 24px;
+    right: 33px;
+    padding: 0.25em 0.35em;
+    z-index: 1;
+
+    display: none;
+    }
+
+
+    .newmessage{
+      background-color: green;
+    }
+    </style>
+
+
+    </head>
+    <body>
+
+
+    <!-- /*********************************************************************************************
+  .) HEADER NAV
+  **********************************************************************************************/ -->
+  <div class="overlay" ></div>
+
+<nav  id='navbar' class="  ">
+    <a id="logo" class="left navbar-brand" href="https://">
+      
+    </a>
+    <span id="usrAddr" class="left"></span>
+    <div  class="center"> 
+
+
+
+
+<h1 id="fontlogo">TROK <span id="miniversion">v0.1Alpha</span></h1>
+<select class="right translation" id="langswitch"> <option value="en">en</option> <option value="fr">fr</option> <option value="es">es</option> </select>
+    </div> 
+
+    
+        <span class="badge bg-warning" id="chatBadge">-</span>
+
+    <button id="" class="right hamburger hamburger--elastic" type="button" aria-label="Menu" aria-controls="navigation"> 
+        <span class="hamburger-box"> 
+            <span class="hamburger-inner"></span>
+        </span> 
+
+    </button>
+
+  </nav>
+  
+
+  <!-- /*********************************************************************************************
+  .) SIDEBAR
+  **********************************************************************************************/ -->
+  <div id="sidebar" class='sidebar'>
+    <a class='closeonclick' href="/"> <div class='title '> </div> </a>
+    <!-- <ul class='nav'> -->
+       
+      <i class="fas fa-wallet"></i>
+      <i class="fas fa-cog"></i>
+      
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col text-center">
+                    <h1 class="text-center">CONTACTS</h1>
+                <button type="button"  id="" class="btn btn-primary"   onclick="event.stopPropagation();addAddress()"> 
+                   <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512">
+                    <path d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM504 312V248H440c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V136c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H552v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/></svg>
+                   </button>
+                   <!-- Add address </button> -->
+
+                <button type="button"  id="" class="btn btn-reject"  onclick="event.stopPropagation(); scanAddress()">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+                    <path d="M0 80C0 53.5 21.5 32 48 32h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80zM64 96v64h64V96H64zM0 336c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V336zm64 16v64h64V352H64zM304 32h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H304c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48zm80 64H320v64h64V96zM256 304c0-8.8 7.2-16 16-16h64c8.8 0 16 7.2 16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s7.2-16 16-16s16 7.2 16 16v96c0 8.8-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s-7.2-16-16-16s-16 7.2-16 16v64c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V304zM368 480a16 16 0 1 1 0-32 16 16 0 1 1 0 32zm64 0a16 16 0 1 1 0-32 16 16 0 1 1 0 32z"/></svg>
+                  </button>
+                  <!-- SCAN QR</button> -->
+
+                </div>
+            </div>
+        </div>
+    <ul id="troqContacts" class='nav'>
+        
+        <li> <a onclick="event.stopPropagation();selectChat()" >  <img src="img/avatar.png" alt="Avatar" class="rounded-circle"> 0x... <i class="fa-solid fa-trash"></i></a> </li>
+        <li> <a onclick="event.stopPropagation();selectChat()" >  <img src="img/avatar.png" alt="Avatar" class="rounded-circle"> 0x... <i class="fa-solid fa-trash"></i></a> </li>
+        <li> <a onclick="event.stopPropagation();selectChat()" >  <img src="img/avatar.png" alt="Avatar" class="rounded-circle"> 0x... <i class="fa-solid fa-trash"></i></a> </li>
+        <li> <a onclick="event.stopPropagation();selectChat()" >  <img src="img/avatar.png" alt="Avatar" class="rounded-circle"> <span>0x...</span> <i class="fa-solid fa-trash"></i></a> </li>
+        <!-- <li> -->
+            <!-- <img src="img/avatar.png" alt="Avatar" class="rounded-circle"> -->
+            <!-- <a onclick="event.stopPropagation();selectChat()" >0x... <i class="fa-solid fa-trash"></i></a> </li> -->
+        <!-- <li> <span onclick="event.stopPropagation();selectChat()" >0x... <i class="fa-solid fa-trash"></i></span> </li> -->
+
+
+        <!-- <li> <a href="//localhost:1313/docs/index.html" target="_blank">Documentation (english)</a> </li> -->
+      <!-- <li> <a   id='deleteLocalwallet' onclick="event.stopPropagation();deleteWallet()" >DELETE wallet <i class="fa-solid fa-trash"></i></a> </li> -->
+    </ul>
+  </div>
+
+
+
+      <!-- <div id="headMessages"></div> -->
+
+
+<!-- SWIPER -->
+<div class="swiper" id="troqContainer">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      <!-- <div class="swiper-slide">Slide 1</div>
+      <div class="swiper-slide">Slide 2</div> -->
+
+
+    <!-- </div> -->
+
+
+
+<!-- <swiper-container id="troqContainer">
+  <swiper-slide> -->
+    <div class="swiper-slide">
+        
+    
+
+    <div id="qrtroqcontainer" class=" container swiperSlide">
+      <!-- <div id="qrpage" > -->
+
+        <div>
+
+            <article class="se-content">
+              <span id="troqamount"></span> 
+              <span id="ethamount"></span>  
+            </article>
+              <!-- INSERCION -->
+
+
+                  <div class=" responsive-svg" id="canvas"></div>
+                  <pre id="yourAddress"> </pre>
+              </div>
+              
+              
+              
+              <div class="container mt-5">
+                <button type="button"  id="lock" class="btn btn-primary"  style="display: none;" onclick="event.stopPropagation();unlockWallet()"> UNLOCK <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"> <path d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z" fill="#ffffff"/></svg> </button>
+                <button type="button"  id="send" class="btn btn-approve" style="display: none;"  onclick="event.stopPropagation(); openSend()">SEND</button>
+                <button type="button"  id="scan" class="btn btn-reject" style="display: none;"  onclick="event.stopPropagation(); scanAddress()">SCAN</button>
+                <button type="button"  id="chat" class="btn btn-primary"   style="display: none;"  onclick="event.stopPropagation(); openChat()"> CHAT </button>
+              </div>
+              
+              
+              <div class="centered-button">
+              <button style="display: none;" id="openCreateValue" type="button" class="btn btn-primary btn-lg "  onclick="event.stopPropagation(); openCreateValue()"> <svg class="wallieIcons " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"   fill="currentColor" width=50 height=50 > <path d="M0 224h192V32H0v192zM64 96h64v64H64V96zm192-64v192h192V32H256zm128 128h-64V96h64v64zM0 480h192V288H0v192zm64-128h64v64H64v-64zm352-64h32v128h-96v-32h-32v96h-64V288h96v32h64v-32zm0 160h32v32h-32v-32zm-64 0h32v32h-32v-32z"/> </svg> </button>
+              <br>
+              </div>
+      
+  
+        <!-- </div> -->
+        <!-- fin qrpage -->
+            
+  </div>
+  
+
+  <!-- </swiper-slide> -->
+</div>
+
+  <!-- <swiper-slide >  -->
+    <div class="swiper-slide">
+
+    <!-- <h1>HOW TO USE THIS?</h1> -->
+        <!-- <div class="container chatwindow"> -->
+            <!-- <div class="row justify-content-center mt-5"> -->
+                <!-- <div class="col-md-8"> -->
+                    <div id="chatcontainer" class="">
+
+                        <div id="chatheader" class=""> Chat with : <span id="chatAddress"></span> </div>
+                        <!-- <div class="" id="chat-box-overlay" > </div> -->
+                        <div class="" id="chat-box" > </div>
+                        <div id="chatfooter" class="">
+                            <div class="input-group">
+                                <input type="text" class="form-control"  id="user-input"  placeholder="Type a message..." disabled>
+                                <button class="btn btn-primary" id="send-button" onclick="sendMessage()" disabled>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M440 6.5L24 246.4c-34.4 19.9-31.1 70.8 5.7 85.9L144 379.6V464c0 46.4 59.2 65.5 86.6 28.6l43.8-59.1 111.9 46.2c5.9 2.4 12.1 3.6 18.3 3.6 8.2 0 16.3-2.1 23.6-6.2 12.8-7.2 21.6-20 23.9-34.5l59.4-387.2c6.1-40.1-36.9-68.8-71.5-48.9zM192 464v-64.6l36.6 15.1L192 464zm212.6-28.7l-153.8-63.5L391 169.5c10.7-15.5-9.5-33.5-23.7-21.2L155.8 332.6 48 288 464 48l-59.4 387.3z"/></svg>
+                                    </button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                <!-- </div> -->
+            <!-- </div> -->
+        <!-- </div> -->
+
+  <!-- </swiper-slide> -->
+  </div>
+
+</div>
+
+<!-- </swiper-container> -->
+</div>
+
+
+<!-----------------------------
+  MODALS 
+--------------------------->
+	<!-- Modal WALLET SEND/-->
+  <div class="modal fade" data-bs-backdrop="static"   id="walletSend" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" data-translate="walletCreation" id="">WALLET CREATION</h5>
+        </div>
+        <div class="modal-body" id="walletHiddenContent">
+          <!-- <div id="sendResult" ></div> -->
+          <!-- <div id="sendResult" style="display: none;"></div> -->
+
+        <div class="">
+            <!-- <div class="container"> -->
+            <div class="responsive-svg" id="canvas2"></div>
+            <div id="qrforsend"></div>
+            <pre id="cidResult"></pre>
+
+            <div id="txbuilder">
+              <!-- AMOUNT -->
+              <div class="container mt-5" id="amountView">
+                <h1>Amount</h1>
+                <div class="custom-input-group">
+                    <div class="input-group">
+                        <span class="input-group-text">T$</span>
+                        <input type="number" class="form-control" id="amount2" step="0.01" required>
+                    </div>
+                </div>
+            </div>
+        
+            
+              <!-- AMUINT END -->
+          <p id="txdetails" class="container">
+            to( Address): 
+            <input type="text" id="address2" style="width: 100%!important; word-wrap: break-word;" maxlength="64" />
+            <br /> 
+            note: <input type="text" id="message2" size="64" maxlength="64"  /> <br /> 
+            <input type="number" id="nonce2" size="4" maxlength="4" style="display: none;" /> 
+            <button type="button"  id="" class="btn btn-approve" onclick="event.stopPropagation(); sendTx()" style="display:none">OFFLINE</button>
+            <button type="button"  id="" class="btn btn-approve" onclick="event.stopPropagation(); sendTxOnline()">SEND</button>
+
+          </p>
+          
+          
+          <!-- <pre id="result2"></pre> -->
+
+
+          <br />
+        </div>
+
+        <pre id="result2"></pre>
+
+
+        </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary closeWalletBkp" id="closeWalletSend"  data-translate="close" >Close</button>
+          <!-- <button type="button" class="btn btn-outline-secondary closeWalletBkp" id="closeWalletBkp" data-bs-dismiss="modal" data-translate="close" >Close</button> -->
+          <button type="button" class="btn btn-outline-secondary closeWalletBkp" id="getValidatedTX" data-bs-dismiss="modal" data-translate="getvalidation" disabled>get Validation</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fin SEND WALLET-->
+
+
+  <!-- Modal RECEIVE WALLET -->
+  <div class="modal fade" data-bs-backdrop="static"   id="walletReceive" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" data-translate="txverification" id="">Verify Tx</h5>
+        </div>
+        <div class="modal-body" id="walletHiddenContent3">
+        <div class="">
+          <p id="dataResult3"></p>
+          <div class="responsive-svg" id="canvas3"></div>
+          <video id="qrVideo" width="300" height="300"  ></video>
+          <div class="responsive-svg" id="canvas3"></div>
+          <div id="qrforsend3"></div>
+          <pre id="cidResult3"></pre>
+          
+       
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary closeWalletBkp" id="retryScanner"  data-translate="retry"  style="display: none;">Retry</button>
+          <button type="button" class="btn btn-outline-secondary closeWalletBkp" id="closeScanner"  data-translate="close" >Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- fin WALLET RECEIVE-->
+
+	<!-- Modal BACKUP WALLET -->
+    <div class="modal fade" data-bs-backdrop="static"   id="walletBackp" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" data-translate="walletCreation" id="">WALLET CREATION</h5>
+            </div>
+            <div class="modal-body" id="walletHiddenContent">
+                        <div id="displayPubKey"></div>
+                        <div id="displayPK"></div>
+                        <div id="displayMnemonic"></div>
+                        <div id="displayDecrypt"></div>
+              <div id="success_message2" class="alert alert-success" role="alert" style="display: none;"></div>
+            </div>
+            <div class="modal-footer">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="mnemonicBackedup" disabled>
+            <label class="form-check-label" for="mnemonicBackedup">
+              I wrote down the mnemonic phrase
+            </label>
+          </div>
+              <button type="button" class="btn btn-outline-secondary closeWalletBkp" id="closeBackupmodal" data-bs-dismiss="modal" data-translate="close" disabled>Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+  		<!-- Modal WALLET CREATION -->
+      <div class="modal fade" data-bs-backdrop="static"   id="walletHidden" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" data-translate="walletCreation" id="">WALLET CREATION</h5>
+            </div>
+            <div class="modal-body" id="walletHiddenContent">
+
+            <div class="container">
+              <!-- INSERCION -->
+              <h3>1- hashes</h3>
+              <p>
+                to( Address): <input type="text" id="address" size="64" maxlength="64" /> <br /> 
+                amount: <input type="number" id="amount" size="64" maxlength="64" /> <br /> 
+                message: <input type="text" id="message" size="64" maxlength="64" /> <br /> 
+                nonce: <input type="number" id="nonce" size="4" maxlength="4" /> <br /> <br />
+          
+                <button id="btnGetHash">GET HASH</button>
+              </p>
+          
+              <pre id="result"></pre>
+              <br />
+          
+              <h3>2- Signature</h3>
+              <!-- Hash to sign: <input type="text" id="hash" size="66" maxlength="66" /> -->
+              Hash to sign: <pre id="hash"></pre>
+          
+              <button id="btnSign">SIGN WITH METAMASK</button>
+              <button id="btnSignLocal">SIGN WITH TABULA RASA</button>
+              <pre id="sigresult"></pre>
+              <br />
+          
+              <h3>3- SHARE THE QR and get it signed by your peer(OFFCHAIN verification and tx sharing)</h3>
+              <p>
+                signer( Address): <input type="text" id="vsigner" size="64" maxlength="64" /> <br />
+                to( Address): <input type="text" id="vaddress" size="64" maxlength="64" /> <br />
+                amount: <input type="number" id="vamount" size="64" maxlength="64" /> <br />
+                message: <input type="text" id="vmessage" size="64" maxlength="64" /> <br />
+                nonce: <input type="number" id="vnonce" size="4" maxlength="4" /> <br />
+                Signature: <input type="text" id="sig2verify" size="66" maxlength="66" />
+              </p>
+          
+              <button id="btnVerify">VERIFY</button>
+              <pre id="verifyResult"></pre>
+          
+              <h3>OPTIONAL- Verify  with hash (OFFCHAIN)</h3>
+          
+              <p>
+                Hash: <input type="text" id="verifywhash" size="64" maxlength="64" /> <br />
+                Signature: <input type="text" id="sig2verifywhash" size="66" maxlength="66" />
+              </p>
+          
+              <button id="btnVerifywhash" >VERIFY with Hash</button>
+              
+              
+              <h3>4- Publish the Transaction!</h3>
+              <p>
+                Verified Address:
+                <pre id="verifywhashResult"></pre>
+                Hash:
+              <pre id="hashIPFS"></pre>
+              <br />
+                Signature/s: 
+              <pre id="sigIPFS"></pre>
+
+              </p>
+          
+              <button id="btnPublish">PUBLISH</button>
+              <pre id="publishResult"></pre>
+          </div>
+
+     
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary closeWalletBkp" id="closeWalletBkp" data-bs-dismiss="modal" data-translate="close" >Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- fin MODAL WALLET-->
+
+
+
+
+
+        <!-- SCAN MODAL -->
+  <div class="modal fade" data-bs-backdrop="static"   id="scanModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" data-translate="scanqr" id="">Scan QR</h5>
+        </div>
+        <div class="modal-body" id="">
+        <div class="">
+          <!-- <p id="dataResult3"></p> -->
+          <div class="responsive-svg" id="qrcanvas"></div>
+          <video id="qrScanVideo" width="300" height="300"  ></video>
+          <!-- <div class="responsive-svg" id=""></div> -->
+          <!-- <div id="qrforsend3"></div> -->
+          <div id="scanResult"></div>
+          
+       
+
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-outline-secondary closeWalletBkp" id=""  data-translate="retry"  style="display: none;">Retry</button> -->
+          <button type="button" class="btn btn-outline-secondary closeWalletBkp" id="closeScanModal"  data-translate="close" >Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- fin SCAN MODAL-->
+
+
+
+      
+<!-- NODE MODAL -->
+<div class="modal fade" id="nodeModal" tabindex="-1" aria-labelledby="mintingModalLabel" aria-hidden="true" data-tor-parent="show" data-bs-backdrop="static" data-bs-keyboard="false" >
+	<div class="modal-dialog modal-dialog-centered no-transform">
+	  <div class="modal-content" data-tor="show(p):{scale.from(75) fade.in} quad">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalPromoLabel2">Nodes /peers:</h5>
+			<button type="button" class="btn-close cancelMint" aria-label="Close" onclick="event.stopPropagation();cancelMint((this))"></button>
+		</div>
+		
+		<div class="modal-body">
+
+      <main class="pa4-l bg-snow mw7 mv5 center pa4">
+
+        
+        <h1 class="pa0 f2 ma0 mb4 navy tc">TXs</h1>
+  
+        <form id="add-file">
+          <label for="file-name" class="f5 ma0 pb2 navy fw4 db">hash de address + timestamp</label>
+          <input class="input-reset bn black-80 bg-white pa3 w-100 mb3" id="file-name" name="file-name" type="text" placeholder="file.txt" required />
+          <label for="file-content" class="f5 ma0 pb2 navy fw4 db">Content</label>
+          <input class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft" id="file-content" name="file-content" type="text" placeholder="Hello world" required />
+  
+          <button class=" button-reset pv3 tc bn bg-animate bg-black-80 hover-bg-aqua white pointer w-100 " id="add-submit" type="submit" > Add file </button>
+        </form>
+  
+        <h3>Output</h3>
+  
+        <div class="window">
+          <div id="terminal" class="terminal">
+            <div id="output"></div>
+          </div>
+        </div>
+  
+        <h3>Listening addresses</h3>
+  
+        <div class="window">
+          <div id="multiaddrs" class="terminal"></div>
+        </div>
+  
+        <h3>Peers</h3>
+  
+        <div class="window">
+          <!-- <div id="peers" class="terminal"></div> -->
+        </div>
+  
+        <h3>Dial Queue</h3>
+  
+        <div class="window">
+          <div id="dialQueue" class="terminal"></div>
+        </div>
+      </main>
+
+    </div>
+		<div class="modal-footer">
+		  <button type="button"  id="cancelMinting" class="btn mb-2 btn-danger cancelMint" onclick="event.stopPropagation();cancelMint((this))"  >Cancel</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+<!-- fin NDOE MODAL -->
+
+
+       		<!-- PROGRESSBAR WALLET -->
+			   <div class="modal fade" data-bs-backdrop="static"   id="walletProgress" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+				  <div class="modal-content">
+					<div class="modal-header">
+					  <h5 class="modal-title" data-translate="decryptingwallet" id="">DECRYPTING WALLET</h5>
+					</div>
+					<div class="modal-body" id="walletProgressContent">
+	  
+				  <div id="walletProgress_success_message" class="alert alert-success" role="alert" style="display: none;"></div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			<!-- fin MODAL WALLET-->
+	
+
+
+	
+        <!-- fin MODAL WALLET-->
+<!-----------------------------
+  SCRIPTS 
+--------------------------->
+ 
+<script type="module" >
+  // import { Web3Storage } from 'web3.storage/dist/bundle.esm.min'
+  // import QrScanner from 'qr-scanner'; // if installed via package and bundling with a module bundler like webpack or rollup
+  import QrScanner from "qr-scanner/qr-scanner.min.js";
+  window.QrScanner = QrScanner; //make global
+  QrScanner.hasCamera(); // test
+
+  import { ethers } from "ethers";
+    window.ethers = ethers;
+    
+  import { Client } from '@xmtp/xmtp-js'
+    import { Wallet } from 'ethers'
+    window.Wallet = Wallet;
+    window.Client = Client;
+
+
+    //x POLYBASE FUNCTIONS
+// import { Polybase } from "@polybase/client";
+// const db = new Polybase({ defaultNamespace: "pk/0x97eab0841786aeae14135af5e26750626e46e2e15a412b6a319dd2ce7f323c805d67fcfb0f8ea1f27959e486e11e49926fbf4b1c2b9252daa20283e200e3b1b3/albumlogTestnet", });
+
+</script>
+
+<!-- <script src="https://raw.githubusercontent.com/mebjas/html5-qrcode/master/minified/html5-qrcode.min.js"></script> -->
+<script>
+
+  /*********************************************************************************************
+  .)  INIT
+  **********************************************************************************************/
+
+  window.addEventListener("load", async function (event) {
+        console.log("window loaded!");
+        init();
+      });
+
+  let init = async () => {
+    console.log('init: INITIALIZING... ')
+    await autoCreateWallet()
+
+    // init CHAT
+    
+    // SEARCH FOR T2Addr
+    const urlParams = new URLSearchParams(window.location.search);
+    const t2AddrValue = urlParams.get('T2Addr');
+    if (t2AddrValue !== null) {
+        console.log(`TRYING TO CHAT WITH: ${t2AddrValue}`);
+        // Toast.fire({ icon: 'info', title: 'CHAT WITH:', text: t2AddrValue });
+        await  chatWith(t2AddrValue)
+    } else {
+        console.log('T2Addr parameter not found in the URL');
+    }
+    
+    // add contacts to UI
+    loadTroqContacts()
+
+    // check balance
+    await syncBalance()
+      
+  }
+
+async function syncBalance(){
+    let preferedWallet = localStorage.getItem('preferedWallet');
+
+if (!preferedWallet) { console.log('NO PREFERED WALLET SET') }
+  if (preferedWallet) {
+            const values = preferedWallet.split(',').map(item => item.trim());
+           walletChoice = values[0];
+            userAddress = values[1];
+  }
+  let balancetroq = await checkERC20Balance(userAddress)//troq
+
+      let balancegas = await checkGasBalance(userAddress)//main eth
+      // let balanceeth = await checkGasBalance(userAddress)//main eth
+      q=balancegas
+      // troqamount.innerHTML = `T$:${balancetroq.toString()}`
+      troqamount.innerHTML = `${optionsList[0].TOKEN_NAME}: ${Number(balancegas).toFixed(3)}`
+    //   ethamount.innerHTML = `(${optionsList[0].TOKEN_NAME}: ${balanceeth.toString()})`
+      // ethamount.innerHTML = `(${optionsList[0].TOKEN_NAME}: ${Number(balanceeth).toFixed(3)})`
+    //   balanceeth.toString().toFixed(3);
+    
+}
+
+
+  
+   // *********************************
+      // beep
+      // *********************************
+
+
+async function openSend(){
+console.log('openingn SEND VALUE')
+// 1- CREATE GUEST WALLET (FOR DEMO PURPOSES)
+try{ guestwallet = await ethers.Wallet.createRandom()}
+catch (error) { console.log(error.message); fixedToast.fire( 'Error',error.message, "error"); }
+// document.getElementById('CWresult').innerHTML =  ` <pre id='waddr'>guest demo wallet: ${guestwallet.address} </pre> ` 
+console.log('GUEST WALLET FOR DEMO:', guestwallet.address)
+address.value = guestwallet.address;
+amount.value = 30;
+message.value = "carottes";
+nonce.value = Date.now();
+
+// prefill for demo purposes
+let toaddr = localStorage.getItem('toAddress')
+if(toaddr){
+  address2.value = toaddr;
+}
+// address2.value = guestwallet.address;
+amount2.value = 1;
+message2.value = "";
+nonce2.value = Date.now();
+
+// open modal
+openModalId('#walletSend')
+
+}
+
+
+        // *********************************
+      // btnGetHash
+      // *********************************
+
+      async function sendorcreateValue(amount,to,from ){
+ 
+        
+        // CREATE CONTRACT
+        let tAddress = optionsList[0].TOKEN_ADDRESS;
+        let tAbi = ABIs[optionsList[0].TOKEN_ABI]
+        
+        let provider = new ethers.providers.JsonRpcProvider(`${optionsList[0].API}`);
+        const contract = new ethers.Contract(tAddress, tAbi, provider)
+        let pk  = JSON.parse(localStorage.getItem('unbackedWallet'))
+        let localWallet = await  ethers.Wallet.fromMnemonic(pk);
+        const signer = await localWallet.connect(provider)
+        const contractWithSigner = await contract.connect(signer);
+        
+        console.log('TRANSACTION PREPARED:',from, to,amount,contractWithSigner)
+        // function customTransfer(address from, address to, uint256 amount) public onlyRole(DAO_ROLE) {
+          const gasLimit = await contractWithSigner.estimateGas.customTransfer(from, to,amount);
+          console.log('gasLimit: ',gasLimit)
+          const tx = await contractWithSigner.customTransfer(from, to, amount, {
+            gasLimit: gasLimit
+          });
+          receipt = await tx.wait();
+          console.log(`TRANSACTION CONFIRMED!!! with ${receipt.gasUsed} gas`);
+          console.log(`TX: ${receipt.hash}`);
+
+
+        // console.log('we start minting process',tAddress , tAbi, ipfsLink)
+        // const contract = new ethers.Contract(tAddress, tAbi, provider)
+        // console.log('contract:', contract)
+        // const tx = await contract.connect(signer).mintAlbumlog(ipfsLink); //ejecuta la funcion mintAlbumlog del contrato
+        // console.log('Function executed!',tx);
+
+      }
+
+
+// async function sendTxOnline(){
+
+//         if (typeof wallet === 'undefined' || wallet === null) {
+//             // The variable 'wallet' is either undefined or null
+//             console.log('UNLOCK WALLET FIRST')
+//             Toast.fire({ icon: 'error', title: 'UNLOCK WALLET FIRST' });
+//             return
+//         }
+
+//         console.log("sending Tx!");
+//         let to = document.getElementById('address2').value;
+//         let amount = document.getElementById('amount2').value;
+//         let message = document.getElementById('message2').value;
+//         let nonce = document.getElementById('nonce2').value;
+//         let from = wallet.address;
+//         console.log('SEND TX WALLLET: ', wallet.address)
+//         txbuilder.style.display='none'
+//         sendResult.style.display='block'
+//         document.getElementById('sendResult').innerHTML = 'SENDING ...'
+//         await sendorcreateValue(amount,to, from)
+        
+//         setTimeout(() => {
+//           document.getElementById('sendResult').innerHTML = ` <div class="success-message"> <svg viewBox="0 0 76 76" class="success-message__icon icon-checkmark"> <circle cx="38" cy="38" r="36"/> <path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M17.7,40.9l10.9,10.9l28.7-28.7"/> </svg> <h1 class="success-message__title">SCANED!</h1> <div class="success-message__content"> <p>SENT</p> </div> </div> `
+//           playBeep()
+//           syncBalance()
+//         }, 2000);
+
+// }
+
+
+async function sendTxOnline() {
+        console.log("sendTxOnline()");
+
+        if (typeof wallet === 'undefined' || wallet === null) {
+            console.log('UNLOCK WALLET FIRST')
+            Toast.fire({ icon: 'error', title: 'UNLOCK WALLET FIRST' });
+            return
+        }
+
+        let provider = new ethers.providers.JsonRpcProvider(`${optionsList[0].API}`);
+        console.log('provider:', provider)
+        p=provider;
+        let pk  = JSON.parse(localStorage.getItem('unbackedWallet'))
+        let localWallet = await  ethers.Wallet.fromMnemonic(pk);
+
+        lw = localWallet
+        let to = document.getElementById('address2').value;
+        let addr = localWallet.address;
+
+        let amount = document.getElementById('amount2').value;
+        let message = document.getElementById('message2').value;
+        const toAddress = ethers.utils.getAddress(to);
+        // addr= toAddress;
+        
+        // NONCE
+        const nonce = await provider.getTransactionCount(addr);
+
+        // let nonceToConvert = document.getElementById('nonce2').value;
+        // const nonce = ethers.BigNumber.from(nonceToConvert).toHexString();
+
+        console.log("Nonce:", nonce);
+        try { signer = localWallet.connect(provider);}
+          catch (error) { console.log(error.message,'ERROR WALELT');}
+          console.log('signer:', signer)
+
+          const amountToSend = ethers.utils.parseEther(amount); // 1 ETH
+          console.log('amount to send:', amountToSend)
+          const gasPrice = ethers.utils.parseUnits('50', 'gwei');
+          const network = await provider.getNetwork();
+          const chainId = network.chainId;
+          console.log('chainId:', chainId);
+
+          try {
+          const transaction = {
+            to: toAddress,
+            value: amountToSend,
+            gasPrice: gasPrice,
+            nonce: nonce,
+            chainId: chainId, // Replace with the appropriate chain ID (1 for Ethereum mainnet)
+            gasLimit: 8000000, // Set the gas limit to 8000000
+          };
+
+
+
+    // Sign the transaction with EIP-155 replay protection
+    const signedTransaction = await localWallet.signTransaction(transaction);
+    console.log('Signed Transaction:', signedTransaction);
+
+
+    // Send the signed transaction
+    const transactionResponse = await provider.sendTransaction(signedTransaction);
+    console.log('Transaction hash:', transactionResponse.hash);
+
+    console.log('reloadBalanceAfterReceiving', toAddress,amount)
+    reloadBalanceAfterReceiving(toAddress,amount)
+
+    // txdetails.style.display='none';
+    // amountView.style.display='none';
+    txbuilder.style.display='none';
+    document.getElementById('result2').innerHTML = ` <div class="success-message"> <svg viewBox="0 0 76 76" class="success-message__icon icon-checkmark"> <circle cx="38" cy="38" r="36"/> <path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M17.7,40.9l10.9,10.9l28.7-28.7"/> </svg> 
+        </div> 
+        `
+        // playBeep();
+    // UPLOAD BALANCE
+    // checkERC20Balance(addr)
+    // checkGasBalance(addr)
+
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
+}
+
+
+// document.getElementById("closeWalletSend").onclick = () => {
+
+document.querySelector('#closeWalletSend').addEventListener('click', function(event) {
+    console.log('closing #closeWalletSend');
+
+  closeModalId('#walletSend')
+  txbuilder.style.display='block';
+    document.getElementById('result2').innerHTML = ''
+    // plToggle();
+    // data-bs-dismiss="modal"
+});
+
+
+
+async function sendTx(){
+
+          if (typeof wallet === 'undefined' || wallet === null) {
+              // The variable 'wallet' is either undefined or null
+              console.log('UNLOCK WALLET FIRST')
+              Toast.fire({ icon: 'error', title: 'UNLOCK WALLET FIRST' });
+          return
+          }
+ 
+        console.log("sending Tx!");
+        let to = document.getElementById('address2').value;
+        let amount = document.getElementById('amount2').value;
+        let message = document.getElementById('message2').value;
+        let nonce = document.getElementById('nonce2').value;
+        let from = wallet.address;
+        console.log('SEND TX WALLLET: ', wallet.address)
+
+        //  hash it
+        console.log("hashing:",to, amount, message, nonce );
+        let hash = ethers.utils.solidityKeccak256( ["address", "uint", "string", "uint"], [to, amount, message, nonce] );
+        document.getElementById("cidResult").innerHTML += "<p>HASH: " + hash + " </p>";
+       
+            //  sign it
+          let sSig =  await signwithTabularasa(to, hash);
+          document.getElementById("cidResult").innerHTML += "<p>SIGNATURE: " + sSig + "</p>";
+
+        // create qr
+        let jsonString = JSON.stringify([to, amount, message, nonce,hash,sSig]);
+        console.log('jsonString',jsonString);
+        const qrColor = getComputedStyle(document.body).getPropertyValue('--qr');
+
+        const qrCode = await new QRCodeStyling({ width: 300, height: 300, type: "png", data: jsonString, image: `troqv3.png`, dotsOptions: { color: `${qrColor}`, type: "extra-rounded" }, backgroundOptions: { color: "var(--qrbackground)", }, imageOptions: { crossOrigin: "anonymous", margin: 0 } }); 
+        // const qrCode = await new QRCodeStyling({ width: 300, height: 300, type: "png", data: jsonString, image: `troqv3.png`, dotsOptions: { color: "#1568B0", type: "extra-rounded" }, backgroundOptions: { color: "var(--qrbackground)", }, imageOptions: { crossOrigin: "anonymous", margin: 0 } }); 
+        console.log('qr code APPENDED')
+
+        try {
+          let qrraw = await qrCode.getRawData('png');
+          imageUrl = URL.createObjectURL(qrraw);
+          console.log('QR code URL:', imageUrl);
+        }
+        catch (error) { console.error('Error generating QR code:', error); }
+
+        var imgElement = document.createElement('img');
+        imgElement.src = imageUrl;
+        document.getElementById('qrforsend').appendChild(imgElement);
+
+        txbuilder.style.display='none'
+        playBeep()
+
+        // PUBLISH TO TABLELAND
+        console.log(to, hash,sSig)
+        // await writeHalfTx(sSig,to, hash,sSig)
+        // await writeFullTx(sSig,from,to, hash,sSig, 'null',Number(amount), Number(nonce) )
+            
+
+        let oldToBalance = await readAddressBalance(to);
+
+        if (oldToBalance === null) {
+          // Perform an action if the result is null
+          console.log("oldToBalance is null. Performing an action...");
+          // Your code here
+        } else {
+          // Result is not null
+          console.log("oldToBalance is not null.");
+          // Your code here
+        }
+        // calc new toBalance
+        let newToBalance = oldToBalance + Number(amount); 
+        
+        // await writeNewBalance(to, newToBalance);
+           
+
+      }  
+
+
+
+
+function playBeep() {
+var AudioContext = window.AudioContext || window.webkitAudioContext;
+var audioCtx = new AudioContext();
+
+var oscillator = audioCtx.createOscillator();
+oscillator.type = 'sine'; // Set the waveform type
+oscillator.frequency.value = 864; // Set the frequency (Hz)
+
+oscillator.connect(audioCtx.destination);
+oscillator.start();
+
+// Stop the oscillator after 100 milliseconds
+setTimeout(function() {
+  oscillator.stop();
+}, 100);
+}
+
+function playToc() {
+
+  // Create a new XMLHttpRequest object
+  var audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+  // Create a variable to hold the audio source
+  var source;
+
+  // Function to handle the user gesture
+  function playSound() {
+  // Create a new XMLHttpRequest object
+  var xhr = new XMLHttpRequest();
+
+  // Set up the request
+  xhr.open('GET', 'tiquiti.mp3', true);
+  xhr.responseType = 'arraybuffer';
+
+  // Define the onload event handler
+  xhr.onload = function() {
+  // Decode the audio data
+  audioContext.decodeAudioData(xhr.response, function(buffer) {
+  // Create a new audio source
+  source = audioContext.createBufferSource();
+  source.buffer = buffer;
+
+  // Connect the audio source to the destination (speakers)
+  source.connect(audioContext.destination);
+
+  // Play the sound
+  source.start(0);
+  }, function(error) {
+  // Error handling
+  console.error('Error decoding audio data:', error);
+  });
+  };
+
+  // Send the request
+  xhr.send();
+  }
+
+  // Add an event listener for a user gesture (e.g., button click)
+  document.addEventListener('click', function() {
+  // Call the playSound function to play or resume the sound
+  playSound();
+  });
+
+}
+
+
+ function  openChat(){
+     console.log('OPEN CHAT')
+    plToggle();
+ }
+
+
+async function openReceive(){
+console.log('openingn RECEIVE VALUE')
+
+// open modal
+openModalId('#walletReceive')
+
+setTimeout(() => {
+  var videoElem = document.getElementById("qrVideo");
+  window.qrScanner = new QrScanner( videoElem, result => scanned(result), {
+    highlightScanRegion: true,
+    highlightCodeOutline: true,
+  });
+  
+  qrScanner.setInversionMode('invert');
+  qrScanner.start();
+  
+}, 1000);
+}
+
+async function scanned(result){
+        console.log('scanned decoded qr code:', result.data)
+        playBeep();
+        x=result.data;
+        document.getElementById('dataResult3').innerHTML += `    
+        <p>
+                <pre id="address3" > to( Address): ${JSON.parse(result.data)[0]} </pre>
+                <br/> 
+                <pre id="amount3" >   amount: ${JSON.parse(result.data)[1]} </pre>
+                <br/> 
+                <pre id="message3" > concept: ${JSON.parse(result.data)[2]}  </pre>
+                <br/> 
+                <pre id="nonce3" > concept: ${JSON.parse(result.data)[3]}  </pre>
+                <br/> 
+                <pre id="fromaddress3" > FROM( Address): ${JSON.parse(result.data)[4]} </pre>
+                <br/> 
+                <button type="button"  id="btnApproveTx" class="btn btn-approve">Approve</button>
+                <button type="button"  id="btnRejectTx" class="btn btn-reject">Reject</button>
+
+              </p>`
+
+        // stop scanner
+        qrScanner.stop();
+
+        document.getElementById('retryScanner').style.display ='block';
+
+        // destroy
+        qrScanner.destroy();
+        qrScanner = null;
+
+      }
+    
+document.getElementById("retryScanner").onclick = () => {
+  console.log('RETRY SCANNER');
+  // qrScanner.stop();
+  qrScanner.start();
+}
+
+document.getElementById("closeScanner").onclick = () => {
+  qrScanner.stop();
+ closeModalId('#walletReceive')
+
+}
+
+
+async function publishTX(){
+  // Define the two signatures as hex strings
+const signature1 = '0x...'; // Replace with your first signature
+const signature2 = '0x...'; // Replace with your second signature
+
+// Concatenate the signatures
+const concatenatedSignatures = signature1 + signature2.slice(2); // Remove the '0x' prefix from the second signature
+
+// Hash the concatenated signatures
+const hash = utils.keccak256(concatenatedSignatures);
+
+console.log(hash);
+// name = 'tx.txt'
+name = 'tx'
+// await store(name, hash)
+
+}
+
+async function openCreateValue(address, hash) {
+  console.log('openingn CREATE VALUE')
+  openModalId('#walletHidden')
+
+}
+
+async function viewNode() {
+  console.log('WATCH NODES')
+  openModalId('#nodeModal')
+
+}
+
+//  async function btnPublish(){
+   
+// }
+document.getElementById("btnPublish").onclick = () => {
+  console.log('PUBLISH');
+  pay();
+  playBeep();
+}
+
+async function pay(){
+  Swal.fire({
+  title: 'Enter the amount',
+  html: '<duet-number-input value="0" min="-999999" step="1" unit="€" />',
+  didOpen: () => {
+    const input = Swal.getContainer().querySelector('duet-number-input')
+    input.addEventListener('duetChange', (e) => {
+      const value = e.detail.value
+      Swal.getConfirmButton().disabled = value < 0
+    })
+  },
+  preConfirm: () => {
+    const value = Swal.getContainer().querySelector('duet-number-input').value
+    return value < 0 ? Swal.showValidationMessage('Please enter a positive value') : value
+  },
+}).then(function (result) {
+  Swal.fire(`Entered amount: ${result.value}`)
+})
+
+}
+
+/*********************************************************************************************
+.) sweetalert2
+// position: "top-right",
+**********************************************************************************************/  
+
+const ToastTop = Swal.mixin({
+  toast: true,
+  position: "top-start",
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: toast => {
+    toast.addEventListener("mouseenter", Swal.stopTimer);
+    toast.addEventListener("mouseleave", Swal.resumeTimer);
+  },
+  iconColor: 'white',
+  customClass: {
+    popup: 'colored-toast'
+  },
+});
+
+const Toast = Swal.mixin({
+  toast: true,
+  position: "bottom-end",
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: toast => {
+    toast.addEventListener("mouseenter", Swal.stopTimer);
+    toast.addEventListener("mouseleave", Swal.resumeTimer);
+  },
+  iconColor: 'white',
+  customClass: {
+    popup: 'colored-toast'
+  },
+});
+
+const Toastcenter = Swal.mixin({
+  toast: true,
+  position: "top",
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: toast => {
+    toast.addEventListener("mouseenter", Swal.stopTimer);
+    toast.addEventListener("mouseleave", Swal.resumeTimer);
+  },
+  iconColor: 'white',
+  customClass: {
+    popup: 'colored-toast'
+  },
+});
+
+const Toastnoclose = Swal.mixin({
+  toast: true,
+  position: "top",
+  iconColor: 'white',
+  customClass: {
+    popup: 'colored-toast'
+  },
+  
+});
+
+const fixedToast = swal.mixin({
+  toast: true,
+  position: "bottom-end",
+  showConfirmButton: true,
+  showDenyButton: false,
+  showCancelButton: true,
+  cancelButtonText: 'Now!',
+  confirmButtonText: 'later ...',
+  denyButtonText: `Close`,
+  iconColor: 'white',
+  customClass: {
+    popup: 'colored-toast'
+  },
+});
+
+const fixedToastLoader = swal.mixin({
+  toast: true,
+  position: "top-right",
+  showConfirmButton: false,
+  showConfirmButton: false
+});
+
+
+var sweet_loader = '<div class="sweet_loader"><svg viewBox="0 0 140 140" ><g class="outline"><path d="m 70 28 a 1 1 0 0 0 0 84 a 1 1 0 0 0 0 -84" stroke="rgba(0,0,0,0.1)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></g><g class="circle"><path d="m 70 28 a 1 1 0 0 0 0 84 a 1 1 0 0 0 0 -84" stroke="#71BBFF" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dashoffset="200" stroke-dasharray="300"></path></g></svg></div>';
+
+const steps = ['1', '2', '3', '4']
+const Queue = Swal.mixin({
+  progressSteps: steps,
+  confirmButtonText: 'Next >',
+  showClass: { backdrop: 'swal2-noanimation' },
+  hideClass: { backdrop: 'swal2-noanimation' }
+})
+
+
+/*********************************************************************************************
+.) light red green
+**********************************************************************************************/  
+// const lightIcon = document.querySelector('.light-icon');
+
+// function toggleColor() {
+//   if (lightIcon.style.backgroundColor === 'red') {
+//     lightIcon.style.backgroundColor = 'green';
+//   } else {
+//     lightIcon.style.backgroundColor = 'red';
+//   }
+// }
+
+// setInterval(toggleColor, 1000); // Toggle color every 1 second
+
+
+
+/*********************************************************************************************
+.) VARIABLES
+**********************************************************************************************/  
+
+  optionsList =[ 
+  {
+        "TOKEN_NAME": "TROK",
+        "API": 'http://127.0.0.1:9656/ext/bc/2UHo2nEj9wCJxRNbUPFMTin588JJDFYi3rCP6V19BfBceWEVVC/rpc',
+        "TOKEN_CHAINID": '232211',
+        "TOKEN_ADDRESS": "0x691E71Ff60cF56d4f6417b203b25A683afE9a9B6",//master v3
+        "ERC20_CONTRACT_ADDRESS":"0x4bF546fC1A24F24c1F88e315B0ED96BF853C3D1a",//slave v3
+        "TOKEN_ABI": 'MasterContract',
+        "ERC20_TOKEN_ABI": 'SlaveContractERC20',
+        "EXPLORER": null,
+
+      }, 
+  {
+        "TOKEN_NAME": "SEPOLIA",
+        "API": 'http://127.0.0.1:9654/ext/bc/hzrvbvCAJz5TDVvkWyo7izquSBiLXS9poEMNRT5EqHYtNVJJH/rpc',
+        "TOKEN_ADDRESS": "0xe336d36FacA76840407e6836d26119E1EcE0A2b4",//master
+        "TOKEN_ABI": 'MasterContract',
+        "TOKEN_CHAINID": '11155111',
+        "EXPLORER": null,
+        "ERC20_CONTRACT_ADDRESS":"0xa4DfF80B4a1D748BF28BC4A271eD834689Ea3407",//slave
+        "ERC20_TOKEN_ABI": 'SlaveContractERC20',
+
+      },
+  {
+        "TOKEN_NAME": "TROQ_SCROLL",
+        "TOKEN_ADDRESS": "0xF927099D89378611a0cDF690580977Ca7af425BA",//master
+        "TOKEN_ABI": 'MasterContract',
+        "TOKEN_CHAINID": '534351',
+        "API": 'https://sepolia-rpc.scroll.io/',
+        "EXPLORER": 'https://sepolia.scrollscan.dev/',
+        "ERC20_CONTRACT_ADDRESS":"0xF927099D89378611a0cDF690580977Ca7af425BA",//slave
+        "ERC20_TOKEN_ABI": 'SlaveContractERC20',
+
+      },
+      {
+        "TOKEN_NAME": "MUMBAI",
+        "TOKEN_ADDRESS": "0xf2b1dC371eDC20D4A13821E9dC46ae6facAa1632",
+        "TOKEN_ABI": 'opptonev16ABI',
+        "TOKEN_CHAINID": '80001',
+        "API": 'https://endpoints.omniatech.io/v1/matic/mumbai/public',
+        "EXPLORER": 'https://mumbai.polygonscan.com/'
+      }
+      
+    ];
+
+  chainList =[
+    {
+      "chainId": '0x89',
+      "rpcUrls": "https://rpc-mainnet.matic.network/",
+      "chainName": "Matic Mainnet",
+      "name": "MATIC",
+      "symbol": "MATIC",
+      "decimals": 18
+    }, 
+    {
+      "chainId": '0x5',
+      "rpcUrls": "https://rpc.slock.it/goerli",
+      "chainName": "Goerli Test Network",
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "decimals": 18,
+     "blockExplorerUrls": "https://goerli.etherscan.io"
+    }, 
+    {
+      "chainId": '0x82751',
+      "rpcUrls": "https://alpha-rpc.scroll.io/l2",
+      "chainName": "Scroll Alpha Testnet",
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "decimals": 18,
+     "blockExplorerUrls": "https://blockscout.scroll.io"
+    }, 
+  ];
+
+
+  ABIs = {
+
+
+    MasterContract:  [
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [],
+		"name": "AccessControlBadConfirmation",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "neededRole",
+				"type": "bytes32"
+			}
+		],
+		"name": "AccessControlUnauthorizedAccount",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			}
+		],
+		"name": "ERC721IncorrectOwner",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "ERC721InsufficientApproval",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "approver",
+				"type": "address"
+			}
+		],
+		"name": "ERC721InvalidApprover",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			}
+		],
+		"name": "ERC721InvalidOperator",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			}
+		],
+		"name": "ERC721InvalidOwner",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "receiver",
+				"type": "address"
+			}
+		],
+		"name": "ERC721InvalidReceiver",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			}
+		],
+		"name": "ERC721InvalidSender",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "ERC721NonexistentToken",
+		"type": "error"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "approved",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "Approval",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "bool",
+				"name": "approved",
+				"type": "bool"
+			}
+		],
+		"name": "ApprovalForAll",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "previousAdminRole",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "newAdminRole",
+				"type": "bytes32"
+			}
+		],
+		"name": "RoleAdminChanged",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			}
+		],
+		"name": "RoleGranted",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			}
+		],
+		"name": "RoleRevoked",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "Transfer",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "DAO_ROLE",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "DEFAULT_ADMIN_ROLE",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			}
+		],
+		"name": "GRANTDAOTROLE",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_erc20Contract",
+				"type": "address"
+			}
+		],
+		"name": "SETSLAVECONTRACT",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			}
+		],
+		"name": "TESTviewAllowance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "TESTviewContract",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "TESTviewTHISContract",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "approve",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			}
+		],
+		"name": "balanceOf",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_account",
+				"type": "address"
+			}
+		],
+		"name": "checkBalance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "balance",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "confirmFirstContract",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "customTransfer",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "erc20Contract",
+		"outputs": [
+			{
+				"internalType": "contract TROQERC20V2",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "getApproved",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			}
+		],
+		"name": "getRoleAdmin",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "grantRole",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "hasRole",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			}
+		],
+		"name": "isApprovedForAll",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "minted",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "name",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "ownerOf",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "_Hash",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "bytes",
+				"name": "_signature",
+				"type": "bytes"
+			}
+		],
+		"name": "recoverSigner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "pure",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "callerConfirmation",
+				"type": "address"
+			}
+		],
+		"name": "renounceRole",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			}
+		],
+		"name": "revokeDAOTROLE",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "revokeRole",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "safeTransferFrom",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bytes",
+				"name": "data",
+				"type": "bytes"
+			}
+		],
+		"name": "safeTransferFrom",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			},
+			{
+				"internalType": "bool",
+				"name": "approved",
+				"type": "bool"
+			}
+		],
+		"name": "setApprovalForAll",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes4",
+				"name": "interfaceId",
+				"type": "bytes4"
+			}
+		],
+		"name": "supportsInterface",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "symbol",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "tokenURI",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "transferFrom",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+],
+    
+
+
+
+    SlaveContractERC20 : [
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [],
+		"name": "AccessControlBadConfirmation",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "neededRole",
+				"type": "bytes32"
+			}
+		],
+		"name": "AccessControlUnauthorizedAccount",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "ECDSAInvalidSignature",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "length",
+				"type": "uint256"
+			}
+		],
+		"name": "ECDSAInvalidSignatureLength",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "s",
+				"type": "bytes32"
+			}
+		],
+		"name": "ECDSAInvalidSignatureS",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "allowance",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "needed",
+				"type": "uint256"
+			}
+		],
+		"name": "ERC20InsufficientAllowance",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "balance",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "needed",
+				"type": "uint256"
+			}
+		],
+		"name": "ERC20InsufficientBalance",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "approver",
+				"type": "address"
+			}
+		],
+		"name": "ERC20InvalidApprover",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "receiver",
+				"type": "address"
+			}
+		],
+		"name": "ERC20InvalidReceiver",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			}
+		],
+		"name": "ERC20InvalidSender",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			}
+		],
+		"name": "ERC20InvalidSpender",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "deadline",
+				"type": "uint256"
+			}
+		],
+		"name": "ERC2612ExpiredSignature",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "signer",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			}
+		],
+		"name": "ERC2612InvalidSigner",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "currentNonce",
+				"type": "uint256"
+			}
+		],
+		"name": "InvalidAccountNonce",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "InvalidShortString",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "str",
+				"type": "string"
+			}
+		],
+		"name": "StringTooLong",
+		"type": "error"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "Approval",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [],
+		"name": "EIP712DomainChanged",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "previousAdminRole",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "newAdminRole",
+				"type": "bytes32"
+			}
+		],
+		"name": "RoleAdminChanged",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			}
+		],
+		"name": "RoleGranted",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			}
+		],
+		"name": "RoleRevoked",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "Transfer",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "DAO_ROLE",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "DEFAULT_ADMIN_ROLE",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "DOMAIN_SEPARATOR",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			}
+		],
+		"name": "GRANTMINTERTROLE",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			}
+		],
+		"name": "INFINITEallowanceLOCAL",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "MINTER_ROLE",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			}
+		],
+		"name": "allowance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "approve",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "balanceOf",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "counter",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "decimals",
+		"outputs": [
+			{
+				"internalType": "uint8",
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "eip712Domain",
+		"outputs": [
+			{
+				"internalType": "bytes1",
+				"name": "fields",
+				"type": "bytes1"
+			},
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "version",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "chainId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "verifyingContract",
+				"type": "address"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "salt",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "extensions",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getDaysSinceMinted",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			}
+		],
+		"name": "getRoleAdmin",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "grantRole",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "hasRole",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "isTrue",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "mint",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "mintTimestamp",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "name",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			}
+		],
+		"name": "nonces",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "deadline",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint8",
+				"name": "v",
+				"type": "uint8"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "r",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "s",
+				"type": "bytes32"
+			}
+		],
+		"name": "permit",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "callerConfirmation",
+				"type": "address"
+			}
+		],
+		"name": "renounceRole",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			}
+		],
+		"name": "revokeMINTERTROLE",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "revokeRole",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes4",
+				"name": "interfaceId",
+				"type": "bytes4"
+			}
+		],
+		"name": "supportsInterface",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "symbol",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "totalSupply",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "transfer",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "transferFrom",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+]
+ 
+ 
+  }
+      /*********************************************************************************************
+.) APIS
+**********************************************************************************************/
+  const apiKey = "06VYM1TUuOg9XABK7QnpSiaFwFckZuR9PdgNaU5CWW2kKL5CoqnelNFqU8E7w3Tj";
+  let ipfsGateway = 'https://w3s.link/ipfs/';
+  let ipfsGatewayCID = 'https://bafybeicdigz6bzpgv4zx5newdfggjm7l73e5urhlzqin567ol3raf5icaq.ipfs.w3s.link/';
+  
+
+   /*********************************************************************************************
+.) POLYBASE
+**********************************************************************************************/
+
+// / POLYBASE FUNCTIONS
+// import { Polybase } from "@polybase/client";
+// const db = new Polybase({ defaultNamespace: "pk/0x97eab0841786aeae14135af5e26750626e46e2e15a412b6a319dd2ce7f323c805d67fcfb0f8ea1f27959e486e11e49926fbf4b1c2b9252daa20283e200e3b1b3/albumlogTestnet", });
+
+// const db = new Polybase({
+//   defaultNamespace: "pk/0x97eab0841786aeae14135af5e26750626e46e2e15a412b6a319dd2ce7f323c805d67fcfb0f8ea1f27959e486e11e49926fbf4b1c2b9252daa20283e200e3b1b3/tabularasa-test",
+// });
+
+
+// const db = new Polybase({
+//   defaultNamespace: "pk/0x97eab0841786aeae14135af5e26750626e46e2e15a412b6a319dd2ce7f323c805d67fcfb0f8ea1f27959e486e11e49926fbf4b1c2b9252daa20283e200e3b1b3/TB-test",
+// });
+
+
+    // async function getAlbumsinDB(publicKey) {
+    //     // MODIFICAR ESTO CUANDO CONSIGA REGISTRAR EL PUBLICKEY
+    //     // let albums=  await db.collection("Albums").where("id", "==", albumid).get();
+    //       // let albums=  await db.collection("Albums").get();
+    //     // try{ album=  await db.collection("Albums").where("id", "==", albumid).get();}
+    // }
+
+
+    async function writeHalfTx(a,b,c,d){
+        console.log("writeHalfTx",a,b,c,d)
+    //   let writeData;
+    //         try{ writeData = await db.collection("halftx").create([ a,b,c,d ]); }
+    //           catch (error) { console.log('ERROR :', error); await Toast.fire({ icon: 'error', title: error }); return; }
+    }
+    async function writeFullTx(a,b,c,d,e,f,g,h){
+        console.log("writeFullTx",a,b,c,d,e,f,g,h)
+
+            // let recordData;
+            // try{ recordData = await db.collection("fulltx").create([ a,b,c,d,e,f,g,h ]); }
+            // catch (error) { console.log('ERROR :', error); await Toast.fire({ icon: 'error', title: error }); return; }
+
+    }
+
+    async function writeNewBalance(address, newbalance){
+     await db
+            .collection("balances")
+            .record(address)
+            .call("updateBalance", [newbalance]);
+    }
+
+    async function readAddressBalance(address){
+        console.log('READING "TO" ADDRESSs BALANCE ')
+    //   try{ balance=  await db.collection("balances").where("id", "==", address).get();}
+    //   catch (error) { console.log('ERROR :', error); await Toast.fire({ icon: 'error', title: error }); return; }
+    }
+
+    async function getRecord () {
+      const record = await collectionReference.record("id").get();
+      const { data } = record; // or const data = record.data
+      const updatedRecord = record.get();
+  }
+
+
+
+      offchainSignatureABI = [
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "_messageHash",
+              type: "bytes32",
+            },
+          ],
+          name: "getEthSignedMessageHash",
+          outputs: [
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "pure",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "_amount",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "_message",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "_nonce",
+              type: "uint256",
+            },
+          ],
+          name: "getMessageHash",
+          outputs: [
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "pure",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "_ethSignedMessageHash",
+              type: "bytes32",
+            },
+            {
+              internalType: "bytes",
+              name: "_signature",
+              type: "bytes",
+            },
+          ],
+          name: "recoverSigner",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "pure",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes",
+              name: "sig",
+              type: "bytes",
+            },
+          ],
+          name: "splitSignature",
+          outputs: [
+            {
+              internalType: "bytes32",
+              name: "r",
+              type: "bytes32",
+            },
+            {
+              internalType: "bytes32",
+              name: "s",
+              type: "bytes32",
+            },
+            {
+              internalType: "uint8",
+              name: "v",
+              type: "uint8",
+            },
+          ],
+          stateMutability: "pure",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_signer",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "_amount",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "_message",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "_nonce",
+              type: "uint256",
+            },
+            {
+              internalType: "bytes",
+              name: "signature",
+              type: "bytes",
+            },
+          ],
+          name: "verify",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "pure",
+          type: "function",
+        },
+      ];
+
+
+  
+
+
+
+
+      // *********************************
+      // btnGetHash
+      // *********************************
+
+      document.getElementById("btnGetHash").onclick = () => {
+        console.log("clicked!");
+
+        let to = $("#address").val();
+        let amount = $("#amount").val();
+        let message = $("#message").val();
+        let nonce = $("#nonce").val();
+        // console.log("parameters:", to, amount,message,nonce);
+
+        // ---------------------
+        //  hash
+
+        let hash = ethers.utils.solidityKeccak256( ["address", "uint", "string", "uint"], [to, amount, message, nonce] );
+        document.getElementById("result").innerHTML += "<p>MessageHash: " + hash + "  <== SIGN/ VERIFY THIS (offchain)  </p>";
+        
+        let ethSignedMessageHash = ethers.utils.solidityKeccak256( ["bytes32"], [hash] );
+        document.getElementById("result").innerHTML += "<p>EthSignedMessageHash: " + ethSignedMessageHash + " <== VERIFY WITH THIS (onchain) </p>";
+        
+        // populate inputs
+        document.getElementById("hash").innerHTML = hash;
+        document.getElementById("sig2verify").value = hash;
+        document.getElementById("verifywhash").value = hash;
+
+        // populate inputs in PUBLISH
+        document.getElementById("hashIPFS").innerHTML = hash;
+
+        
+        console.log("hash Updated! =", hash);
+      };
+
+      // *********************************
+      // btnSign
+      // *********************************
+      document.getElementById("btnSign").onclick = () => {
+        let hash = $("#hash").val();
+        let address = $("#address").val();
+
+        signAddressAndHash(address, hash);
+      };
+
+
+      document.getElementById("btnSignLocal").onclick = () => {
+        console.log('SIGN LOCAL')
+        // let hash = $("#hash").val();
+        let hash  = document.getElementById('hash').innerHTML;
+        let address = $("#address").val();
+
+        signwithEthers(address, hash);
+      };
+
+      // *********************************
+      // beep
+      // *********************************
+
+    //   function playBeep() {
+    //   var AudioContext = window.AudioContext || window.webkitAudioContext;
+    //   var audioCtx = new AudioContext();
+
+    //   var oscillator = audioCtx.createOscillator();
+    //   oscillator.type = 'sine'; // Set the waveform type
+    //   oscillator.frequency.value = 864; // Set the frequency (Hz)
+
+    //   oscillator.connect(audioCtx.destination);
+    //   oscillator.start();
+
+    //   // Stop the oscillator after 500 milliseconds
+    //   setTimeout(function() {
+    //     oscillator.stop();
+    //   }, 100);
+    // }
+      // *********************************
+      // SIGN
+      // *********************************
+      async function signwithTabularasa(address, hash) {
+        console.log('SIGNING WITH TABULA RASA!')
+     
+
+         // SIGN!
+                // 1- GET SIGNER
+                try { provider = new ethers.providers.JsonRpcProvider(`${optionsList[0].API}`);}
+                    catch (error) { console.log(error.message); fixedToast.fire( 'Error',error.message, "error"); }
+                    console.log('provider:', provider)
+               
+
+                let pk  = JSON.parse(localStorage.getItem('unbackedWallet'))
+                let wallet =  ethers.Wallet.fromMnemonic(pk);
+                console.log('YOUR WALLET IN Localstorage ', wallet )
+                console.log('YOUR ADDRESS IN Localstorage ', wallet.address )
+              
+                    try { signer = wallet.connect(provider);}
+                    catch (error) { console.log(error.message,'ERROR WALELT');}
+                    console.log('signer:', signer)
+
+                //   // 2- NOW SIGN
+                let toSign = ethers.utils.arrayify(hash)
+                    try{ resultSig = await signer.signMessage(toSign, progressCallback);}
+                    catch (error) { console.error("An error occurred:", error); Toast.fire( 'An error occurred','', "error"); closeWalletProgress.disabled= false; return }
+                    console.log("RESULT:", resultSig);
+                    return resultSig
+      }
+    
+      
+      async function signwithEthers(address, hash) {
+        console.log('SIGNING WITH ETHERS JS!')
+     
+
+         // SIGN!
+                // 1- GET SIGNER
+                try { provider = new ethers.providers.JsonRpcProvider(`${optionsList[0].API}`);}
+                    catch (error) { console.log(error.message); fixedToast.fire( 'Error',error.message, "error"); }
+                    console.log('provider:', provider)
+               
+
+                let pk  = JSON.parse(localStorage.getItem('unbackedWallet'))
+                let wallet =  ethers.Wallet.fromMnemonic(pk);
+                console.log('YOUR WALLET IN Localstorage ', wallet )
+                console.log('YOUR ADDRESS IN Localstorage ', wallet.address )
+              
+                    try { signer = wallet.connect(provider);}
+                    catch (error) { console.log(error.message,'ERROR WALELT');}
+                    console.log('signer:', signer)
+
+                //   // 2- NOW SIGN
+                let toSign = ethers.utils.arrayify(hash)
+                    try{ resultSig = await signer.signMessage(toSign, progressCallback);}
+                    catch (error) { console.error("An error occurred:", error); Toast.fire( 'An error occurred','', "error"); closeWalletProgress.disabled= false; return }
+                    console.log("RESULT:", resultSig);
+
+                    // });
+          setTimeout(() => {
+          vsigner.value = wallet.address;
+          vaddress.value = address;
+          vamount.value = amount.value;
+          vmessage.value = message.value;
+          vnonce.value = nonce.value;
+          sig2verify.value = resultSig;
+          sig2verifywhash.value = resultSig;
+          sigIPFS.innerHTML = resultSig;
+        }, 1000);
+
+    // MOSTRAR
+    document.getElementById("sigresult").innerHTML += "<p>Signature: " + resultSig + "  </p>";
+    console.log("RESULT v2:", resultSig);
+
+    
+    // VERIFICAR
+    const recoveredAddress = await ethers.utils.verifyMessage(toSign, resultSig);
+    console.log("recoveredAddress:", recoveredAddress);
+    }
+
+
+      async function signAddressAndHash(address, hash) {
+        // switchOrAddNetwork(0x13881)
+
+        const options = { address: address, hash: hash };
+        const accounts = await ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        const account = accounts[0];
+        console.log("FIRMANDO:", account, hash);
+        const result = await ethereum.request({
+          method: "personal_sign",
+          params: [hash, account],
+        });
+
+        document.getElementById("sigresult").innerHTML +=
+          "<p style='word-wrap: break-word;''>Signature: " + result + "  </p>";
+
+        console.log("SIGNATURE RESULT:", result);
+
+        // populate -carga los valores para verificar
+        setTimeout(() => {
+          vsigner.value = account;
+          vaddress.value = address;
+          vamount.value = amount.value;
+          vmessage.value = message.value;
+          vnonce.value = nonce.value;
+          sig2verify.value = result;
+          sig2verifywhash.value = result;
+
+          // hashIPFS.value = result;
+          hashIPFS.innerHTML = result;
+
+        }, 1000);
+      }
+
+      // **********************************************************
+      // VERIFICATION
+      // **********************************************************
+
+      // *********************************
+      // btnVerify
+      // *********************************
+      document.getElementById("btnVerify").onclick = () => {
+        let signer = vsigner.value;
+        let address = vaddress.value;
+        let amount = vamount.value;
+        let message = vmessage.value;
+        let nonce = vnonce.value;
+        let signature = sig2verify.value;
+
+        // console.log( signer, address,amount,message, nonce,signature )
+        // verify(signer, address, amount, message, nonce, signature);
+        verifyOFFchain(signer, address, amount, message, nonce, signature);
+
+      };
+
+      // *********************************
+      // verify
+      // *********************************
+      
+      async function verifyOFFchain( signer, address, amount, message, nonce, signature ) {
+        
+        
+        console.log( "VERIFIYING: ", signer, address, amount, message, nonce, signature );
+        
+
+        let hash = ethers.utils.solidityKeccak256( ["address", "uint", "string", "uint"], [address, amount, message, nonce] );
+        console.log('hash is:', hash)
+        // VERIFY SIGNATURE
+        let convertHash2Array = ethers.utils.arrayify(hash)
+        const result = await ethers.utils.verifyMessage(convertHash2Array, signature);
+        console.log("result: ", result);
+
+        $("#verifyResult").html("<p >is valid? : " + result + "  </p>");
+
+
+        // verifywithHash(hash,signature)
+      }
+     
+     
+      // async function verifywithHash( hash, signature ) {
+        document.getElementById("btnVerifywhash").onclick=async ()=>{
+
+      // async function verifywithHash(  ) {
+        
+        let h= document.getElementById('verifywhash').value;
+        let s= sig2verifywhash.value
+
+        // VERIFY SIGNATURE
+        let convertHash2Array = ethers.utils.arrayify(h)
+        const result = await ethers.utils.verifyMessage(convertHash2Array, s);
+        console.log(" verifywithHash result: ", result);
+        $("#verifywhashResult").html("<p > " + result + "  </p>");
+
+      }
+
+
+// FOR NODES
+      // async function verifyONchain( signer, address, amount, message, nonce, signature ) {
+        
+      //   // enable web3
+      //   try { await Moralis.enableWeb3(); } 
+      //   catch (error) { console.log(error.message); }
+
+      //   console.log( "VERIFIYING: ", signer, address, amount, message, nonce, signature );
+
+      //   const options = {
+      //     contractAddress: "0xB16dCcEaa6eD648e34A99b1cde6bd3d9Ab188647", //mumbai
+      //     functionName: "verify",
+      //     abi: offchainSignatureABI,
+      //     params: {
+      //       _signer: signer,
+      //       _to: address,
+      //       _amount: amount,
+      //       _message: message,
+      //       _nonce: nonce,
+      //       signature: signature,
+      //     },
+      //   };
+
+      //   // make the transaction
+      //   let result;
+      //   try {
+      //     result = await Moralis.executeFunction(options);
+      //   } catch (error) {
+      //     console.log("await Moralis.executeFunction:", error);
+      //     let err = JSON.stringify(error);
+      //     console.log(err);
+      //     return;
+      //   }
+      //   console.log("result: ", result);
+
+      //   $("#verifyResult").html("<p >is valid? : " + result + "  </p>");
+      // }
+
+      /*********************************************************************************************
+.) Network
+**********************************************************************************************/
+
+      let switchOrAddNetwork = async (desiredChainId) => {
+        try {
+          await Moralis.enableWeb3();
+        } catch (error) {
+          console.log(error.message);
+        }
+        if (desiredChainId == 0x13881) {
+          console.log("you are on desiredChain");
+          addPolygonTestnetNetwork();
+        } else {
+          console.log("switching");
+          try {
+
+            await Moralis.switchNetwork(desiredChainId);
+          } catch (error) {
+            alert(error.message);
+          }
+        }
+      };
+
+      // ------------------------
+      // POLYGON TESTNET NETWORK
+
+      let PolygonTestnetNetwork = [
+        0x13881,
+        "Mumbai",
+        "MATIC",
+        "MATIC",
+        [
+          "https://matic-mumbai.chainstacklabs.com",
+          "https://rpc-mumbai.maticvigil.com",
+          "https://matic-testnet-archive-rpc.bwarelabs.com ",
+        ],
+        "https://mumbai.polygonscan.com",
+      ];
+
+      const addPolygonTestnetNetwork = async () => {
+        const chainId = 0x13881;
+        const chainName = "Mumbai";
+        const currencyName = "MATIC";
+        const currencySymbol = "MATIC";
+        const rpcUrl = "https://matic-mumbai.chainstacklabs.com";
+        const blockExplorerUrl = "https://mumbai.polygonscan.com";
+        try {
+          await Moralis.addNetwork(
+            chainId,
+            chainName,
+            currencyName,
+            currencySymbol,
+            rpcUrl,
+            blockExplorerUrl
+          );
+        } catch (error) {
+          alert(error.message);
+        }
+      };
+
+      /*********************************************************************************************
+.) LOGIN
+**********************************************************************************************/
+  
+      async function logoutMetamask() {
+      console.log('logout user...')
+      Toastcenter.fire('', 'Disconnected!', "info");
+        //  clear global user variable
+            delete window.user;
+            }
+          
+          
+      async function loginMetamask() {
+
+      console.log('connecting user...')
+
+
+      // METAMASK
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+      console.log('provider:', provider)
+
+      // await provider.send("eth_requestAccounts", [])
+      let psend = await provider.send("eth_requestAccounts", [])
+      console.log('psend:', psend)
+      // let accounts = await provider.send('eth_requestAccounts', []);
+      // Web3WalletPermission[]
+      const signer = provider.getSigner()
+      console.log('signer:', signer)
+
+      const account = await signer.getAddress()
+      console.log(account)
+      Toastcenter.fire("", " Logged in!", "success");
+
+      // CONNECT TO WALLET
+      // init();
+
+          address.value = account;
+          amount.value = 30;
+          message.value = "carottes";
+          nonce.value = Date.now();
+
+      }
+          
+            
+    // ethereum.on("accountsChanged", function(accounts) { console.log("ethereum account changed to: ", accounts); logout(); });
+    // ethereum.on("chainChanged", function(accounts) { console.log("ethereum account changed to: ", accounts); logout(); });
+    // ethereum.on("disconnect", function(accounts) { console.log("ethereum account changed to: ", accounts); logout(); });
+            
+
+
+  /******************************************************************************************************************************************************************************************
+  .) DICTIONARY
+  ********************************************************************************************************************************************************************************************/
+  var userLang = navigator.language || navigator.userLanguage;
+  var lang = navigator.language || navigator.userLanguage; //no ?s necessary
+  
+  const langs = document.querySelectorAll("[lang]");
+  const langen = document.querySelectorAll('[lang="en"]');
+  const langfr = document.querySelectorAll('[lang="fr"]');
+  const langes = document.querySelectorAll('[lang="es"]');
+  var dictionary = {
+  en: {
+    IAMDescription:'IAM-(Your Names initials )-(Your date of birth )',
+    names:'Name/s',
+    surnames:'Surname/s',
+    name:'Name and surname initials',
+    placeofbirth:'place of birth',
+    address:'address',
+    createIAM:'0 -Create IAM code',
+    addDocs:'1 -Add documents',
+    title: "Upload to IPFS",
+    upload: "Upload",
+    adddoc: "Add document",
+    addcourtesytranslation: "Add courtesy translation",
+    preview: "preview",
+    delete: "delete",
+    selPDFfirst: "you have to select a PDF first!",
+    setTitlefirst:" Give this upload a title first...",
+    bravo: "Bravo!",
+    uploadtoipfs: "upload your documents to InterPlanetary File System!",
+    desc:'Built on top of the InterPlanetary File System (IPFS), a distributed and content-addressed file system designed to be reliable, resilient and future-proof.',
+    signThisToLogin: "Welcome to OPPT-ONE! Sign this message to prove you have access to this wallet and we'll log you in. This won't cost you any Ether.",
+    back:'back',
+    nft_name: "Title",
+    enterDescription:'Description',
+    enterDate:'Date of birth',
+    pricePerItem: 'price',
+    address:'address',
+    econtact: 'electronic contact',
+    wallet: 'Wallet',
+    uploadcourtesytranslations:"upload courtesy translations of this document",
+    addanother:" Add another",
+    close:"Close",
+    connect:"CONNECT",
+    setpassword:"Set password",
+    createwallet: "CREATE WALLET",
+    restorewallet: "RESTORE WALLET",
+    walletCreation:"CREATING TX",
+    createpasswordtoencryptwallet:'Create a password to encrypt your local wallet',
+    decryptlocalwallet:'Decrypt your local wallet',
+    addAddress:'Add a new address',
+    yourkeysyourdata:"Your keys, your data",
+    utilsfortheautodetermined:"Publish your self-determination documents according to the OPPT mechanism",
+    config:"Config",
+    filloutfield:"Please fill out this field",
+    publicipfs: "Publish to IPFS",
+    decryptingwallet: "Decrypting wallet to sign hash...",
+    restore: "Restore",
+    walletrestore: "Restore wallet",
+    start: "Tutorial",
+    getvalidation:"get validation",
+    txverification:"Verify Tx",
+    stopqrvideo:"stop scanning",
+    retry: "retry",
+    scanqr:"Scan QR"
+  },
+  fr: {
+    IAMDescription:'IAM-(Les initiales de vos noms )-(Votre date de naissance )',
+    names:'Prenom/s',
+    surnames:'Nome/s',
+    name:'initials de votre Nom et prenom',
+    placeofbirth:'lieu de naissance',
+    address:'address',
+    createIAM:'0 -Créer le code IAM',
+    addDocs:'1 - Ajouter des documents',
+    title: "Télécharger sur IPFS",
+    upload: "Télécharger",
+    adddoc: "Ajouter document",
+    addcourtesytranslation: "Ajouter une traduction de courtoisie",
+    preview: "prévisualisation",
+    delete: "effacer",
+    selPDFfirst: "vous devez d'abord sélectionner un PDF!",
+    setTitlefirst:" Donnez d'abord un titre à ce téléchargement...",
+    bravo: "Bravo!",
+    uploadtoipfs: "TÉLÉCHARGER tes fichiers PDF sur le système de fichiers interplanétaire!",
+    desc:`Construit sur le système de fichiers interplanétaire (IPFS), un système de fichiers contenu-adressable et distribué conçu pour être fiable, résilient et à l'épreuve du temps.`,
+    signThisToLogin: "Bienvenue sur OPPT-ONE! Signez ce message pour montrer que vous avez accès à votre clé privée pour vous connecter. Cela ne vous coûtera aucun Ether.",
+    back:'retour',
+    nft_name: "Titre",
+    enterDescription: "Description",
+    enterDate:'Date de naisance',
+    pricePerItem: "Prix",
+    address:'adresse',
+    econtact: 'contact électronique',
+    wallet: 'Portefeuille',
+    uploadcourtesytranslations:"télécharger des traductions de courtoisie de ce document",
+    addanother:"Ajouter un autre",
+    close:"Fermer",
+    connect:"CONNECTER",
+    setpassword:"Définir le mot de passe",
+    createwallet: "CRÉER LE WALLET",
+    restorewallet: "RESTAURER WALLET",
+    walletCreation:"CRÉATION DU PORTEFEUILLE",
+    createpasswordtoencryptwallet:'Créer un mot de passe pour chiffrer votre portefeuille local',
+    decryptlocalwallet:'Décryptez votre portefeuille local',
+    addAddress:'Ajouter un nouveau contact',
+    yourkeysyourdata:"Vos clés, vos données",
+    utilsfortheautodetermined:"Publiez vos documents d'autodétermination selon le mécanisme OPPT",
+    config:"Paramètres",
+    filloutfield:"Veuillez remplir ce champ",
+    publicipfs: "Publiquer sur IPFS",
+    decryptingwallet: "Déchiffrer le portefeuille pour signer le hachage...",
+    restore: "Restaurer",
+    walletrestore: "Restaurer wallet",
+    start: "Tutorial",
+    getvalidation:"get validation",
+    txverification:"Verifier Tx",
+    stopqrvideo:"stop qr scanner",
+    retry: "réessayer",
+    scanqr:"scanner le code QR"
+  },
+  es: {
+    IAMDescription:'IAM-(Las iniciales de su nombre )-(fecha de nacimiento )',
+    names:'Nombre/s',
+    surnames:'Apellido/s',
+    name:'Iniciales de su nombre y apellido',
+    placeofbirth:'lugar de nacimiento',
+    address:'direccion',
+    createIAM:'0 -Crear el código IAM',
+    addDocs:'1- Agregar documentos',
+    title: "Sube tus documentos a IPFS",
+    upload: "Cargar documento",
+    adddoc: "Agregar documento",
+    addcourtesytranslation: "Agregar traducción de cortesía",
+    preview: "Previsualizar",
+    delete: "Borrar",
+    selPDFfirst: "¡Tienes que seleccionar un PDF primero!",
+    setTitlefirst:" Dale un título a antes de subir el documento...",
+    bravo: "¡Bravo!",
+    uploadtoipfs: "¡Sube tus documentos al sistema de archivos interplanetario!",
+    desc:'Construido sobre el Sistema de archivos interplanetarios (IPFS), un sistema de archivos distribuido y dirigido por contenido diseñado para ser confiable, resistente a la censura y de prueba futura.',
+    signThisToLogin: "¡Bienvenido a OPPT-ONE! Firme este mensaje para demostrar que tiene acceso a su llave privada para ingresar. Esto no le costará ningún Ether.",
+    back:'volver',
+    nft_name: "titulo",
+    enterDescription:'Descripcion',
+    enterDate:'Fecha de nacimiento',
+    pricePerItem: 'precio',
+    address:'Direccion',
+    econtact: 'contacto electronico',
+    wallet: 'Billetera',
+    uploadcourtesytranslations:"subir traducciones de cortesía de este documento",
+    addanother:"Agrega otro",
+    close:"Cerrar",
+    connect:"Conectarse a OPPT",
+    setpassword:"Configurar la Contraseña",
+    createwallet: "CREAR LA WALLET",
+    restorewallet: "RESTAURAR LA WALLET",
+    walletCreation:"CREANDO WALLET",
+    createpasswordtoencryptwallet:'cree una contraseña para encriptar su wallet local',
+    decryptlocalwallet:'Desencriptar la billetera',
+    addAddress:'Agregar una nuevo contacto',
+    yourkeysyourdata:"Tus llaves, tus datos",
+    utilsfortheautodetermined:"Publique sus documentos de autodeterminacion segun el mecanismo OPPT",
+    config:"Configuración",
+    filloutfield:"Por favor rellene este campo",
+    publicipfs: "Publicar en IPFS",
+    decryptingwallet: "Descifrar billetera para firmar hash...",
+    restore: "Restaurar",
+    walletrestore: "Restaurar wallet",
+    start: "Tutorial",
+    getvalidation:"get validation",
+    txverification:"Verificar Tx",
+    stopqrvideo:"stop qr scanner",
+    retry: "reintentar",
+    scanqr:"Escanear QR"
+  }
+  };
+  
+  function set_lang(dictionary) {
+  
+  document.querySelectorAll("[data-translate]").forEach(function(element) {
+    if (element.nodeName === "INPUT" || element.nodeName === "TEXTAREA") {
+      // element.placeholder = dictionary[element.dataset.translate];
+      console.log('setlang found a Textarea');
+    } else {
+      element.innerHTML = dictionary[element.dataset.translate];
+    //   console.log('setlant didnt found a Textarea');  
+  
+    }
+  });
+  
+  
+  }
+  
+  function selectText(lang) {
+  switch (lang) {
+    case "en":
+      set_lang(dictionary.en);
+      globalLang = "en";
+      break;
+    case "fr":
+      set_lang(dictionary.fr);
+      globalLang = "fr";
+      break;
+    case "es":
+      set_lang(dictionary.es);
+      globalLang = "es";
+      break;
+    default:
+      set_lang(dictionary.en);
+      globalLang = "en";
+  }
+  }
+  
+  // STORAGE
+  
+  // Swap languages when menu changes
+  let langswitch = document.getElementById("langswitch");
+  langswitch.onchange = function() {
+  var lang = this.value;
+  localStorage.setItem("lang", lang);
+  selectText(lang);
+  };
+  
+  
+  // *********************************
+  // RELOAD TRANSLATIONS
+  // *********************************
+  function reloadTranslations(){
+  
+  let savedLang = localStorage.getItem("lang");
+  if (savedLang) {
+  let element = document.querySelector(`option[value='${savedLang}']`);
+  element.selected = true;
+  selectText(savedLang);
+  } else {
+  console.log("NO hay LANG GUARDADO, muestra default lang: en ");
+  set_lang(dictionary.en);
+  globalLang = "en";
+  }
+  }//fin reloadTranslations
+  
+  reloadTranslations()
+
+  /*********************************************************************************************
+  .) WALLET STUFF
+  **********************************************************************************************/
+  /*********************************************************************************************
+      .) OPEN / CREATE WALLET
+      **********************************************************************************************/
+      function writepassword (f){
+        
+        //OPEN WALLET
+        if(f=='open'){ 
+          console.log('write password to open wallet')
+          Swal.fire({
+              title: 'Decrypt your wallet',
+              input: 'password',
+              inputAttributes: { autocapitalize: 'off' },
+              showCancelButton: true,
+              confirmButtonText: 'Enter',
+              showLoaderOnConfirm: true,
+              backdrop: true,
+              preConfirm: (login) => { },
+              allowOutsideClick: () => {
+                  const popup = Swal.getPopup()
+                  popup.classList.remove('swal2-show')
+                  setTimeout(() => { popup.classList.add('animate__animated', 'animate__headShake') })
+                  setTimeout(() => { popup.classList.remove('animate__animated', 'animate__headShake') }, 500)
+                  return false
+              }
+        })
+        .then((result) => {
+        if (result.isConfirmed) {
+            walletOptCreate.style.display = 'none'
+            document.getElementById('loader').style.display='block'
+            headMessages.innerHTML = '';
+            if(result.value ==''){
+              console.log('IS EMPTY');
+               Toast.fire({ icon: 'error', title: 'Password cannot be empty' });
+              return;
+            }
+            decryptWallet(result.value)
+            return result.value
+        } 
+        })
+          return
+        }
+
+    
+    
+          //////////////////////
+        // CREATE WALLET
+     
+    
+        Swal.fire({
+        title: dictionary[globalLang]["createpasswordtoencryptwallet"],
+        input: 'password',
+        inputAttributes: {
+            autocapitalize: 'off'
+        },
+        showCancelButton: true,
+        confirmButtonText: 'create',
+        showLoaderOnConfirm: true,
+        // preConfirm: (login) => { },
+        backdrop: true,
+      
+      inputValidator: (value) => {
+        if (!value) {
+          return 'You need to set a password to create your wallet!'
+        }
+      },
+    
+        allowOutsideClick: () => {
+            const popup = Swal.getPopup()
+            popup.classList.remove('swal2-show')
+            setTimeout(() => { popup.classList.add('animate__animated', 'animate__headShake') })
+            setTimeout(() => { popup.classList.remove('animate__animated', 'animate__headShake') }, 500)
+            return false
+        },
+    
+        })
+        .then(async(result)   => {
+        if (result.isConfirmed) {
+            console.log('PASSWORD RESULT:',result.value)
+            
+           await  createWallet(result.value)
+            return result.value
+        } 
+        })
+    
+    
+    }
+
+  async function createWallet(pwd){
+
+    try{ wallet = await ethers.Wallet.createRandom()}
+    catch (error) { console.log(error.message); fixedToast.fire( 'Error',error.message, "error"); }
+   
+        console.log('address:', wallet.address)
+        console.log('mnemonic:', wallet.mnemonic.phrase)
+        console.log('privkey:', wallet.privateKey)
+
+        let createwalletContainer = document.getElementById('CWresult');
+        createwalletContainer.innerHTML =  ` 
+        <h3>THIS IS YOUR NEW PUBLIC KEY</h3> <pre id='waddr'>${wallet.address} </pre> 
+        <h3>WRITE DOWN YOUR MNEMONIC PHRASE</h3> <pre id='wmnem'>${wallet.mnemonic.phrase} </pre>
+        <h3>WRITE DOWN YOUR PRIVATE KEY</h3> <pre id='wpk'>${wallet.privateKey} </pre>
+        `
+     console.log('password: ',pwd)
+
+     const promisseJSON = wallet.encrypt( pwd, progressCallback);
+
+        // const promisseJSON = wallet.encrypt( pwd);
+        promisseJSON.then((jsonWallet) => {
+            localStorage.setItem('jsonWallet', jsonWallet)
+            console.log('WALLET ENCRYPTED')
+        })
+
+        
+        // SET WALLET CHOICE TO LOCALSTORAGE
+        localStorage.setItem('wallet', 'LOCALWALLET');
+
+
+
+}
+
+     // SHOW DECRYPT PROGRESS 
+     const progressCallback = (percent) => {
+          // Update the progress bar
+          console.log(`Decrypting... ${percent*100}%`);
+          displayRestoreProgress.innerHTML =`<div class="progress">
+          <div class="progress-bar" role="progressbar" style="width:  ${percent*100}%;" aria-valuenow="${percent*100}" aria-valuemin="0" aria-valuemax="100">${ Math.round(percent * 100)}%</div>
+        </div>`
+          };
+
+
+  /*********************************************************************************************
+  .)  QR
+  **********************************************************************************************/
+//   async function showQR(addr){
+  
+// // SHOW QR CODE
+// const qrCode = new QRCodeStyling({ width: 300, height: 300, type: "png", data: addr, image: `troqv3.png`, dotsOptions: { color: "#1568B0", type: "extra-rounded" }, backgroundOptions: { color: "var(--qrbackground)", }, imageOptions: { crossOrigin: "anonymous", margin: 0 } });
+// console.log('qr code APPENDED', qrCode)
+// x=qrCode;
+// try {
+//   let qrraw = await qrCode.getRawData('png');
+//    imageUrl = URL.createObjectURL(qrraw);
+//   console.log('QR code URL:', imageUrl);
+// } catch (error) {
+//   console.error('Error generating QR code:', error);
+// }
+
+
+// // Create an img element
+// var imgElement = document.createElement('img');
+// // Set the src attribute
+// imgElement.src = imageUrl;
+
+// // Add the img element to the DOM
+// document.getElementById('qrappendici').appendChild(imgElement);
+// console.log('APPENDED TO qrappendici!')
+ 
+//   }
+
+
+  async function showqr(addr) {
+    const qrColor = getComputedStyle(document.body).getPropertyValue('--qr');
+
+    var isMobile = window.matchMedia("only screen and (max-width: 768px)");
+
+    // let qrSize
+if (isMobile.matches) {
+    // Code for mobile screens
+    console.log("Mobile screen detected");
+     qrSize = 310;
+     window.scrollTo(0, 0);
+
+
+} else {
+    // Code for larger screens
+    console.log("Not a mobile screen");
+     qrSize = 370
+
+}
+
+    // cons qrSize = 
+    //QR
+    const qrCode = new QRCodeStyling({ width: `${qrSize}`, height: `${qrSize}`, type: "png", data: addr, image: `troqv3.png`, 
+    // const qrCode = new QRCodeStyling({ width: 300, height: 300, type: "png", data: addr, image: `troqv3.png`, 
+    // dotsOptions: { color: "#1568B0", type: "extra-rounded" }, 
+    dotsOptions: { color:  `${qrColor}`, type: "extra-rounded" }, 
+    backgroundOptions: { color: "var(--qrbackground)", }, 
+    imageOptions: { crossOrigin: "anonymous", margin: 0 } });
+    qrCode.append(document.getElementById("canvas"));
+    console.log('qr code APPENDED')
+  }
+
+
+
+
+  async function decryptWallet(pwd) {
+            let encryptedjson = localStorage.getItem('jsonWallet')
+            let ew = JSON.parse( encryptedjson)
+            console.log('pub key of wallet in localstorage:', ew.address)
+    
+    
+            let wallet;
+            // try { wallet = await ethers.Wallet.fromEncryptedJson(encryptedjson, pwd)
+            openModalId('#walletProgress')
+            const progressCallback = (percent) => {
+              console.log(`Decrypting... `);
+              walletProgressContent.innerHTML =`<div class="progress">
+              <div class="progress-bar" role="progressbar" style="width:  ${percent*100}%;" aria-valuenow="${percent*100}" aria-valuemin="0" aria-valuemax="100">${ Math.round(percent * 100)}%</div>
+            </div>`
+              };
+
+
+
+              try { wallet = await ethers.Wallet.fromEncryptedJson(encryptedjson, pwd, progressCallback)
+              .then(async (myWallet) => {
+                console.log('mywallet: ', myWallet)
+                console.log('mywallet Address: ', myWallet.address)
+
+                const formattedAddress = ethers.utils.getAddress(myWallet.address);
+                console.log('formattedAddress', formattedAddress);
+                localStorage.setItem('preferedWallet',`LOCALWALLET, ${formattedAddress}` )
+                displayDecrypt.innerHTML=  formattedAddress;
+                console.log('USERADDRESS IS SET:', formattedAddress)
+                setAddress(formattedAddress)
+
+                console.warn('INIT CHAT CLIENT!!!')
+               await initChatClient(myWallet)
+
+                closeModalId('#walletProgress')
+
+                document.getElementById('lock').style.display= 'none'
+                document.getElementById('send').style.display= 'inline'
+                document.getElementById('scan').style.display= 'inline'
+                document.getElementById('chat').style.display= 'inline'
+
+                // document.getElementById('loader').style.display='none'
+                // var shortAddr = addr.substring(0, 6) + "..."+ addr.substring(38, 42);
+              
+
+            // localStorage.setItem('globalAddress', addr)
+        
+                // setTimeout(() => {
+                // setAddress(addr)
+                // await initWallets()
+                })
+          }
+          catch (error) {
+            console.error('ERROR wallet:', error);
+            // document.getElementById('loader').style.display='none';
+            closeModalId('#walletProgress')
+            walletDisconnect()
+            await Toast.fire({ icon: 'error', title: 'Password incorrect' })
+           console.log(' DESCONECCION DE EMERGENCIA, BUG FIX')
+    
+            
+            // init2();
+    
+            return;
+            }
+    
+    
+    
+    
+    // console.log('wallet from localstorage:', wallet)
+    // closeModal('#walletRestore')
+
+    
+          }
+    
+
+
+function setAddress(addr){
+  console.log('setAddress()')
+
+  var currentURL = window.location.href;
+var baseUrl = window.location.protocol + '//' + window.location.host + '/';
+const parameters = { T2Addr: userAddress, };
+const urlParams = createURLParams(parameters);
+const url = `${baseUrl}?${urlParams}`;
+
+// 3- SHOW QR
+canvas.innerHTML='';
+showqr(url);
+let  shortAddr = userAddress.substring(0, 6) + "..."+ userAddress.substring(38, 42);
+
+var preElement = document.getElementById('yourAddress');
+preElement.setAttribute('address', userAddress);
+
+yourAddress.innerHTML=`${shortAddr} <svg id='copyAddress' onclick="event.stopPropagation();copy2clipboard('${userAddress}')" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"> <path  d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"/></svg>`;
+console.log(`Your address: ${userAddress} `) 
+
+
+//   const attributeName = 'address';
+//   const attributeValue = addr;
+//   const shortAddr = addr.substring(0, 6) + "..."+ addr.substring(38, 42);
+
+//   document.getElementById('usrAddr').setAttribute(attributeName, attributeValue);
+    // new Typed('#usrAddr', { strings: [` ${shortAddr}`], typeSpeed: 50, showCursor: false });
+}
+
+
+
+// function writepassword (f){
+function backupWallet (wallet){
+        console.log('now, backupWallet()')
+          //////////////////////
+        // CREATE WALLET
+        Swal.fire({
+        title: dictionary[globalLang]["createpasswordtoencryptwallet"],
+        input: 'password',
+        inputAttributes: {
+            autocapitalize: 'off'
+        },
+        showCancelButton: true,
+        confirmButtonText: 'create',
+        showLoaderOnConfirm: true,
+        // preConfirm: (login) => { },
+        backdrop: true,
+      
+      inputValidator: (value) => {
+        if (!value) {
+          return 'You need to set a password to create your wallet!'
+        }
+      },
+    
+        allowOutsideClick: () => {
+            const popup = Swal.getPopup()
+            popup.classList.remove('swal2-show')
+            setTimeout(() => { popup.classList.add('animate__animated', 'animate__headShake') })
+            setTimeout(() => { popup.classList.remove('animate__animated', 'animate__headShake') }, 500)
+            return false
+        },
+    
+        })
+        .then(async(result)   => {
+        if (result.isConfirmed) {
+            // console.log('PASSWORD RESULT:',result.value)
+            
+            await  makeBackup(result.value, wallet)
+            return result.value
+        } 
+        })
+    
+    
+    }
+
+
+    async function isValidAddress(address) {
+  return ethers.utils.isAddress(address);
+}
+
+    async function addAddress(){
+      console.log('addAddress()')
+      
+      let addressToAdd = Swal.fire({
+    title: dictionary[globalLang]["addAddress"],
+    input: 'text',
+    inputAttributes: { autocapitalize: 'off' },
+    showCancelButton: true,
+    confirmButtonText: 'ok',
+    showLoaderOnConfirm: true,
+    preConfirm: (login) => { },
+    backdrop: true,
+  inputValidator: async (value) => {
+    if (!value) {
+      return 'You need to set a password to create your wallet!'
+    }
+
+    const isValid = await isValidAddress(value);
+
+    if (isValid) {
+      console.log(`Address ${value} is valid.`);
+         
+            Toast.fire({ icon: 'success', title: 'CHAT WITH:', text: value });
+            await  chatWith(value)
+            await deleteChat()
+
+    } else {
+      console.log(`Address ${value} is not valid.`);
+      return 'Address is not valid!'
+
+    }
+
+  },
+
+    allowOutsideClick: () => {
+        const popup = Swal.getPopup()
+        popup.classList.remove('swal2-show')
+        setTimeout(() => { popup.classList.add('animate__animated', 'animate__headShake') })
+        setTimeout(() => { popup.classList.remove('animate__animated', 'animate__headShake') }, 500)
+        return false
+    },
+    })
+    .then(async(result)   => {
+    if (result.isConfirmed) {
+        console.log('result.isConfirmed:',result.value)
+        // await decryptWallet(result.value)
+        return result.value
+    }
+    })
+    console.log('addressToAdd:',addressToAdd)
+
+    }
+    
+    
+    async function unlockWallet(){
+        console.log('unlockwallet()')
+         // function writepassword (f){
+        // closeModalId('#setupLocalwalletModal')
+    //////////////////////
+    // CREATE WALLET
+    let jsonWalletAddress = Swal.fire({
+    title: dictionary[globalLang]["decryptlocalwallet"],
+    input: 'password',
+    inputAttributes: { autocapitalize: 'off' },
+    showCancelButton: true,
+    confirmButtonText: 'ok',
+    showLoaderOnConfirm: true,
+    preConfirm: (login) => { },
+    backdrop: true,
+  inputValidator: (value) => {
+    if (!value) {
+      return 'You need to set a password to create your wallet!'
+    }
+  },
+
+    allowOutsideClick: () => {
+        const popup = Swal.getPopup()
+        popup.classList.remove('swal2-show')
+        setTimeout(() => { popup.classList.add('animate__animated', 'animate__headShake') })
+        setTimeout(() => { popup.classList.remove('animate__animated', 'animate__headShake') }, 500)
+        return false
+    },
+    })
+    .then(async(result)   => {
+    if (result.isConfirmed) {
+        console.log('result.isConfirmed:',result.value)
+        await decryptWallet(result.value)
+        return result.value
+    }
+    })
+
+    console.log('jsonWalletAddress:',jsonWalletAddress)
+
+// }
+
+    }
+    
+    async function makeBackup(pwd,wallet){
+    
+      console.log('MAKE BACKUP address:', wallet.address)
+      console.log('MAKE BACKUP mnemonic:', wallet.mnemonic.phrase)
+    
+    
+    
+    
+      // WRITE YOUR MNEMONIC PHRASE
+        displayMnemonic.innerHTML = ` <h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height='40px' width='40px' fill="currentColor"> <path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg>Write down your mnemonic phrase to access your wallet in the future! :</h3> <div class="alert alert-warning alert-dismissible fade show"> <strong>${wallet.mnemonic.phrase}</strong> </div> `
+    
+    
+      // CREATING ENCRYPTED LOCAL WALLET
+        displayMnemonic.innerHTML += ` <div  id="loaderCW"  > <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span> creating encrypted wallet ... </div> `
+    
+      // SAVE TO LOCALSTORAGE (encrypted?)
+      console.log('password: ',pwd)
+      const promisseJSON = wallet.encrypt( pwd);
+      promisseJSON.then((jsonWallet) => {
+      console.log(jsonWallet)
+      console.log('WALLET ENCRYPTED')
+    
+      // loaderCW
+      document.getElementById('loaderCW').innerHTML=`
+      <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+    </symbol>
+    <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+    </symbol>
+    <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+    </symbol>
+    </svg>
+    
+      <div class="alert alert-success d-flex align-items-center" role="alert">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+    <div>
+      Wallet encrypted and saved into localstorage
+    </div>
+    </div>
+      `
+    
+    
+      localStorage.setItem('jsonWallet', jsonWallet)
+      console.log(' ENCRYPTED JSONWALLET SAVED INTO LOCALSTORAGE')
+    //   localStorage.setItem('encryptedAddress', wallet.address)
+      console.log(' ENCRYPTED ADDRESS SAVED INTO LOCALSTORAGE')
+    
+      setTimeout(() => {
+        const checkbox = document.getElementById('mnemonicBackedup');
+        // const button = document.getElementById('closeWalletBkp');
+        const button = document.getElementById('closeBackupmodal');
+
+        mnemonicBackedup.disabled = false;
+        // closeBackupmodal
+        // Add an event listener to the checkbox to track its state
+        checkbox.addEventListener('change', function() {
+        // If the checkbox is checked, enable the button; otherwise, disable it
+        button.disabled = !this.checked;
+        mnemonicBackedup.disabled = true;
+        console.log('close mnemonic activated')
+
+        // NOW DELETE unbackedWallet
+        localStorage.removeItem('unbackedWallet')
+
+        });
+        // init();
+      }, 1000);
+          
+    
+      });
+    
+    
+      setTimeout(() => {
+      openModalId('#walletBackp')
+      
+      }, 50);
+    
+      }
+    
+
+
+
+
+
+// ---------------------
+//   AUTOMATICALLY CREATE WALLET WITHOUT BACKUP ON FIRST TIME VISIT
+async function autoCreateWallet(){
+console.log('autoCreateWallet()')
+    //   CONNECT TO XMTP
+
+
+// 0- CHECK IF UNBACKED WALLET INLOCALSTORAGE
+let w = localStorage.getItem('unbackedWallet')
+
+if(!w){
+    console.log('1- NO UNBACKED WALLET');
+    let jsw = localStorage.getItem('jsonWallet')
+
+if(!jsw){
+        // 2- IF NO WALLET IN LOCALSTORAGE CREATE WALLET WITHOUT BACKUP
+        console.log('2- NO jsonWallet WALLET');
+        try{ wallet = await ethers.Wallet.createRandom()}
+        catch (error) { console.log(error.message); fixedToast.fire( 'Error',error.message, "error"); }
+        console.log('RANDOM WALLET CREATED!:', wallet.address,'mnemonic:', wallet.mnemonic.phrase, 'privkey:', wallet.privateKey)
+        localStorage.setItem('unbackedWallet',  JSON.stringify(wallet.mnemonic.phrase) )
+
+    console.warn('INIT CHAT CLIENT HERE!?, YES IF FIRST TIME')
+    await initChatClient(wallet)
+
+
+        const formattedAddress = ethers.utils.getAddress(wallet.address);
+        console.log('formattedAddress', formattedAddress);
+        localStorage.setItem('preferedWallet',`UNBACKEDLOCALWALLET, ${formattedAddress}` )
+
+        // DISPLAY SEND SCAN AND CHAT BUTTONS
+        document.getElementById('lock').style.display= 'none'
+            document.getElementById('send').style.display= 'inline'
+            document.getElementById('scan').style.display= 'inline'
+            document.getElementById('chat').style.display= 'inline'
+
+        setTimeout(  () => {
+
+          let buttons = `
+          <button class="btn btn-secondary" onclick="clearChat()">Clear</button>
+          `
+
+          swal({
+  toast: true,
+  html: buttons,
+  position: "bottom-end",
+  // showConfirmButton: true,
+  // showDenyButton: false,
+  // showCancelButton: true,
+  // cancelButtonText: 'Now!',
+  // confirmButtonText: 'later ...',
+  // denyButtonText: `Close`,
+  iconColor: 'white',
+  customClass: {
+    popup: 'colored-toast'
+  },
+})
+.then((result) => {
+                if (result.isConfirmed) { console.log('LATER ...!') }
+                else if (result.isDismissed	) { 
+                  console.log('BACKUP??:'); 
+                  backupWallet(wallet); 
+                return false 
+              }
+            })
+
+
+
+
+        }, 5000);
+
+} 
+else{
+        console.log('2- YES jsonWallet WALLET');
+        // DISPLAY UNLOCK BUTTON 
+        document.getElementById('lock').style.display= 'inline'
+        document.getElementById('send').style.display= 'none'
+        document.getElementById('scan').style.display= 'none'
+        document.getElementById('chat').style.display= 'none'
+        let pWall = localStorage.getItem('preferedWallet')
+        if(!pWall){ console.error('NO preferedWallet') } 
+        else { console.log('YES!: preferedWallet', pWall) }
+
+}
+
+ 
+
+} 
+else {
+        console.log('1- YES UNBACKED WALLET')
+        document.getElementById('lock').style.display= 'none'
+        document.getElementById('send').style.display= 'inline'
+        document.getElementById('scan').style.display= 'inline'
+        document.getElementById('chat').style.display= 'inline'
+        const walletData = JSON.parse(w);
+        try{ wallet = ethers.Wallet.fromMnemonic(walletData); }
+        catch (error) { console.log(error.message,'ERROR WALLET!'); localStorage.removeItem('unbackedWallet'); }
+        console.warn('INIT CHAT CLIENT HERE?, yes if UNBACKED WALLET')
+
+        const formattedAddress = ethers.utils.getAddress(wallet.address);
+        console.log('formattedAddress', formattedAddress);
+        localStorage.setItem('preferedWallet',`UNBACKEDLOCALWALLET, ${formattedAddress}` )
+
+
+
+        await initChatClient(wallet)
+
+        setTimeout(() => {
+
+          let buttons = `
+          <button class="btn btn-secondary" onclick="backupWallet(${wallet})">Now</button>
+          <button class="btn btn-success" onclick="restore()">Restore</button>
+
+          `
+
+          Swal.fire({
+                title: "Backup your wallet!",
+                // icon: "warning",
+                html: buttons,
+          // showConfirmButton: false,
+          // showCancelButton: false,
+          // toast: true,
+          html: buttons,
+          position: "bottom-end",
+          showConfirmButton: true,
+          // showDenyButton: false,
+          // showCancelButton: true,
+          // cancelButtonText: 'Now!',
+          confirmButtonText: 'later ...',
+          // denyButtonText: `Close`,
+          // iconColor: 'white',
+          customClass: {
+          popup: 'colored-toast'
+          },
+        })
+            // fixedToast.fire( 'Warning:','Backup your wallet!', "error").then((result) => {
+            // if (result.isConfirmed) { console.log('LATER...!') }
+            // else if (result.isDismissed	) { 
+            //     console.log('BACKUP X:'); 
+            //     backupWallet(wallet);
+            //     return false }
+            // })
+
+        }, 5000);
+
+}
+
+ 
+// SET ADDRESS
+    let preferedWallet = localStorage.getItem('preferedWallet');
+    if (!preferedWallet) { console.log('NO PREFERED WALLET SET'); return }
+    if (preferedWallet) { const values = preferedWallet.split(',').map(item => item.trim()); walletChoice = values[0]; userAddress = values[1]; }
+    console.log('USERADDRESS IS SET: ', userAddress)
+    // console.warn('INIT CHAT CLIENT HERE!?')
+    setAddress(userAddress)
+}
+/*********************************************************************************************
+.) later now restore
+**********************************************************************************************/
+function later (){
+  console.log('later ...')
+}
+
+function now (){
+  console.log('now ...')
+}
+
+function restore (){
+  console.log('restore ...')
+}
+
+
+// BACKUP
+
+      /*********************************************************************************************
+      .) MANAGE MODALS
+      **********************************************************************************************/
+      function openModal(id,event){
+        console.log('openingModal...',id)
+        // console.log('openingModal', id,event)
+        // if (!user) { 
+       
+        setTimeout(() => {
+           myModal = new bootstrap.Modal(document.querySelector(`${id}`))
+          myModal.show(event)
+        }, 50);
+      }
+    
+      function closeModal(){
+        console.log('closing Modal')
+          myModal.hide()
+      } 
+
+      function openModalId(id,event){
+        console.log('openingModal', id,event)
+        setTimeout(() => {
+           xModal = new bootstrap.Modal(document.querySelector(`${id}`))
+          xModal.show(event)
+        }, 50);
+      }
+
+      
+
+      function closeModalId(id,event){
+        console.log('closing modal', id,event)
+          xModal.hide(event)
+      }
+   
+
+
+
+
+
+// ---------------------------
+//   URL
+// ---------------------------
+  // Function to create URL parameters from an object
+function createURLParams(params) {
+  console.log('createURLParams',params)
+
+  const keys = Object.keys(params);
+  const encodedParams = keys.map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`);
+  return encodedParams.join('&');
+}
+
+// // Example usage
+// const parameters = {
+//   name: 'John Doe',
+//   age: 25,
+//   city: 'New York'
+// };
+
+// const urlParams = createURLParams(parameters);
+// const url = `https://example.com/api?${urlParams}`;
+
+// console.log(url);
+function urlTrigger(paramName, paramValue){
+  console.log('urlTrigger')
+
+  // Get the current URL
+var currentUrl = window.location.href;
+
+// Define the string you want to add
+// var myString = "exampleString";
+
+// Check if there are already query parameters in the URL
+if (currentUrl.includes('?')) {
+    // If there are, append the string using '&'
+    // window.location.href = currentUrl + '&myString=' + myString;
+    window.location.href = currentUrl + `&${paramName}=` + paramValue;
+} else {
+    // If there are no query parameters, add the first one using '?'
+    // window.location.href = currentUrl + '?myString=' + myString;
+    window.location.href = currentUrl + `?${paramName}=` + paramValue;
+}
+}
+
+function urlManager(paramName, paramValue){
+  console.log('urlManager')
+
+
+// Define the string you want to add
+// var myString = "exampleString";
+
+// Get the current URL
+var currentUrl = window.location.href;
+
+// Create a new URL with the added parameter
+// var newUrl = currentUrl + (currentUrl.includes('?') ? '&' : '?') + 'myString=' + myString;
+var newUrl = currentUrl + (currentUrl.includes('?') ? '&' : '?') + `${paramName}=` + paramValue;
+
+// Update the URL without triggering a refresh
+history.pushState(null, null, newUrl);
+}
+
+
+function urlUpdater(paramName,paramValue){
+  console.log('urlUpdater')
+
+// Get the current URL
+var currentUrl = window.location.href;
+
+// Check if the parameter already exists in the URL
+if (!currentUrl.includes(paramName)) {
+  console.log('NEW PARAMETER')
+
+    // If it doesn't exist, add it
+    var newUrl = currentUrl + (currentUrl.includes('?') ? '&' : '?') + `${paramName}=`  + paramValue;
+
+    // Update the URL without triggering a refresh
+    history.pushState(null, null, newUrl);
+}
+else{
+  console.log('PARAM ALREADY EXISTS')
+}
+
+}
+
+
+// ESTE VA!
+function updateUrlParameter(parameter, value) {
+    // Step 1: Parse the current URL
+    const url = new URL(window.location.href);
+    // Step 2: Modify the parameter
+    url.searchParams.set(parameter, value);
+    // Step 3: Construct the new URL
+    const newUrl = url.toString();
+    // Step 4: Update the browser location
+    // window.location.replace(newUrl);
+    history.pushState(null, null, newUrl);
+}
+
+
+//////////////////////////
+// QRCHAT
+//////////////////////////
+
+async  function xmtp(wallet){
+ 
+let to = localStorage.getItem('toAddress')
+if(!to){
+    console.log('NO "TO" ADDRESS')
+    const xmtp = await Client.create(wallet)
+        console.log('XMTP CLIENT CREATED: ', xmtp)
+        xm = xmtp;
+return 
+ }
+else{
+    console.log('YES "TO" ADDRESS')
+    const xmtp = await Client.create(wallet)
+    localStorage.setItem('chatxmtp',xmtp)
+    // await chatWith(to)
+}
+
+
+
+}
+
+
+
+
+ document.getElementById("user-input").addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    var userInput = this.value.trim(); // Trim whitespace from input
+    if (userInput !== "") {
+      console.log("User input:", userInput);
+      // Do something with the user input here
+      sendMessage();
+    }
+    // var userInput = this.value;
+    // console.log("User input:", userInput);
+    // // Do something with the user input here
+    // sendMessage();
+    event.preventDefault(); // Prevents the default behavior of the Enter key (submitting a form)
+  }
+});
+
+document.getElementById("user-input").addEventListener("blur", function() {
+  var userInput = this.value.trim(); // Trim whitespace from input
+    if (userInput !== "") {
+      console.log("User input:", userInput);
+      // Do something with the user input here
+      sendMessage();
+    }
+  // var userInput = this.value;
+  // console.log("User input:", userInput);
+  // // Do something with the user input here
+  // sendMessage();
+});
+
+
+
+async function sendMessage() {
+var userInput = document.getElementById("user-input").value;
+var chatBox = document.getElementById("chat-box");
+var message = document.createElement("div");
+
+if (userInput.trim() !== "") {
+  // The input value is not empty
+  console.log("Input is not empty");
+} else {
+  // The input value is empty
+  console.log("Input is empty");
+  return
+}
+
+// message.classList.add("message");
+// message.innerHTML = `<strong>You:</strong> ${userInput}`;
+// chatBox.appendChild(message);
+document.getElementById("user-input").value = "";
+chatBox.scrollTop = chatBox.scrollHeight;
+await conversation.send(`${userInput}`);// Send a message
+
+}
+
+
+
+function setToAddress() {
+var toaddr = document.getElementById("toAddr").value;
+
+    console.log('setting TO adddress: ', toaddr)
+
+    if (ethers.utils.isAddress(toaddr)) {
+        console.log('VALID ADDRESS')
+        document.getElementById("invalid-address-alert").style.display = "none";
+        localStorage.setItem('toAddress',  toaddr )
+        document.getElementById('results').innerHTML += `<br>TO address: ${toaddr}  <button class="btn btn-secondary" onclick="clearChat()">Clear</button>`
+
+
+    } else{
+        console.log('INVALID ADDRESS')
+        document.getElementById("invalid-address-alert").style.display = "block";
+
+    }
+
+
+}
+
+
+
+
+
+  // COPY TO CLIPBOARD
+  function copy2clipboard(text) {
+    // let text = `${ipfsGateway}${cid}`;
+    console.log('COPIED!',text)
+    let textLink = `<a href="${text}">${text}</a>`;
+  
+    if (window.clipboardData && window.clipboardData.setData) {
+      ToastTop.fire( 'Copied to Clipboard',textLink, "success");
+      return window.clipboardData.setData("Text", text);
+    }
+    else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+        var textarea = document.createElement("textarea");
+        textarea.textContent = text;
+        textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in Microsoft Edge.
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            ToastTop.fire( 'Copied to Clipboard',textLink, "success");
+            return document.execCommand("copy");  // Security exception may be thrown by some browsers.
+        }
+        catch (ex) {
+            console.warn("Copy to clipboard failed.", ex);
+            return prompt("Copy to clipboard: Ctrl+C, Enter", text);
+        }
+        finally {
+            document.body.removeChild(textarea);
+        }
+    }
+  }
+
+
+
+//   SIDEBAR
+
+// Get the navigation button and add a click event listener
+var navBtn = document.querySelector('.hamburger');
+navBtn.addEventListener('click', plToggle);
+
+// Define the plToggle function
+function plToggle(event) {
+    console.log('TOOGLE NAVBAR', event);
+    navBtn.classList.toggle('is-active');
+
+    // Toggle classes for elements with class 'content', 'sidebar', and 'overlay'
+    // document.querySelector('.content').classList.toggle('isOpen');
+    document.querySelector('.sidebar').classList.toggle('isOpen');
+    document.querySelector('.overlay').classList.toggle('overlayisOpen');
+
+    // Get the container element with class 'sidebar'
+    var container = document.querySelector('.sidebar');
+}
+
+// Add a click event listener to the overlay element
+document.querySelector('.overlay').addEventListener('click', function(event) {
+    console.log('clickeado en nav li');
+    plToggle();
+});
+
+
+
+
+async function addUser(){
+    console.log('ADDING NEW USER ADDRESS')
+}
+
+async function scanAddress(){
+    console.log('SCANNING FOR A NEW USER ADDRESS')
+    var audioContext = new AudioContext();
+
+// open modal
+openModalId('#scanModal')
+document.getElementById('scanResult').innerHTML =''
+setTimeout(() => {
+  var videoElem = document.getElementById("qrScanVideo");
+  window.qrScanner = new QrScanner( videoElem, result => qrscanned(result), {
+    highlightScanRegion: true,
+    highlightCodeOutline: true,
+  });
+  
+  qrScanner.setInversionMode('invert');
+  qrScanner.start();
+  
+}, 1000);
+
+}
+
+
+
+async function qrscanned(result){
+        console.log('scanned decoded qr code:', result.data)
+        x1=result.data;
+           document.getElementById('scanResult').innerHTML = ` <div class="success-message"> <svg viewBox="0 0 76 76" class="success-message__icon icon-checkmark"> <circle cx="38" cy="38" r="36"/> <path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M17.7,40.9l10.9,10.9l28.7-28.7"/> </svg> <h1 class="success-message__title">SCANED!</h1> <div class="success-message__content"> <p>${result.data}</p> </div> </div> `
+        qrScanner.stop();
+        qrScanner.destroy();
+        qrScanner = null;
+        playBeep();
+       await setTimeout(() => {
+            closeModalId('#scanModal')
+        }, 1500);
+        console.log('KEEP DOING SOMETHING',result.data)
+
+           // SEARCH FOR T2Addr
+            const url = new URL(result.data);
+            const urlParams = new URLSearchParams(url.search);
+            const t2AddrValue = urlParams.get('T2Addr');
+            if (t2AddrValue !== null) {
+            console.log(`Value of T2Addr parameter: ${t2AddrValue}`);
+            Toast.fire({ icon: 'info', title: 'CHAT WITH:', text: t2AddrValue });
+
+            // NOW SETUP THE CHAT AND OPEN IT
+            await  chatWith(t2AddrValue)
+            // const swiperEl = document.getElementById('troqContainer');
+            // swiperEl.swiper.slideNext();
+
+            } else {
+            console.log('T2Addr parameter not found in the URL');
+            }
+           
+
+      }
+    
+
+          async function chatWith(toAddr){
+            console.log('chatWith()')
+              console.log('ESTABLISHING NEW CHAT WITH', toAddr)
+              let preferedWallet = localStorage.getItem('preferedWallet');
+                if (!preferedWallet) { console.log('NO PREFERED WALLET SET') }
+                if (preferedWallet) {
+                            const values = preferedWallet.split(',').map(item => item.trim());
+                        walletChoice = values[0];
+                            // userAddress = values[1];
+                            userAddress  = ethers.utils.getAddress(values[1]);
+                            console.log('USER ADDRESS IN CHAT WITH', userAddress)
+                }
+
+                console.log(toAddr,userAddress)
+              if(toAddr == userAddress){
+                console.log('CANCELING chatwith() because CANNOT WITH SELF ADDRESS')
+                localStorage.removeItem('toAddress')// detele "TO" address from localStorage
+                return
+              }
+
+        ToastTop.fire({ icon: 'info', title: 'CHAT WITH:', text: toAddr });
+        // Toast.fire({ icon: 'info', title: 'CHAT WITH:', text: toAddr });
+            
+              // GOT TO CHAT TAB
+              const swiperEl = document.getElementById('troqContainer');
+                  swiperEl.swiper.slideNext();
+
+            
+
+                  // save "TO" to localwallet
+                localStorage.setItem('toAddress',toAddr )
+                let contact = { address: toAddr, username: null, avatar: null,did: null }
+
+            // if(nextidAvatar){
+            //   console.log('NO DID AVATAR')
+            //   let nextidAvatar = `https://api.web3.bio/profile/${toAdddr}`
+            //   let contact = { address: toAddr, username: null, avatar: nextidAvatar,did: null }
+
+            // } else{
+            //   console.log('NO DID AVATAR')
+            //   let contact = { address: toAddr, username: null, avatar: null,did: null }
+
+            // }
+              // ADD address to local contacts
+              // let contact = { address: toAddr, username: null, avatar: null,did: null }
+
+              SaveContactsToLocalStorage(contact)
+              
+            // ADD address to TROQCONTACTS
+            loadTroqContacts()
+
+         
+              // add address in UI
+              let  shortAddr = toAddr.substring(0, 6) + "..."+ toAddr.substring(38, 42);
+              chatAddress.innerHTML=`${shortAddr}   <svg  fill="green"  class='uiicon' onclick="event.stopPropagation();deleteChat((this.parentElement))" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" > <path d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"/></svg>`
+
+
+              // ACTIVATE CHAT BUTTONS
+              document.getElementById('user-input').disabled = false;
+              document.getElementById('send-button').disabled = false;
+
+
+                // FOCUS ON INPUT
+                document.getElementById('user-input').focus();
+
+
+            // CREATE CHAT CLIENT IF NOT PRESENT
+            // if(globalUnsafeWallet){
+              // console.log('WE ARE USING THIS VERY UNSAFE WALLET FOR DEMO')
+              // const xmtp = await Client.create(globalUnsafeWallet)
+
+              // const allConversations = await xmtp.conversations.list()
+              // SACAR
+            const allConversations = await troqchatclient.conversations.list()
+            ac= allConversations;            
+            console.log('allConversations:', allConversations)
+
+
+              // CREATE CHAT (client was already created)
+              conversation = await troqchatclient.conversations.newConversation(toAddr)
+                console.log('conversation:',conversation)
+
+                // Load all messages in the conversation
+                const messages = await conversation.messages()
+                var chatBox = document.getElementById("chat-box");
+  
+                // shorten addresses
+                let shortTo = toAddr.substring(0, 6) + "..."+ toAddr.substring(38, 42);
+
+  
+                // Listen for new messages in the conversation
+                for await (const message of await conversation.streamMessages()) {
+                  const now = new Date();
+                  const hours = now.getHours().toString().padStart(2, '0'); // Ensure two-digit format
+                  const minutes = now.getMinutes().toString().padStart(2, '0'); // Ensure two-digit format
+                  const timestamp = `${hours}:${minutes}`;
+                  console.log('logMSG:',message)
+                  let preferedWallet = localStorage.getItem('preferedWallet');
+                  if (!preferedWallet) { console.log('NO PREFERED WALLET SET') }
+                  if (preferedWallet) { const values = preferedWallet.split(',').map(item => item.trim()); userAddress = values[1]; }
+                  if(message.senderAddress===userAddress){ 
+                    console.log('YOU')
+                    chatBox.innerHTML += `<div><strong>You:</strong> ${message.content}<span class="timestamp">  ${timestamp} &check; </span></div>`;
+                  }
+                  if(message.senderAddress==toAddr){
+                    console.log('OTHER', shortTo)
+                chatBox.innerHTML += `<div><strong>${shortTo}:</strong> ${message.content} </div>`;
+                  
+                  }
+                console.log(`[${message.senderAddress}]: ${message.content}`)
+                chatBox.scrollTop = chatBox.scrollHeight;
+
+                }
+          }
+
+async function  initChatClient(wallet){
+    console.log('initChatClient()')
+    // Create the client with your wallet. This will connect to the XMTP development network by default
+    const xmtp = await Client.create(wallet)
+
+    troqchatclient=xmtp
+    // localStorage.setItem('xmtpSession',JSON.stringify(troqchatclient))
+    // return xmtp 
+    // List existing conversations
+    // const allConversations = await xmtp.conversations.list()
+    //     for (const conversation of allConversations) {
+    //         console.log(`AVAILABLE CHATS: ${conversation.peerAddress}`)
+    //     }
+
+        // Listen for new conversations
+        const stream = await xmtp.conversations.stream()
+        console.log('STREAM:', stream)
+        // for await (const conversation of stream) {
+        // console.log(`New conversation started with ${conversation.peerAddress}`)
+        // Say hello to your new friend
+        // await conversation.send('Hi there!')
+        // Break from the loop to stop listening
+        // break
+        // }
+
+        await listExistingConversations(xmtp)
+        return xmtp 
+
+
+}
+
+async function chatHistory(xmtp){
+  console.log('chatHistory()')
+// You can receive the complete message history in a conversation by calling conversation.messages()
+
+for (const conversation of await xmtp.conversations.list()) {
+  // All parameters are optional and can be omitted
+  const opts = {
+    // Only show messages from last 24 hours
+    startTime: new Date(new Date().setDate(new Date().getDate() - 1)),
+    endTime: new Date(),
+  }
+  // const messagesInConversation = await conversation.messages(opts)
+  const messagesInConversation = await conversation.messages()
+  mic= messagesInConversation;
+  console.log('chatHistory: messagesInConversation:', messagesInConversation)
+}
+
+}
+
+async function listenNewChats(addr){
+  console.log('listenNewChats(addr)')
+        const conversation = await troqchatclient.conversations.newConversation( addr )
+        for await (const message of await conversation.streamMessages()) {
+        if (message.senderAddress === troqchatclient.address) {
+        // This message was sent from me
+        console.log('This message was sent from me')
+
+
+
+        continue
+        }
+        if (message.senderAddress === message.senderAddress) {
+        // This address  already sent  to me
+        console.log('this address is  already in your contacts')
+        addknownContact(message.senderAddress, message.content)
+        
+        }
+        else{
+        console.log('else, new messag')
+
+          addUnknownContact(message.senderAddress, message.content)
+
+        }
+        document.getElementById('chatBadge').style.display='inline'
+        console.log(`New message from ${message.senderAddress}: ${message.content}`)
+        // agregar mensaje a localstorage
+        
+        // y contalos para agregarlo al badge
+        document.getElementById('chatBadge').innerText='!'
+
+        // GET LOCAL ADDRESS
+        let preElement = document.getElementById('yourAddress');
+       let localAddr=  preElement.getAttribute('address');
+
+         // UPLOAD BALANCE ON RECIPIENT
+      let balancetroq = await checkERC20Balance(localAddr)//troq
+      let balanceeth = await checkGasBalance(localAddr)//main eth
+      console.log('NEW BALANCE:', balanceeth)
+      troqamount.innerHTML = `${optionsList[0].TOKEN_NAME}: ${Number(balanceeth).toFixed(3)}`
+
+}
+
+}
+
+
+
+async function reloadBalanceAfterReceiving(addr,amount){
+  console.log('reloadBalanceAfterReceiving(addr)')
+        const conversation = await troqchatclient.conversations.newConversation( addr )
+        let message = `sent you ${amount} Trok`
+        await conversation.send(`${message}`);// Send a message
+
+        // for await (const message of await conversation.streamMessages()) {
+        //   document.getElementById('chatBadge').style.display='inline'
+        //   document.getElementById('chatBadge').innerText='!'
+             
+    //       // UPLOAD BALANCE
+        let preElement = document.getElementById('yourAddress');
+       let localAddr=  preElement.getAttribute('address');
+         let balancetroq = await checkERC20Balance(localAddr)//troq
+      let balanceeth = await checkGasBalance(localAddr)//main eth
+      console.log('NEW BALANCE:', balanceeth)
+      troqamount.innerHTML = `${optionsList[0].TOKEN_NAME}: ${Number(balanceeth).toFixed(3)}`
+
+    // let balancetroq = await checkERC20Balance(addr)//troq
+    //   let balanceeth = await checkGasBalance(addr)//main eth
+    //   console.log('NEW BALANCE:', balanceeth)
+    //   troqamount.innerHTML = `${optionsList[0].TOKEN_NAME}: ${Number(balanceeth).toFixed(3)}`
+      // troqamount.innerHTML = `T$:${balancetroq.toString()}`
+
+// }
+
+}
+
+
+// async function listenNewConversations(xmtp){
+// console.log('listenNewConversations()')
+
+//     // Listen for new conversations
+//         const stream = await xmtp.conversations.stream()
+//         for await (const conversation of stream) {
+//         console.log(`New conversation started with ${conversation.peerAddress}`)
+//         // Say hello to your new friend
+//         await conversation.send('Hi there!')
+//         // Break from the loop to stop listening
+//         break
+//         }
+
+// }
+
+
+async function listExistingConversations(xmtp){
+    console.log('listExistingConversations()')
+    // List existing conversations
+    const allConversations = await xmtp.conversations.list()
+    console.log('AVAILABLE CHATS:',allConversations.length)
+    const peerAddressesArray = [];
+
+allConversations.forEach(async (conversation, index) => {
+      peerAddressesArray.push(conversation.peerAddress);
+        console.log(`AVAILABLE CHAT ${index}: ${conversation.peerAddress}`)
+         await listenNewChats(conversation.peerAddress)
+    })
+    paa =peerAddressesArray;
+}
+
+            function removeParam(key) {
+                var url = new URL(window.location.href);
+                url.searchParams.delete(key);
+                window.history.replaceState({}, '', url);
+            }
+
+
+async function deleteChat(){
+  console.log('DELETING CHAT')
+
+  // clear URL
+  removeParam('T2Addr');
+
+
+    // remove "TO" address from localStorage
+    localStorage.removeItem('toAddress' )
+
+    //go to main qr page
+    const swiperEl = document.getElementById('troqContainer');
+    swiperEl.swiper.slidePrev();
+
+    //clear UI
+    chatAddress.innerHTML=''
+    document.getElementById('chat-box').innerHTML =''
+
+    // DEACTIVATE BUTTONS
+    document.getElementById('user-input').disabled = true;
+    document.getElementById('send-button').disabled = true;
+
+
+}
+
+
+
+
+
+// SAVE CONTACTS
+function SaveContactsToLocalStorage(contact) {
+    var a = [];
+    a = JSON.parse(localStorage.getItem('contacts')) || [];
+
+    // Check if the address already exists
+    var isDuplicate = a.some(existingContact => existingContact.address === contact.address);
+
+    if (!isDuplicate) {
+        a.push(contact);
+        localStorage.setItem('contacts', JSON.stringify(a));
+    } else {
+        console.log('Address already exists in your contacts, skipping save.');
+    }
+}
+
+
+
+  async function loadTroqContacts(){
+    // console.log('LOADING TROQ CONTACTS')
+    let contct= document.getElementById('troqContacts')
+    contct.innerHTML=''
+    let troqContacts = JSON.parse(window.localStorage.getItem('contacts'));
+    if (troqContacts) {
+      console.log('YOU HAVE', troqContacts.length, 'CONTACTS')
+
+ 
+
+        troqContacts.forEach((el,index) => {
+            const isAddressInArray = paa.includes(el.address);
+
+            if (isAddressInArray) {
+              console.log(`Contact ${index} is in your contacts \u2714  ${el.address} `);
+            } else {
+                console.log(`THis address  is not in your contacts \u2718 ${el.address}`);
+            }
+
+            let  shortAddr = el.address.substring(0, 6) + "..."+ el.address.substring(38, 42);
+            contct.innerHTML +=` <li data-address="${el.address}"> <a onclick="event.stopPropagation();selectChat((this.parentElement))" >  <img src="./avatar.png" alt="Avatar" class="rounded-circle"> ${shortAddr} <i class="fa-solid fa-trash"></i></a> </li> `
+            
+        })
+
+    }
+   
+  }// fin loadTroqContacts
+    
+
+
+  async function addUnknownContact(addr,msg){
+console.log('addUnknownContact()')
+    let  shortAddr = addr.substring(0, 6) + "..."+ addr.substring(38, 42);
+    document.getElementById('troqContacts').innerHTML +=` <li data-address="${addr}" class='newmessage'> <a onclick="event.stopPropagation();selectChat((this.parentElement))" >  <img src="./avatar.png" alt="Avatar" class="rounded-circle"> ${shortAddr} <i class="fa-solid fa-trash"></i></a> </li> `
+            
+  }
+
+  async function addknownContact(addr,msg){
+console.log('addUnknownContact()')
+
+    var selector = 'li[data-address="' + addr + '"]';
+    var listItem = document.querySelector(selector);
+    listItem.classList.add('newmessage');
+    let  shortAddr = addr.substring(0, 6) + "..."+ addr.substring(38, 42);
+    let  shortMsg = msg.substring(0, 16);
+    console.log('shortedMessage:', shortMsg)
+    listItem.innerHTML = ` <a onclick="event.stopPropagation();selectChat((this.parentElement))" >  <img src="./avatar.png" alt="Avatar" class="rounded-circle"> ${shortMsg} <i class="fa-solid fa-trash"></i></a> `
+            
+  }
+
+  async function selectChat(el){
+    console.log('selectChat(), CLICKED CONTACT')
+    // const liElement = document.querySelector('li');
+    const address = el.dataset.address;
+    console.log('CONTACT SELECTED:' , address);
+
+      // 1- close navbar
+      plToggle()
+
+      // 2- chat with address funciton 
+      await deleteChat()
+  await chatWith(address)
+
+
+
+  }
+
+      document.getElementById("closeScanModal").onclick = () => {
+        qrScanner.stop();
+        closeModalId('#scanModal')
+        qrScanner.destroy();
+        qrScanner = null;
+
+      }
+
+
+
+
+
+async function checkERC20Balance(userAddress){
+
+        console.log('checkERC20Balance()')
+
+  //       let provider = await new ethers.providers.JsonRpcProvider(`${optionsList[0].API}`);
+  // try {
+  //   const balance = await provider.getBalance(userAddress);
+  //   const etherBalance = ethers.utils.formatEther(balance);
+  //   console.log(`Balance of ERC-20 ${optionsList[0].ERC20_CONTRACT_ADDRESS}: ${etherBalance} ETH`);
+  //   return etherBalance;
+  // } catch (error) {
+  //   console.error('Error checking balance:', error);
+  //   return null;
+  // }
+
+  try {
+
+        const abi =ABIs[optionsList[0].TOKEN_ABI]
+        a=abi;
+        const contractAddress = optionsList[0].ERC20_CONTRACT_ADDRESS //'YOUR_ERC20_CONTRACT_ADDRESS';
+        c=contractAddress;
+        // const walletAddress = userAddress//'YOUR_WALLET_ADDRESS';
+        let provider = await new ethers.providers.JsonRpcProvider(`${optionsList[0].API}`);
+        p = provider;
+        const tokenContract = new ethers.Contract(contractAddress, abi, provider);
+        tt = tokenContract;
+
+        const formattedAddress = ethers.utils.getAddress(userAddress);
+
+        const balance = await tokenContract.balanceOf(formattedAddress);
+        b=balance;
+        const formatedBalance = ethers.utils.formatEther(balance);
+        console.log(`Balance of ERC-20 ${optionsList[0].ERC20_CONTRACT_ADDRESS}: ${formatedBalance} TROK`);
+
+        return formatedBalance
+      } catch (error) {
+    console.error('Error checking balance:', error);
+    return null;
+  }
+}
+  
+async function checkGasBalance(walletAddress) {
+  let provider = await new ethers.providers.JsonRpcProvider(`${optionsList[0].API}`);
+  try {
+    const balance = await provider.getBalance(walletAddress);
+    const etherBalance = ethers.utils.formatEther(balance);
+    // console.log(`Balance of ERC-20 ${optionsList[0].ERC20_CONTRACT_ADDRESS}: ${etherBalance} ETH`);
+    console.log(`GAS Balance of ${optionsList[0].ERC20_CONTRACT_ADDRESS}: ${etherBalance} ETH`);
+
+    return etherBalance;
+  } catch (error) {
+    console.error('Error checking balance:', error);
+    return null;
+  }
+}
+ 
+
+async function sendERC20Tokens( toAddress, amount) {
+
+  const contractAddress = optionsList[0].ERC20_CONTRACT_ADDRESS //'YOUR_ERC20_CONTRACT_ADDRESS';
+      const walletAddress = globalAddress//'YOUR_WALLET_ADDRESS';
+      let provider = await new ethers.providers.JsonRpcProvider(`${optionsList[0].API}`);
+  
+      // Connect to the Ethereum network
+  const wallet = new ethers.Wallet(privateKey, provider);
+
+  // Define the ERC20 contract interface
+  const abi = [
+    'function transfer(address to, uint256 value) returns (bool)'
+  ];
+  const contract = new ethers.Contract(contractAddress, abi, wallet);
+
+  // Convert the amount to wei (ERC20 tokens typically have 18 decimal places)
+  const amountWei = ethers.utils.parseUnits(amount.toString(), 18);
+
+  // Send tokens
+  try {
+    const tx = await contract.transfer(toAddress, amountWei);
+    await tx.wait();
+    console.log(`Sent ${amount} tokens to ${toAddress}`);
+  } catch (error) {
+    console.error('Error sending tokens:', error);
+  }
+}
+ 
+
+    </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.29/Tone.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+<!-- <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script> -->
+
+<script type="module">
+    // core version + navigation, pagination modules:
+import Swiper from 'swiper';
+ 
+
+ swiper = new Swiper('.swiper', {
+    effect: 'coverflow',
+  coverflowEffect: {
+    rotate: 30,
+    slideShadows: false,
+  },
+});
+  </script>
+ 
+
+ 
+    
+ 
+  </body>
+</html>
+
