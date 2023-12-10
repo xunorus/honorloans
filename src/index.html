@@ -12,971 +12,18 @@
        
     <!-- TROK -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" ></script>
     <script src="js/sweetalert2.all.min.js"></script>
     <!-- <script src="js/ethers-5.2.umd.min.js" type="application/javascript"></script> -->
     <script src="js/qr-code-styling.js"></script>
-
-
- 
-    <style>
-
-
-@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
-@font-face {
-  font-family: 'Major Mono Display';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Major Mono Display'), local('MajorMonoDisplay-Regular'),
-       url('https://fonts.gstatic.com/s/majormonodisplay/v7/RrQUboN_5JNPc90HdV3U5AwUe3m3EIXISsZuyu_mnAo.ttf') format('truetype');
-  unicode-range: U+0043, U+0052, U+0059, U+0050, U+0054, U+004F, U+0048, U+0041;
-}
-
-/* Deep Blue: */
-
-/* Hex: #001F3F
-RGB: rgb(0, 31, 63)
-HSL: hsl(210, 100%, 12%)
-Gold:
-
-Hex: #FFD700
-RGB: rgb(255, 215, 0)
-HSL: hsl(51, 100%, 50%)
-Teal:
-
-Hex: #008080
-RGB: rgb(0, 128, 128)
-HSL: hsl(180, 100%, 25%) */
-:root {
-      --background:#00bc8c;
     
-      /* deep blue */
-      --c0: #001F3F;
-      --c0b: #222;
-
-      /* Gold */
-      --c1: #b79b00;
-      /* --c1: #FFD700; */
-
-      /* teal */
-      --c2: #008080;
-      /* --c2: #008080; */
-
-      --c3: #fff;
-      --c4: #eee;
-      --bk: linear-gradient(var(--c0), var(--c0b));
-
-
-      --qr : red;
-      --contrast: #000	linear-gradient(var(--c3), var(--c2));
-      --bckmodal:#262626;
-      --font:lawngreen;
-      --navbar :var(--c1);
-      /* --navbar : #375a7f; */
-      --qrbackground:transparent;
-      
-     
-      --font1: #fff;
-      --font2: #00bc8c;
-      --font3: #2196f3;
-      --hover: #d000ff;
-      --mainTitle: var(--font1);
-      /* --font: #fff; */
-      --secondarybuttonhover: #375a7f;
-      --main: #4f4ee8;
-      --modalshadow: #dc3545;
-      /* --secondary: rgb(46, 167,227); */
-      --background:#fff;
-      --bimage : linear-gradient(90deg, rgba(46,167,227, 1) 0%, rgba(46, 167,227,1) 10%, rgb(4, 96, 254) 90%);
-      /* --c2: #6463ef;
-      --c5: #4255d4; */
-      --reversable: #000;
-      --darkcontrast: #eaeaea;
-      --card: #e4e4e4;
-      --upbackground: #fff;
-      --tableHover: #6f96f1;
-      --buttonHover: #3a00ff;
-      --nabvcolors: #fff;
-      --navborder: #fd4310;
-      --navshadow: #241b19;
-
-
-  }
-  
-  
-   
-   
-   .dark-mode {
-  
-	--background:#fff;
-  --c0: #672f0d;
-      --c1: #f35621;
-	--c2: #212529;
-    --c3: #222;
-	--c4: rgb(21, 104, 176);
-	/* --qr : #1568B0; */
-	--contrast: #000	linear-gradient(var(--c3), var(--c2));
-	--bckmodal:#262626;
-   }
-
-   
-/* COLORED TOASTS */
-
-.colored-toast.swal2-icon-success {
-	background-color: #45bb00 !important;
-  }
-  
-  .colored-toast.swal2-icon-error {
-	background-color: #f27474 !important;
-  }
-  
-  .colored-toast.swal2-icon-warning {
-	background-color: #f8bb86 !important;
-  }
-  
-  .colored-toast.swal2-icon-info {
-	background-color: #3fc3ee !important;
-  }
-  
-  .colored-toast.swal2-icon-question {
-	background-color: #87adbd !important;
-  }
-  
-  .colored-toast .swal2-title {
-	color: white;
-  }
-  
-  .colored-toast .swal2-close {
-	color: white;
-  }
-  
-  .colored-toast .swal2-html-container {
-	color: white;
-  }
-   .container{
-	width: 100%;
-	position: relative;
-	text-align: center;
-}
-
-      body {
-        /* padding: 2em; */
-          background-color: black;
-          color: lawngreen;
-          font-size: 0.88em;
-        }
-        #qrcode{
-            height: 300px;
-    width: 300px;
-        }
-        .centered-qr {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1em;
-        }
-        .centered-button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding-bottom: 1em;
-        }
-        
-.light-icon {
-  width: 25px;
-  height: 25px;
-  position: fixed;
-  top: 2em;
-  left: 1em;
-  /* right: 1em; */
-  border-radius: 50%;
-  background-color: red;
-  transition: background-color 0.5s;
-}
-
-#address,#vsigner, #vaddress {width: 400px!important;}
-#address2 {width: 400px!important;}
-#vnonce {width: 146!important;}
-#hash, #sig2verify, #verifywhash ,#sig2verifywhash {
-  /* width: 551px!important; */
-word-wrap: break-word;
-}
-.card{
-  background: none;
-  border: 1px solid var(--c1);
-
-}
-
-
-.modal-content{
-    background-color: var(--bckmodal);
-    box-shadow: 0 0 10px var(--c3);
-    /* border: 1px solid; */
-    border: 1px solid var(--c1);
-  
-  }
-.window{
-  
-      overflow: hidden;
-    white-space: inherit;
-    width: auto;
-
-}
-
-.card-body {
-    width: auto;
-    overflow: hidden;
-
-}
-
-
-
-pre{
-    white-space: break-spaces;
-}
-
-select{
-background: none!important;
-    border: none;
-    /* border: solid 1px var(--c1) ; */
-    color: var(--c0);
-  }
-
-  input{
-  background-color: transparent;
-  border: none;
-    padding: 1rem;
-
-	padding:3px 5px 4px;
-	color:#979797!important;
-	/* color:var(--font)!important; */
-	width:190px;
-}
- 
-#headMessages{
-
-  width: 100vw;
-  padding: 0;
-  margin: 0;
-  top: 0;
-  left: 0;
-  position: fixed;
-}
-
-.glow {   
-  text-shadow: 0 0 10px var(--shadow1), 0 0 20px var(--shadow1), 0 0 30px var(--shadow1), 0 0 40px var(--shadow2), 0 0 70px var(--shadow2), 0 0 80px var(--shadow2), 0 0 100px var(--shadow2), 0 0 150px var(--shadow2);
-  }
-
-  #troqamount{
-    font-family: var(--bs-font-monospace);
-    font-size: 2em;
-    direction: ltr;
-    unicode-bidi: bidi-override;
-  }
-  #ethamount{
-    font-size: 0.91em;
-  }
-
-  .responsive-svg {
-        width: 100%;
-        height: auto;
-    }
-
-    .btn-approve {
-      background-color: #28a745;
-      border-color: #28a745;
-    }
-    
-    .btn-approve:hover {
-      background-color: #218838;
-      border-color: #1e7e34;
-    }
-    
-    .btn-reject {
-      background-color: #dc3545;
-      border-color: #dc3545;
-    }
-    
-    .btn-reject:hover {
-      background-color: #c82333;
-      border-color: #bd2130;
-    }
-
-
-    #yourAddress{
-      font-family: var(--bs-font-monospace);
-    direction: ltr;
-    unicode-bidi: bidi-override;
-    font-size: 2em;
-    }
-
-.codrops-top{
-  padding: 4em;
-
-}
-
-.chatwindow{
-    width: 100vw;
-    padding: 0;
-}
-
-#copyAddress path{
-    fill: var(--font);
-}
-#copyAddress{
-    cursor: pointer;
-}
-
-
-
-body {
-    background: var(--bk);
-    height: 100vh;
- 
- }  
-header, main  {
- 
- }
-
+    <link href="css/styles.css" rel="stylesheet">
 
  
-
-
-
-
-
-
-
-/* --------------------- */
-
-/* -------- */
-
-#navbar {
- display: flex;
- justify-content: space-between;
- align-items: center;
- position: fixed;
- top: 0;
- left: 0;
- right: 0;
- /* height: 60px; */
- height: 82.235px;
- padding: 0 20px;
-
- color: var(--nabvcolors);
- background-color: var(--navbar)!important;
-    z-index: 2;
- 
-}
-
- 
- .center {
-   margin: 0 auto;
-   width: 200px; 
-   flex-grow: 4;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-
- }
-
-
-#usrAddr {
-   margin-right: auto;
-   margin-left: 10px;
-   width: 130px;
-   cursor: pointer;
- }
- 
-
-.translation {
- margin-left: 10px;
- margin-top: 8px;
-}
-
-
-.btn {
- margin-left: 10px;
-} 
-
- 
- svg.darklight  {
-   fill: transparent;
-   transition: 0.5s;
-
-   
-  }
- .darklight {
-   margin-left: 10px;
-   margin-right: auto;
-   height:30px;
-   padding: 0 10px;
-   display: flex;
-   align-items: center;
-   cursor: pointer;
- }
-  
-
- /* SIDEBAR */
- 
-  
-  /*!
-   * Hamburgers
-   * @description Tasty CSS-animated hamburgers
-   * @author Jonathan Suh @jonsuh
-   * @site https://jonsuh.com/hamburgers
-   * @link https://github.com/jonsuh/hamburgers
-   */
-   .hamburger {
-    padding: 15px 15px;
-    display: inline-block;
-    cursor: pointer;
-    transition-property: opacity, -webkit-filter, opacity, filter;
-    transition-property: opacity, filter;
-    transition-duration: 0.15s;
-    transition-timing-function: linear;
-    font: inherit;
-    color: inherit;
-    text-transform: none;
-    background-color: transparent;
-    border: 0;
-    margin: 0;
-    overflow: visible;
-    transition: 0.3s;
-    outline: none; }
-  
-  .hamburger:hover {
-    opacity: 0.7; }
-  
-  .hamburger.is-active:hover {
-    opacity: 0.7; }
-  
-  .is-active {
-    -webkit-transform: translate(12px, 0);
-            transform: translate(12px, 0); }
-  
-  .hamburger-box {
-    width: 40px;
-    height: 24px;
-    display: inline-block;
-    position: relative; }
-  
-  .hamburger-inner {
-    display: block;
-    top: 50%;
-    margin-top: -2px; }
-  
-  .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
-    width: 40px;
-    height: 4px;
-    background-color: #eee;
-    border-radius: 4px;
-    position: absolute;
-    transition-property: -webkit-transform;
-    transition-property: transform;
-    transition-duration: 0.15s;
-    transition-timing-function: ease; }
-  
-  .hamburger-inner::before, .hamburger-inner::after {
-    content: "";
-    display: block; }
-  
-  .hamburger-inner::before {
-    top: -10px; }
-  
-  .hamburger-inner::after {
-    bottom: -10px; }
-  
-  /* * Elastic */
-  .hamburger--elastic .hamburger-inner {
-    top: 2px;
-    transition-duration: 0.275s;
-    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55); }
-  
-  .hamburger--elastic .hamburger-inner::before {
-    top: 10px;
-    transition: opacity 0.125s 0.275s ease; }
-  
-  .hamburger--elastic .hamburger-inner::after {
-    top: 20px;
-    transition: -webkit-transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    transition: transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
-  
-  .hamburger--elastic.is-active .hamburger-inner {
-    -webkit-transform: translate3d(0, 10px, 0) rotate(135deg);
-            transform: translate3d(0, 10px, 0) rotate(135deg);
-    transition-delay: 0.075s; }
-  
-  .hamburger--elastic.is-active .hamburger-inner::before {
-    transition-delay: 0s;
-    opacity: 0; }
-  
-  .hamburger--elastic.is-active .hamburger-inner::after {
-    -webkit-transform: translate3d(0, -20px, 0) rotate(-270deg);
-            transform: translate3d(0, -20px, 0) rotate(-270deg);
-    transition-delay: 0.075s; }
-  
-  /*
-       * Elastic Reverse
-       */
-  .hamburger--elastic-r .hamburger-inner {
-    top: 2px;
-    transition-duration: 0.275s;
-    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55); }
-  
-  .hamburger--elastic-r .hamburger-inner::before {
-    top: 10px;
-    transition: opacity 0.125s 0.275s ease; }
-  
-  .hamburger--elastic-r .hamburger-inner::after {
-    top: 20px;
-    transition: -webkit-transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    transition: transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
-  
-  .hamburger--elastic-r.is-active .hamburger-inner {
-    -webkit-transform: translate3d(0, 10px, 0) rotate(-135deg);
-            transform: translate3d(0, 10px, 0) rotate(-135deg);
-    transition-delay: 0.075s; }
-  
-  .hamburger--elastic-r.is-active .hamburger-inner::before {
-    transition-delay: 0s;
-    opacity: 0; }
-  
-  .hamburger--elastic-r.is-active .hamburger-inner::after {
-    -webkit-transform: translate3d(0, -20px, 0) rotate(270deg);
-            transform: translate3d(0, -20px, 0) rotate(270deg);
-    transition-delay: 0.075s; }
-  
-  
-  
-         /* NEW NAVBAR */
-         .sidebar::after {
-          display: none; 
-        }
-        
-        .sidebar {
-          position: fixed;
-          width: 220px;
-          right: 0;
-          top: 0;
-          opacity: 1;
-          transition: -webkit-transform 0.5s;
-          transition: transform 0.5s;
-          -webkit-transform: translate3d(100%, 0, 0);
-          transform: translate3d(100%, 0, 0);
-          background: #000;
-          z-index: 1;
-          height: 100vh;
-          overflow: auto;
-          border-left: 1px solid #595a5f; 
-      
-          /* top: 60px; */
-          top: 81px;
-          z-index: 99;
-        }
-  
-        
-        
-        .sidebar.isOpen {
-          visibility: visible;
-          transition: -webkit-transform 0.5s;
-          transition: transform 0.5s;
-          -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-          border-left: 1px solid var(--navborder);
-          /* box-shadow: 0 10px 0  var(--navshadow);  */
-        }
-        
-        .mini {
-          font-size: 0.6em;
-          padding: 3em;
-          display: block; }
-        
-        .content::before {
-          content: "";
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
-          position: absolute;
-          z-index: -1; }
-        
-        .content:after {
-          content: "";
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
-          position: absolute;
-          z-index: -1; }
-        
-        
-        @keyframes fadein {
-          from {
-            opacity: 0; }
-          to {
-            opacity: 1; } }
-        
-        /* Firefox < 16 */
-        
-        /* Safari, Chrome and Opera > 12.1 */
-        @-webkit-keyframes fadein {
-          from {
-            opacity: 0; }
-          to {
-            opacity: 1; } }
-        
-        /* Internet Explorer */
-        @-ms-keyframes fadein {
-          from {
-            opacity: 0; }
-          to {
-            opacity: 1; } }
-        
-        /* Opera < 12.1 */
-        .content.isOpen {
-          -webkit-transform: translate3d(0, 0, -300px);
-          transform: translate3d(0, 0, -300px);
-          opacity: 0.6;
-          transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
-          transition: -webkit-transform 0.3s;
-          transition: transform 0.3s; }
-  
-        
-         
-        .nav {
-
-        }
-        .nav li {
-          list-style-type: none; 
-        width: 100%;
-        }
-        .nav li a img {
-            height: 25px;
-            width: 25px;
-            padding: 1px;
-        }
-        .nav li a {
-          position: relative;
-          display: block;
-          padding: 15px 15px 15px 15px;
-          border-bottom: 1px solid #343538;
-          text-decoration: none; 
-        }
-        
-        
-        .nav {
-          padding: 0; }
-        
-        .nav li a:hover {
-          background: rebeccapurple; }
-        
-        .nav li a.active {
-          box-shadow: inset 5px 0 0 #5b5, inset 6px 0 0 #222;
-          background: #444; }
-        
-
-   #fontlogo{
-    font-family: 'Major Mono Display', monospace!important;
-    }
-
-
-
-    .swal2-modal{
-      background-color: var(--bckmodal);
-    color: var(--reversable);
-    border: 1px solid var(--main);
-      box-shadow: 0 0 10px var(--modalshadow)
-      /* box-shadow: 0 0 10px var(--c3) */
-    }  
-    .taskInput,.form-control:disabled, .form-control[readonly]{
-      background-color: transparent;
-      color: var(--reversable);
-      border: 1px solid var(--main);
-    }
-    .modal-header{
-      border-bottom: 1px solid var(--main);
-    }
-    .modal-footer{
-      border-top: 1px solid var(--main);
-    }
-  
-    .swal2-title,.swal2-content{
-      color: var(--main);
-    }
-    .form-control{
-      border: 1px solid var(--main);
-      
-    }
-    .form-control::placeholder{ color: var(--main); }
-  
-
-    
-/* OVERLAY */
-
- .overlay{
-  transition:opacity 1000ms;
-  opacity:0;
-  visibility:hidden ;
-   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, .3)), to(#141414));
-    background-image: -webkit-linear-gradient(rgba(0, 0, 0, .3), #141414);
-    background-image: linear-gradient(rgba(0, 0, 0, .3), #141414);
-    position: fixed;
-    width: 100vw;
-    height: calc(100% - 81px);
-    overflow-y: scroll;
-    margin-top: 81px;
- 
-}
-.overlayisOpen{
-    opacity:1;
-    transition:opacity 1000ms;
-    visibility: visible;
-    z-index: 3;
-
-}
-
-
-/* CHAT */
-#chatcontainer {
-  display: flex;
-  flex-direction: column;
-  /* height: 100vh;  */
-   height: calc(100vh - 81px);
-  margin-top: 81px;
-}
-#qrtroqcontainer{
-    height: calc(100vh - 81px);
-  margin-top: 81px;
-}
-
-#chatheader{
-  font: x-large;
-  background-color: var(--bckmodal);
-}
-#chatheader, #chatfooter {
-  /* background-color: #f0f0f0;  */
-  /* Add your desired background color */
-  padding: 10px;
-}
-/* #overlayfix{
-    background: transparent;
-    height: 100vh;
-    min-height: 100%;
-
-} */
-#chat-box {
-  flex-grow: 1; 
-  /* Make chat-box take up all available vertical space */
-  /* overflow-y: auto; */
-   /* Add a scrollbar if content overflows */
-  padding: 1em;
-    width: 100%;
-    /* height: 100%; */
-    height: calc(100% - 90px);
-    /* ESTO LO ROMPE */
-    /* background: red; */
-    overflow: hidden;
-    overflow-y: scroll;
-    touch-action: pan-y!important;
-    
-}
-.swiper-slide {
-  touch-action: pan-y!important;
-}
-.timestamp{
-  font-size: 0.61em;
-    /* color: lightgreen; */
-    color: blue;
-}
-/* .swiper{
-  width: 100%!important;
-} */
-#chatfooter {
-  position: sticky;
-  bottom: 0;
-}
-swiper-container{
-    /* padding-top: 6em; */
-    /* padding-top: 82px; */
-}
-/* .swiperSlide */
-#troqContainer{
-    /* height: calc(100% - 81px);
-    position: fixed;
-    top: 0;
-    margin-bottom: 0; */
-}
-
-
-
-
-.sidenavbutton{
-    background: var(--c2)!important;
-}
-
-/* FIX */
-
-.modal-body {
-    /* padding: 0!important; */
-}
-
-   /* FIXES 2 */
-   .alert{ margin-bottom: 0!important; }
-    .modal-content{
-      background-color: var(--bckmodal);
-      box-shadow: 0 0 10px var(--c3);
-      border: 1px solid var(--border);
-    }
-
-
-
-
-    /* ESCANEADO */
-    .success-message {
-  text-align: center;
-  max-width: 500px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.success-message__icon {
-  max-width: 75px;
-}
-
-.success-message__title {
-  color: #3DC480;
-  transform: translateY(25px);
-  opacity: 0;
-  transition: all 200ms ease;
-}
-.active .success-message__title {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.success-message__content {
-  color: #B8BABB;
-  transform: translateY(25px);
-  opacity: 0;
-  transition: all 200ms ease;
-  transition-delay: 50ms;
-}
-.active .success-message__content {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.icon-checkmark circle {
-  fill: #3DC480;
-  transform-origin: 50% 50%;
-  transform: scale(0);
-  transition: transform 200ms cubic-bezier(0.22, 0.96, 0.38, 0.98);
-}
-.icon-checkmark path {
-  transition: stroke-dashoffset 350ms ease;
-  transition-delay: 100ms;
-}
-.active .icon-checkmark circle {
-  transform: scale(1);
-}
-.uiicon{
-  cursor: pointer;
-}
-
-
-/* CUSTOM AMOUNT */
-.custom-input-group {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        #amount2{
-            background: transparent!important;
-
-        }
-        #address2{
-            border: 1px solid var(--main);
-        }
-
-        .custom-input-group .input-group-text {
-            min-width: 60px;
-        }
-
-        .custom-input-group input[type="number"] {
-            flex: 1;
-            width: 100%;
-            max-width: 100px;
-            padding: .375rem .75rem;
-            font-size: 1rem;
-        }
-        .input-group {
-        text-align: center;
-            justify-content: center; /* Add this line */
-
-    }
-
-    .input-group .input-group-text,
-    .input-group .form-control {
-        display: inline-block;
-    }
-
-    #sendResult{
-height: 30vh;
-    /* width: 100%;
-    height: 63vh; */
-    }
-
-
-
-    /* #FIX */
-
-
-/* Stack the layout on small devices/viewports. */
-@media all and (min-width: 575px) {
- 
-  #qrtroqcontainer {
-  max-height: calc(100vh - 81px)!important;
-  margin-top: 81px!important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  display: flex;
-  flex-wrap: wrap;
-  }
-}
-
-
-
-    #miniversion{
-      font-size: 0.35em;
-    }
-
-
-    #qrScanVideo{
-
-    }
-
-    #chatBadge{
-        position: absolute;
-        top: 24px;
-    right: 33px;
-    padding: 0.25em 0.35em;
-    z-index: 1;
-
-    display: none;
-    }
-
-
-    .newmessage{
-      background-color: green;
-    }
-    </style>
-
 
     </head>
     <body>
@@ -988,17 +35,17 @@ height: 30vh;
   <div class="overlay" ></div>
 
 <nav  id='navbar' class="  ">
-    <a id="logo" class="left navbar-brand" href="https://">
-      
-    </a>
-    <span id="usrAddr" class="left"></span>
+  <select class="left translation" id="chainSelector"> 
+    <!-- <option value="trok">trok</option> 
+    <option value="fuji">fuji</option> 
+    <option value="matic">mumbai</option>  -->
+  </select>
+    <!-- <a id="logo" class="left navbar-brand" href="https://"> </a> -->
+    <!-- <span id="usrAddr" class="left"></span> -->
     <div  class="center"> 
 
-
-
-
-<h1 id="fontlogo">ChatWallet <span id="miniversion">v0.1Alpha</span></h1>
-<select class="right translation" id="langswitch"> <option value="en">en</option> <option value="fr">fr</option> <option value="es">es</option> </select>
+<h1 id="fontlogo">HonorLoans <span id="miniversion">chatwallet v0.1Alpha</span></h1>
+<!-- <select class="right translation" id="langswitch"> <option value="en">en</option> <option value="fr">fr</option> <option value="es">es</option> </select> -->
     </div> 
 
     
@@ -1021,13 +68,21 @@ height: 30vh;
     <a class='closeonclick' href="/"> <div class='title '> </div> </a>
     <!-- <ul class='nav'> -->
        
-      <i class="fas fa-wallet"></i>
-      <i class="fas fa-cog"></i>
-      
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col text-center">
-                    <h1 class="text-center">CONTACTS</h1>
+      <!-- <i class="fas fa-wallet"></i>
+      <i class="fas fa-cog"></i> -->
+
+            <input name="inputItemImgMINT" id="fileCreateItemFile" type="file" style="display:none" accept="image/*" />
+            <img id="itemImgMINT" src="img/anonym.jpg" alt="Avatar" class="">
+
+      <div class="container mt-3">
+        <div class="row">
+          <div class="col text-center">
+            <!-- <h1 class="text-center">CONTACTS</h1> -->
+            
+            
+            
+            <select class="right translation" id="langswitch" style="display: none;"> <option value="en">en</option> <option value="fr">fr</option> <option value="es">es</option> </select>
+            
                 <button type="button"  id="" class="btn btn-primary"   onclick="event.stopPropagation();addAddress()"> 
                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512">
                     <path d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM504 312V248H440c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V136c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H552v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/></svg>
@@ -1045,10 +100,10 @@ height: 30vh;
         </div>
     <ul id="troqContacts" class='nav'>
         
+        <!-- <li> <a onclick="event.stopPropagation();selectChat()" >  <img src="img/avatar.png" alt="Avatar" class="rounded-circle"> 0x... <i class="fa-solid fa-trash"></i></a> </li>
         <li> <a onclick="event.stopPropagation();selectChat()" >  <img src="img/avatar.png" alt="Avatar" class="rounded-circle"> 0x... <i class="fa-solid fa-trash"></i></a> </li>
         <li> <a onclick="event.stopPropagation();selectChat()" >  <img src="img/avatar.png" alt="Avatar" class="rounded-circle"> 0x... <i class="fa-solid fa-trash"></i></a> </li>
-        <li> <a onclick="event.stopPropagation();selectChat()" >  <img src="img/avatar.png" alt="Avatar" class="rounded-circle"> 0x... <i class="fa-solid fa-trash"></i></a> </li>
-        <li> <a onclick="event.stopPropagation();selectChat()" >  <img src="img/avatar.png" alt="Avatar" class="rounded-circle"> <span>0x...</span> <i class="fa-solid fa-trash"></i></a> </li>
+        <li> <a onclick="event.stopPropagation();selectChat()" >  <img src="img/avatar.png" alt="Avatar" class="rounded-circle"> <span>0x...</span> <i class="fa-solid fa-trash"></i></a> </li> -->
         <!-- <li> -->
             <!-- <img src="img/avatar.png" alt="Avatar" class="rounded-circle"> -->
             <!-- <a onclick="event.stopPropagation();selectChat()" >0x... <i class="fa-solid fa-trash"></i></a> </li> -->
@@ -1105,7 +160,9 @@ height: 30vh;
               <div class="container mt-5">
                 <button type="button"  id="lock" class="btn btn-primary"  style="display: none;" onclick="event.stopPropagation();unlockWallet()"> UNLOCK <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"> <path d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z" fill="#ffffff"/></svg> </button>
                 <button type="button"  id="send" class="btn btn-approve" style="display: none;"  onclick="event.stopPropagation(); openSend()">SEND</button>
-                <button type="button"  id="scan" class="btn btn-reject" style="display: none;"  onclick="event.stopPropagation(); scanAddress()">SCAN</button>
+                <button type="button"  id="scan" class="btn btn-reject" style="display: none;"  onclick="event.stopPropagation(); makeDeposit()">DEPOSIT</button>
+                <!-- <button type="button"  id="scan" class="btn btn-reject" style="display: none;"  onclick="event.stopPropagation(); scanAddress()">DEPOSIT</button> -->
+                <!-- <button type="button"  id="scan" class="btn btn-reject" style="display: none;"  onclick="event.stopPropagation(); scanAddress()">SCAN</button> -->
                 <button type="button"  id="chat" class="btn btn-primary"   style="display: none;"  onclick="event.stopPropagation(); openChat()"> CHAT </button>
               </div>
               
@@ -1197,7 +254,29 @@ height: 30vh;
               <!-- AMUINT END -->
           <p id="txdetails" class="container">
             to( Address): 
-            <input type="text" id="address2" style="width: 100%!important; word-wrap: break-word;" maxlength="64" />
+            
+            <!-- <input type="text" id="address2" style="width: 100%!important; word-wrap: break-word;" maxlength="64" />
+            <button type="button"  id="" class="btn btn-reject"  onclick="event.stopPropagation(); scanAddress()">
+              <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+                <path d="M0 80C0 53.5 21.5 32 48 32h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80zM64 96v64h64V96H64zM0 336c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V336zm64 16v64h64V352H64zM304 32h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H304c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48zm80 64H320v64h64V96zM256 304c0-8.8 7.2-16 16-16h64c8.8 0 16 7.2 16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s7.2-16 16-16s16 7.2 16 16v96c0 8.8-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s-7.2-16-16-16s-16 7.2-16 16v64c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V304zM368 480a16 16 0 1 1 0-32 16 16 0 1 1 0 32zm64 0a16 16 0 1 1 0-32 16 16 0 1 1 0 32z"/></svg>
+              </button> -->
+
+              <div class="row">
+                <!-- <div class="col-8"> -->
+                  <input type="text" id="address2" style="width: 100%!important; word-wrap: break-word;font-size: 1.4em;" maxlength="64" />
+                <!-- </div> -->
+                <!-- <div class="col-4"> -->
+                  <button type="button" id="addrScanner" class="btn btn-reject" onclick="event.stopPropagation(); scanAddress()">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+                      <path d="M0 80C0 53.5 21.5 32 48 32h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80zM64 96v64h64V96H64zM0 336c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V336zm64 16v64h64V352H64zM304 32h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H304c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48zm80 64H320v64h64V96zM256 304c0-8.8 7.2-16 16-16h64c8.8 0 16 7.2 16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s7.2-16 16-16s16 7.2 16 16v96c0 8.8-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s-7.2-16-16-16s-16 7.2-16 16v64c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V304zM368 480a16 16 0 1 1 0-32 16 16 0 1 1 0 32zm64 0a16 16 0 1 1 0-32 16 16 0 1 1 0 32z"/>
+                    </svg>
+                  </button>
+                <!-- </div> -->
+              </div>
+              
+
+              
+
             <br /> 
             note: <input type="text" id="message2" size="64" maxlength="64"  /> <br /> 
             <input type="number" id="nonce2" size="4" maxlength="4" style="display: none;" /> 
@@ -1220,6 +299,7 @@ height: 30vh;
 
         </div>
         <div class="modal-footer">
+          <div id="txlink"></div>
           <button type="button" class="btn btn-outline-secondary closeWalletBkp" id="closeWalletSend"  data-translate="close" >Close</button>
           <!-- <button type="button" class="btn btn-outline-secondary closeWalletBkp" id="closeWalletBkp" data-bs-dismiss="modal" data-translate="close" >Close</button> -->
           <button type="button" class="btn btn-outline-secondary closeWalletBkp" id="getValidatedTX" data-bs-dismiss="modal" data-translate="getvalidation" disabled>get Validation</button>
@@ -1370,8 +450,94 @@ height: 30vh;
       </div>
       <!-- fin MODAL WALLET-->
 
+<!-- DEPOSIT MODAL -->
+<!-- openModalId('#scanModal') -->
+
+<div class="modal fade" data-bs-backdrop="static"   id="depositModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" data-translate="makedeposit" id="">Make a deposit</h5>
+      </div>
+     
+	  <div class="modal-body" id="">
+
+        <!-- <div class="form-group">
+          <label for="networkSelector">Choose native currency:</label>
+          <select class="form-control" id="networkSelector">
+              <option value="avalance">Fuji</option>
+              <option value="mumbai"disabled>Mumbai</option>
+              <option value="sepolia"disabled>Sepolia</option>
+          </select>
+      </div> -->
+
+	  
+	  <!-- <div class="form-group">
+		  <label for="depositAmountInput">How much USD would you like to deposit:</label>
+		  <input type="number" class="form-control" id="depositAmountInput" step="1" required>
+		</div> -->
+		
+		
+		<div class="container mt-5" id="amountDeposit">
+			<h1>Deposit</h1>
+			<div class="custom-input-group">
+				<div class="input-group">
+					<select class="custom-select dropdown" name="currency" id="currencySelect">
+						<option value="matic-network">MATIC</option>
+						<option value="avalance">AVAX</option>
+						<option value="dai">DAI</option>
+						<option value="ethereum">ETH</option>
+					</select>
+					<p id='currencyConversor'></p>
+				</div>
+			</div>
+		<!-- </div> -->
+		
+		<div class="custom-input-group">
+			<div class="input-group">
+				<span class="input-group-text">AVAX</span>
+				<input type="number" class="form-control" id="AMDcrypto" step="1" required>
+			</div>
+		</div>
+
+		<div class="custom-input-group">
+			<div class="input-group">
+				<span class="input-group-text">USD</span>
+				<input type="number" class="form-control" id="AMDusd" step="1" required>
+			</div>
+		</div>
+
+		
+		<button type="button"  id="prepareDeposit"   onclick="event.stopPropagation();prepareDeposit()" class="btn btn-approve">OK</button>
+		<!-- <div class="form-group">
+			<button type="button" class="btn btn-outline-secondary closeWalletBkp" id="cancelDeposit"  data-translate="cancel" >Cancel</button>
+		</div> -->
+	  
+		</div>
+        
+
+<!-- qrhere -->
+<div class="responsive-svg" id="depositqrcanvas"></div>
 
 
+      <div class="">
+        <div id="depositResult"></div>
+      </div>
+
+
+
+
+
+</div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary closeWalletBkp" id="closeDepositModal"  data-translate="close" >Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- fin DEPOSIT MODAL-->
 
 
         <!-- SCAN MODAL -->
@@ -1383,18 +549,23 @@ height: 30vh;
         </div>
         <div class="modal-body" id="">
         <div class="">
-          <!-- <p id="dataResult3"></p> -->
           <div class="responsive-svg" id="qrcanvas"></div>
           <video id="qrScanVideo" width="300" height="300"  ></video>
-          <!-- <div class="responsive-svg" id=""></div> -->
-          <!-- <div id="qrforsend3"></div> -->
           <div id="scanResult"></div>
           
-       
-
         </div>
+
+
+
+
+
+
+
+
+
+
+
         <div class="modal-footer">
-          <!-- <button type="button" class="btn btn-outline-secondary closeWalletBkp" id=""  data-translate="retry"  style="display: none;">Retry</button> -->
           <button type="button" class="btn btn-outline-secondary closeWalletBkp" id="closeScanModal"  data-translate="close" >Close</button>
         </div>
       </div>
@@ -1402,7 +573,6 @@ height: 30vh;
   </div>
 </div>
   <!-- fin SCAN MODAL-->
-
 
 
       
@@ -1518,6 +688,62 @@ height: 30vh;
 <script>
 
   /*********************************************************************************************
+  .)  IMG validation
+  **********************************************************************************************/
+
+
+itemImgMINT.onclick = function(e){ 
+      console.log('img clicked')
+    e.preventDefault()
+    fileCreateItemFile.click();
+    
+    };
+    
+
+    fileCreateItemFile.onchange = async function() {
+    console.log("img changed");
+     
+    if (fileCreateItemFile.files.length == 1) {
+      itemImgMINT.src =''
+      // iamImgLoader.style.display='flex'
+  
+      
+  
+    const data = this.files[0]
+    let name = data.name;// funciona...
+  
+    console.log('name: ',name);
+  
+      const files = [
+        // new File(fileParts, fileName, [options])
+        new File([data], name,  { type: 'application/jpg' })
+      ]
+    console.log('FILES: ',files)
+    
+    // var fileReader = new FileReader();
+    let reader = new FileReader();
+  
+    reader.readAsDataURL(data);
+  
+    reader.onload = await function() {
+      // console.log(reader.result);
+      itemImgMINT.src = reader.result;
+      // FALTARIA COMPRIMIR LA IMAGEN ANTES
+      let b64 = JSON.stringify(reader.result)
+    //   console.log(b64);
+    localStorage.setItem('image', b64);
+    };  
+        // iamImgLoader.style.display='none'
+        itemImgMINT.style.display='block'
+        Toast.fire( 'Image added','', "success");
+      // alertMessage.innerHTML = '';
+    }
+    
+    
+    };
+
+
+  /*********************************************************************************************
   .)  INIT
   **********************************************************************************************/
 
@@ -1548,10 +774,63 @@ height: 30vh;
 
     // check balance
     await syncBalance()
+
+    // populate chainSelector
+       // Get the select element by ID
+       const chainSelector = document.getElementById('chainSelector');
+
+// Iterate through optionsList and populate the selector
+optionsList.forEach(option => {
+  const optionElement = document.createElement('option');
+  optionElement.value = option.TOKEN_CHAIN_NAME;
+  optionElement.text = option.TOKEN_CHAIN_NAME;
+  chainSelector.appendChild(optionElement);
+});
+
+// Assuming chainSelector is your select element
+// const chainSelector = document.getElementById('yourSelectorId'); // replace 'yourSelectorId' with the actual ID of your select element
+
+// Add an event listener for the onchange event
+chainSelector.addEventListener('change', function() {
+  // This function will be called whenever the selected option changes
+  const selectedOption = chainSelector.options[chainSelector.selectedIndex];
+  console.log('Selected option:', selectedOption.value);
+  // Add your logic here to handle the change
+  // Display a message
+  console.log('Selected option:', selectedOption.value);
+  
+  // Your logic to display a message can be more sophisticated
+  alert('Only on mumbai for the moment: ' );
+
+  // Reset to the first option
+  chainSelector.selectedIndex = 0;
+
+});
+
+// chainSelector.addEventListener('change', function () {
+// 	var selectedNetwork = optionElement.value;
+// 	console.log('Selected Network: ' + selectedNetwork);
+// 	// Add your logic here to handle the selected network
+// 	// showDepositqr(optionsList[0].DEPOSIT_CONTRACT)
+// 			// display the qr and waiting for deposit
+//         });
+
+// LOAD WALLET USER ICON
+
+let loadImg = window.localStorage.getItem('image')
+  if (!loadImg)  {
+    console.log('NO IAM IMG')
+    fileCreateItemFile.value = null
+  }else{
+      itemImgMINT.src = JSON.parse(loadImg);
+    itemImgMINT.style.display='block'
+  }
+
       
   }
 
 async function syncBalance(){
+  console.log('syncBalance()')
     let preferedWallet = localStorage.getItem('preferedWallet');
 
 if (!preferedWallet) { console.log('NO PREFERED WALLET SET') }
@@ -1560,16 +839,16 @@ if (!preferedWallet) { console.log('NO PREFERED WALLET SET') }
            walletChoice = values[0];
             userAddress = values[1];
   }
-  let balancetroq = await checkERC20Balance(userAddress)//troq
+  let balanceerc20 = await checkERC20Balance(userAddress)//troq
 
       let balancegas = await checkGasBalance(userAddress)//main eth
       // let balanceeth = await checkGasBalance(userAddress)//main eth
-      q=balancegas
-      // miniversion.innerHTML = `GAS: ${Number(balancegas).toFixed(3)}`
-      // troqamount.innerHTML = `${optionsList[0].TOKEN_NAME}: ${Number(balancetroq).toFixed(3)}`
-      
-      miniversion.innerHTML = `GAS: ${Number(balancetroq).toFixed(3)}`
-      troqamount.innerHTML = `${optionsList[0].TOKEN_NAME}: ${Number(balancegas).toFixed(3)}`
+      // q=balancegas
+
+      // miniversion.innerHTML = `GAS: ${Number(balancetroq).toFixed(3)}`
+      // troqamount.innerHTML = `${optionsList[0].TOKEN_NAME}: ${Number(balancegas).toFixed(5)}`
+      troqamount.innerHTML = `${optionsList[0].TOKEN_NAME}: ${Number(balanceerc20).toFixed(3)}`
+      miniversion.innerHTML = `GAS: ${Number(balancegas).toFixed(5)}`
 
       
       // troqamount.innerHTML = `T$:${balancetroq.toString()}`
@@ -1682,9 +961,39 @@ openModalId('#walletSend')
 
 // }
 
+async function getOraclePrice(){
+	console.log('getOraclePrice()')
+	
+// 	const ethers = require('ethers');
+// const { AbiCoder } = require('ethers/lib/utils');
+// const { ChainlinkV3Interface, AggregatorV3Interface } = require('./ChainlinkV3Interface'); // You may need to import the correct interface ABI
 
-async function sendTxOnline() {
-        console.log("sendTxOnline()");
+// const provider = new ethers.providers.JsonRpcProvider('YOUR_JSON_RPC_URL');
+let provider = new ethers.providers.JsonRpcProvider(`${optionsList[0].API}`);
+
+// const privateKey = 'YOUR_PRIVATE_KEY';
+// const wallet = new ethers.Wallet(privateKey, provider);
+let localWallet = await  ethers.Wallet.fromMnemonic(pk);
+
+
+// const oracleAddress = 'CHAINLINK_ORACLE_ADDRESS';
+// const aggregatorAddress = 'CHAINLINK_AGGREGATOR_ADDRESS';
+
+
+// const oracle = new ethers.Contract(oracleAddress, ChainlinkV3Interface, wallet);
+// const aggregator = new ethers.Contract(aggregatorAddress, AggregatorV3Interface, wallet);
+
+// async function getLatestPrice() {
+//   const latestRoundData = await aggregator.latestRoundData();
+//   const latestPrice = latestRoundData[1].toString();
+//   console.log('Latest Price:', latestPrice);
+// }
+
+// getLatestPrice();
+
+}
+async function sendGASTxOnline() {
+        console.log("sendGASTxOnline()");
 
         if (typeof wallet === 'undefined' || wallet === null) {
             console.log('UNLOCK WALLET FIRST')
@@ -1694,33 +1003,27 @@ async function sendTxOnline() {
 
         let provider = new ethers.providers.JsonRpcProvider(`${optionsList[0].API}`);
         console.log('provider:', provider)
-        p=provider;
         let pk  = JSON.parse(localStorage.getItem('unbackedWallet'))
         let localWallet = await  ethers.Wallet.fromMnemonic(pk);
-
-        lw = localWallet
         let to = document.getElementById('address2').value;
         let addr = localWallet.address;
-
         let amount = document.getElementById('amount2').value;
         let message = document.getElementById('message2').value;
         const toAddress = ethers.utils.getAddress(to);
-        // addr= toAddress;
-        
-        // NONCE
         const nonce = await provider.getTransactionCount(addr);
-
-        // let nonceToConvert = document.getElementById('nonce2').value;
-        // const nonce = ethers.BigNumber.from(nonceToConvert).toHexString();
 
         console.log("Nonce:", nonce);
         try { signer = localWallet.connect(provider);}
           catch (error) { console.log(error.message,'ERROR WALELT');}
           console.log('signer:', signer)
-
           const amountToSend = ethers.utils.parseEther(amount); // 1 ETH
           console.log('amount to send:', amountToSend)
-          const gasPrice = ethers.utils.parseUnits('50', 'gwei');
+
+        const gasPrice = await provider.getGasPrice();
+        const gasPriceGwei = ethers.utils.formatUnits(gasPrice, 'gwei');
+        console.log(`Current Gas Price: ${gasPriceGwei} Gwei`);
+
+          // const gasPrice = ethers.utils.parseUnits('50', 'gwei');
           const network = await provider.getNetwork();
           const chainId = network.chainId;
           console.log('chainId:', chainId);
@@ -1749,8 +1052,6 @@ async function sendTxOnline() {
     console.log('reloadBalanceAfterReceiving', toAddress,amount)
     reloadBalanceAfterReceiving(toAddress,amount)
 
-    // txdetails.style.display='none';
-    // amountView.style.display='none';
     txbuilder.style.display='none';
     document.getElementById('result2').innerHTML = ` <div class="success-message"> <svg viewBox="0 0 76 76" class="success-message__icon icon-checkmark"> <circle cx="38" cy="38" r="36"/> <path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M17.7,40.9l10.9,10.9l28.7-28.7"/> </svg> 
         </div> 
@@ -1761,9 +1062,157 @@ async function sendTxOnline() {
     // checkGasBalance(addr)
 
   } catch (error) {
-    console.error('Error:', error.message);
+    console.error('Error HERE:', error.message);
+    txbuilder.style.display='none';
+    document.getElementById('result2').innerHTML = ` <div style="color: red;"> ${error.message} </div> `
+
   }
 }
+
+
+async function sendTxOnline() {
+        console.log("sendTxOnline() - ERC20");
+
+        if (typeof wallet === 'undefined' || wallet === null) {
+            console.log('UNLOCK WALLET FIRST')
+            Toast.fire({ icon: 'error', title: 'UNLOCK WALLET FIRST' });
+            return
+        }
+
+
+
+
+        let provider = new ethers.providers.JsonRpcProvider(`${optionsList[0].API}`);
+        console.log('provider:', provider)
+        p=provider;
+        let pk  = JSON.parse(localStorage.getItem('unbackedWallet'))
+        let localWallet = await  ethers.Wallet.fromMnemonic(pk);
+        let addr = localWallet.address;
+        let amount = document.getElementById('amount2').value;
+        let message = document.getElementById('message2').value;
+        let to = document.getElementById('address2').value;
+        const toAddress = ethers.utils.getAddress(to);
+        const nonce = await provider.getTransactionCount(addr);
+
+
+
+        
+        console.log("Nonce:", nonce);
+        try { signer = localWallet.connect(provider);}
+          catch (error) { console.log(error.message,'ERROR WALELT');}
+          console.log('signer:', signer)
+
+          // ------------------------
+        // CREAR CONTRATO
+          // const tokenContract = new ethers.Contract(tokenAddress, tokenAbi, wallet);
+          const abi =ABIs[optionsList[0].ERC20_TOKEN_ABI]
+          const contractAddress = optionsList[0].ERC20_CONTRACT_ADDRESS //'YOUR_ERC20_CONTRACT_ADDRESS';
+          const tokenContract = new ethers.Contract(contractAddress, abi, provider);
+
+          // FIN CREAR CONTRATO
+          // ------------------------
+          const amountToSend = ethers.utils.parseEther(amount); // 1 ETH
+          console.log('amount to send:', amountToSend)
+        const gasPrice = await provider.getGasPrice();
+        const gasPriceGwei = ethers.utils.formatUnits(gasPrice, 'gwei');
+        console.log(`Current Gas Price: ${gasPriceGwei} Gwei`);
+          const network = await provider.getNetwork();
+          const chainId = network.chainId;
+          console.log('chainId:', chainId);
+
+          // ----------------
+          const contractWithSigner = await tokenContract.connect(signer);
+          // ----------------
+          
+          try {
+            // TRANSACTION
+            const transferData = contractWithSigner.interface.encodeFunctionData('transfer', [toAddress, amountToSend]);
+            // const transferData = tokenContract.interface.encodeFunctionData('transfer', [toAddress, amountToSend]);
+  
+          const erc20transaction = {
+            gasPrice: gasPrice,
+            gasLimit: 8000000, // Adjust the gas limit as needed
+              nonce: nonce,
+              data: transferData,
+              chainId: chainId, 
+                // to: toAddress,
+            };
+            // const transaction = {
+            //   value: amountToSend,
+            //   gasPrice: gasPrice,
+            //   nonce: nonce,
+            //   chainId: chainId, // Replace with the appropriate chain ID (1 for Ethereum mainnet)
+            //   gasLimit: 8000000, // Set the gas limit to 8000000
+            // };
+
+            
+            // Sign the transaction with EIP-155 replay protection
+            const signedTransaction = await localWallet.signTransaction(erc20transaction);
+            console.log('Signed Transaction:', signedTransaction);
+            
+            
+            
+                  // ------------------------------
+                  // FIRMA Y ENVIO DE FIRMA
+                  // v1
+                  // const tx = await contractWithSigner.sendTransaction(signedTransaction);
+                  // Error HERE: contractWithSigner.sendTransaction is not a function
+
+                  // v2
+                  // const tx = await provider.sendTransaction(signedTransaction);// FUNCIONA PERO NO MANDA
+                  // insufficient funds for intrinsic transaction cost
+
+                  // ----------------------------------
+                  // ENVIO DIRECTO 
+                  const tx = await contractWithSigner.transfer(toAddress, amountToSend);//WORKS
+
+                      // ----
+                      
+                      console.log('Token transfer successful!');
+                      console.log(`Transaction hash: ${tx.hash}`);
+                      let tokenExplorer =  optionsList[0].EXPLORER;
+                      let txLink =`${tokenExplorer}tx/${tx.hash}`;
+                      console.log(`Transaction link: ${txLink}`);
+    ///////////////////////////
+    console.log('reloadBalanceAfterReceiving', toAddress,amount)
+    reloadBalanceAfterReceiving(toAddress,amount)
+
+    txbuilder.style.display='none';
+    document.getElementById('result2').innerHTML = ` <div class="success-message"> <svg viewBox="0 0 76 76" class="success-message__icon icon-checkmark"> <circle cx="38" cy="38" r="36"/> <path fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M17.7,40.9l10.9,10.9l28.7-28.7"/> </svg> 
+      </div> 
+      `
+      txlink.innerHTML = ` <a href="${txLink}" target="_blank">Link</a> `
+  } catch (error) {
+    console.error('Error HERE:', error.message);
+    txbuilder.style.display='none';
+    document.getElementById('result2').innerHTML = ` <div style="color: red;"> ${error.message} </div> `
+
+  }
+}
+
+// const tokenContract = new ethers.Contract(tokenAddress, tokenAbi, wallet);
+
+async function sendToken() {
+    try {
+        // Replace 'AMOUNT_TO_SEND' with the amount of tokens to send
+        const amountToSend = ethers.utils.parseUnits('AMOUNT_TO_SEND', 'ether');
+
+        // Perform the ERC-20 token transfer
+        const tx = await tokenContract.transfer(toAddress, amountToSend);
+        await tx.wait();
+
+        console.log(`Transaction hash: ${tx.hash}`);
+        console.log('Token transfer successful!');
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
+}
+
+
+
+
+
+
 
 
 // document.getElementById("closeWalletSend").onclick = () => {
@@ -2170,72 +1619,89 @@ const Queue = Swal.mixin({
 /*********************************************************************************************
 .) VARIABLES
 **********************************************************************************************/  
-
+// created testnet subnet on fuji 
+// https://subnets-test.avax.network/p-chain/tx/2BthBtaUTZoQiNrukPmzBaris4TXMFGT3a9PB5LX8C6BeBtkvo
   optionsList =[ 
   {
-          "TOKEN_NAME": "HLOANS",
-          "API": 'http://127.0.0.1:9652/ext/bc/Gxw8Crz9KhdMngxc7771R6seV1tK19rWutkzp1x38LT8ACiDx/rpc',
+          "TOKEN_NAME": "HLOANmumb",
+          "TOKEN_CHAIN_NAME": 'Mumbai',
+          "API": 'https://endpoints.omniatech.io/v1/matic/mumbai/public',
+          "TOKEN_CHAINID": '80001',
+          "ERC20_CONTRACT_ADDRESS":"0xC3fB0e8A9E26dc59912bF45e52327Be4D88625e7",//slave v3
+          "TOKEN_ABI": 'HLOANTOKENV4',
+          "ERC20_TOKEN_ABI": null,
+          "TOKEN_ADDRESS": null,//master v3
+          "DEPOSIT_CONTRACT":  "0x23f15345392Fd2caCCaC1CE2361eA28669E8326C",//fuji
+          "DEPOSIT_CONTRACT_ABI": "SENDERv5",
+          "DEPOSIT_CONTRACT_CHAINID": '43113',//fuji c-chain
+          "EXPLORER": 'https://mumbai.polygonscan.com/',
+          "CCIP_EXPLORER": 'https://ccip.chain.link/msg/',
+
+
+        }, 
+  {
+          "TOKEN_NAME": "HLOANsep",
+          "API": 'https://ethereum-sepolia.publicnode.com',
+          "TOKEN_CHAIN_NAME": 'Sepolia',
+          "TOKEN_CHAINID": '11155111',
+          "TOKEN_ADDRESS": "0x204a401dBD79b6AE143991a10479e3Da17C0a24b",//master v3
+          "ERC20_CONTRACT_ADDRESS":"0x204a401dBD79b6AE143991a10479e3Da17C0a24b",//slave v3
+          "ERC20_TOKEN_ABI": 'hloantokenv2',
+          "TOKEN_ABI": 'hloantokenv2',
+          "DEPOSIT_CONTRACT":  "0x1234567890cF56d4f6417b203b25A68123456789",
+          "DEPOSIT_CONTRACT_CHAINID": '43113',//fuji c-chain
+          "EXPLORER": 'https://sepolia.etherscan.io/'
+
+        }, 
+  {
+          "TOKEN_NAME": "HLOANg",
+          "API": 'https://ethereum-goerli.publicnode.com',
+          "TOKEN_CHAIN_NAME": 'Goerli',
+          "TOKEN_CHAINID": '5',
+          "ERC20_CONTRACT_ADDRESS":"0xa438027C37604a42fa7821EA642BFd5b2FcA9E21",//slave v3
+          "ERC20_TOKEN_ABI": 'hloantokenv2',
+          "TOKEN_ADDRESS": "0x204a401dBD79b6AE143991a10479e3Da17C0a24b",//master v3
+          "TOKEN_ABI": 'hloantokenv2',
+          "DEPOSIT_CONTRACT":  "0x1234567890cF56d4f6417b203b25A68123456789",
+          "DEPOSIT_CONTRACT_CHAINID": '43113',//fuji c-chain
+          "EXPLORER": 'https://goerli.etherscan.io/'
+
+        }, 
+
+  {
+          "TOKEN_NAME": "HLOAN",
+          "API": 'http://127.0.0.1:9652/ext/bc/26XS2hiWJbjG89hHoKmYsfz34aXbSDWRasRBRRCL5RjwqTcApg/rpc',
+          "TOKEN_CHAIN_NAME": 'Mumbai',
+          "TOKEN_CHAINID": 'HLOANS',
+          "TOKEN_ADDRESS": "0x691E71Ff60cF56d4f6417b203b25A683afE9a9B6",//master v3
+          "ERC20_CONTRACT_ADDRESS":"0x691E71Ff60cF56d4f6417b203b25A683afE9a9B6",//slave v3
+          "TOKEN_ABI": 'MasterContract',
+          "ERC20_TOKEN_ABI": 'SlaveContractERC20',
+          "DEPOSIT_CONTRACT": null,
+          "DEPOSIT_CONTRACT_CHAINID": '43113',//fuji c-chain
+          "EXPLORER": 'https://sepolia.etherscan.io/',
+          "EXPLORER": null,
+        }, 
+  {
+          "TOKEN_NAME": "TROK",
+          "API": 'http://127.0.0.1:9656/ext/bc/Gxw8Crz9KhdMngxc7771R6seV1tK19rWutkzp1x38LT8ACiDx/rpc',
+          "TOKEN_CHAIN_NAME": 'TROK',
           "TOKEN_CHAINID": '113311',
           "TOKEN_ADDRESS": "0x691E71Ff60cF56d4f6417b203b25A683afE9a9B6",//master v3
-          "ERC20_CONTRACT_ADDRESS":"0x4bF546fC1A24F24c1F88e315B0ED96BF853C3D1a",//slave v3
+          "ERC20_CONTRACT_ADDRESS":"0x691E71Ff60cF56d4f6417b203b25A683afE9a9B6",//slave v3
           "TOKEN_ABI": 'MasterContract',
           "ERC20_TOKEN_ABI": 'SlaveContractERC20',
-          "EXPLORER": null,
+          "EXPLORER": 'https://sepolia.etherscan.io/',
         }, 
-    {
-          "TOKEN_NAME": "TROK",
-          "API": 'http://127.0.0.1:9654/ext/bc/hbB6pjEZaGE8rivuSXEwse2C8dNgHD3JfCYkNQsds9Wsca5Pb/rpc',
-          "TOKEN_CHAINID": '232211',
-          "TOKEN_ADDRESS": "0x691E71Ff60cF56d4f6417b203b25A683afE9a9B6",//master v3
-          "ERC20_CONTRACT_ADDRESS":"0x4bF546fC1A24F24c1F88e315B0ED96BF853C3D1a",//slave v3
-          "TOKEN_ABI": 'MasterContract',
-          "ERC20_TOKEN_ABI": 'SlaveContractERC20',
-          "EXPLORER": null,
-        }, 
-  {
-        "TOKEN_NAME": "SEPOLIA",
-        "API": 'https://ethereum-sepolia.publicnode.com',
-        "TOKEN_CHAINID": '11155111',
-        "EXPLORER": 'https://sepolia.etherscan.io/',
-        "TOKEN_ADDRESS": "0xe336d36FacA76840407e6836d26119E1EcE0A2b4",//master
-        "TOKEN_ABI": 'MasterContract',
-        "ERC20_CONTRACT_ADDRESS":"0xa4DfF80B4a1D748BF28BC4A271eD834689Ea3407",//slave
-        "ERC20_TOKEN_ABI": 'SlaveContractERC20',
-        "ERC6551_ACCOUNT_ADDRESS":"0x6f95442eE0D54da362d7cdD611ACCC9FE44B998B",//
-        "ERC6551_ACCOUNT_ABI": 'ERC6551Account',
-        "ERC6551_REGISTRY_ADDRESS":"0x6f95442eE0D54da362d7cdD611ACCC9FE44B998B",//
-        "ERC6551_REGISTRY_ABI":'ERC6551Registry'
-      },
-  {
-        "TOKEN_NAME": "SEPOLIA",
-        "API": 'http://127.0.0.1:9654/ext/bc/hzrvbvCAJz5TDVvkWyo7izquSBiLXS9poEMNRT5EqHYtNVJJH/rpc',
-        "TOKEN_ADDRESS": "0xe336d36FacA76840407e6836d26119E1EcE0A2b4",//master
-        "TOKEN_ABI": 'MasterContract',
-        "TOKEN_CHAINID": '11155111',
-        "EXPLORER": null,
-        "ERC20_CONTRACT_ADDRESS":"0xa4DfF80B4a1D748BF28BC4A271eD834689Ea3407",//slave
-        "ERC20_TOKEN_ABI": 'SlaveContractERC20',
-
-      },
-  {
-        "TOKEN_NAME": "TROQ_SCROLL",
-        "TOKEN_ADDRESS": "0xF927099D89378611a0cDF690580977Ca7af425BA",//master
-        "TOKEN_ABI": 'MasterContract',
-        "TOKEN_CHAINID": '534351',
-        "API": 'https://sepolia-rpc.scroll.io/',
-        "EXPLORER": 'https://sepolia.scrollscan.dev/',
-        "ERC20_CONTRACT_ADDRESS":"0xF927099D89378611a0cDF690580977Ca7af425BA",//slave
-        "ERC20_TOKEN_ABI": 'SlaveContractERC20',
-
-      },
       {
-        "TOKEN_NAME": "MUMBAI",
+        "TOKEN_NAME": "FUJI",
         "TOKEN_ADDRESS": "0xf2b1dC371eDC20D4A13821E9dC46ae6facAa1632",
+          "TOKEN_CHAIN_NAME": 'FUJI',
         "TOKEN_ABI": 'opptonev16ABI',
         "TOKEN_CHAINID": '80001',
         "API": 'https://endpoints.omniatech.io/v1/matic/mumbai/public',
-        "EXPLORER": 'https://mumbai.polygonscan.com/'
-      }
+        "EXPLORER": 'https://testnet.snowtrace.io/'
+      } 
       
     ];
 
@@ -2270,6 +1736,2191 @@ const Queue = Swal.mixin({
 
 
   ABIs = {
+	SENDERv5: [
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "router",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "link",
+				"type": "address"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "target",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "FailedToWithdrawEth",
+		"type": "error"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "bytes32",
+				"name": "messageId",
+				"type": "bytes32"
+			}
+		],
+		"name": "MessageSent",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferRequested",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "acceptOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "linkBalance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "tokenreceiver",
+				"type": "address"
+			},
+			{
+				"internalType": "uint64",
+				"name": "destinationChainSelector",
+				"type": "uint64"
+			},
+			{
+				"internalType": "address",
+				"name": "receiver",
+				"type": "address"
+			},
+			{
+				"internalType": "enum SENDERv5.PayFeesIn",
+				"name": "payFeesIn",
+				"type": "uint8"
+			}
+		],
+		"name": "mint",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "beneficiary",
+				"type": "address"
+			}
+		],
+		"name": "withdraw",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "beneficiary",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "token",
+				"type": "address"
+			}
+		],
+		"name": "withdrawToken",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "receive"
+	}
+],
+	SENDERv4: [
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "router",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "link",
+				"type": "address"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "target",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "FailedToWithdrawEth",
+		"type": "error"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "bytes32",
+				"name": "messageId",
+				"type": "bytes32"
+			}
+		],
+		"name": "MessageSent",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferRequested",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "acceptOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "linkBalance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint64",
+				"name": "destinationChainSelector",
+				"type": "uint64"
+			},
+			{
+				"internalType": "address",
+				"name": "receiver",
+				"type": "address"
+			},
+			{
+				"internalType": "enum SENDERv4.PayFeesIn",
+				"name": "payFeesIn",
+				"type": "uint8"
+			}
+		],
+		"name": "mint",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "beneficiary",
+				"type": "address"
+			}
+		],
+		"name": "withdraw",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "beneficiary",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "token",
+				"type": "address"
+			}
+		],
+		"name": "withdrawToken",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "receive"
+	}
+],
+	HLOANTOKENV4:[
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [],
+		"name": "AccessControlBadConfirmation",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "neededRole",
+				"type": "bytes32"
+			}
+		],
+		"name": "AccessControlUnauthorizedAccount",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "ECDSAInvalidSignature",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "length",
+				"type": "uint256"
+			}
+		],
+		"name": "ECDSAInvalidSignatureLength",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "s",
+				"type": "bytes32"
+			}
+		],
+		"name": "ECDSAInvalidSignatureS",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "allowance",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "needed",
+				"type": "uint256"
+			}
+		],
+		"name": "ERC20InsufficientAllowance",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "balance",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "needed",
+				"type": "uint256"
+			}
+		],
+		"name": "ERC20InsufficientBalance",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "approver",
+				"type": "address"
+			}
+		],
+		"name": "ERC20InvalidApprover",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "receiver",
+				"type": "address"
+			}
+		],
+		"name": "ERC20InvalidReceiver",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			}
+		],
+		"name": "ERC20InvalidSender",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			}
+		],
+		"name": "ERC20InvalidSpender",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "deadline",
+				"type": "uint256"
+			}
+		],
+		"name": "ERC2612ExpiredSignature",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "signer",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			}
+		],
+		"name": "ERC2612InvalidSigner",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "currentNonce",
+				"type": "uint256"
+			}
+		],
+		"name": "InvalidAccountNonce",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "InvalidShortString",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "str",
+				"type": "string"
+			}
+		],
+		"name": "StringTooLong",
+		"type": "error"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "Approval",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [],
+		"name": "EIP712DomainChanged",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "previousAdminRole",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "newAdminRole",
+				"type": "bytes32"
+			}
+		],
+		"name": "RoleAdminChanged",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			}
+		],
+		"name": "RoleGranted",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			}
+		],
+		"name": "RoleRevoked",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "Transfer",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "DAO_ROLE",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "DEFAULT_ADMIN_ROLE",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "DOMAIN_SEPARATOR",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			}
+		],
+		"name": "GRANTMINTERTROLE",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			}
+		],
+		"name": "INFINITEallowanceLOCAL",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "MINTER_ROLE",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			}
+		],
+		"name": "allowance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "approve",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "balanceOf",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "counter",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "decimals",
+		"outputs": [
+			{
+				"internalType": "uint8",
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "eip712Domain",
+		"outputs": [
+			{
+				"internalType": "bytes1",
+				"name": "fields",
+				"type": "bytes1"
+			},
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "version",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "chainId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "verifyingContract",
+				"type": "address"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "salt",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "extensions",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getDaysSinceMinted",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			}
+		],
+		"name": "getRoleAdmin",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "grantRole",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "hasRole",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "isTrue",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "mintTimestamp",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "name",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			}
+		],
+		"name": "nonces",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "deadline",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint8",
+				"name": "v",
+				"type": "uint8"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "r",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "s",
+				"type": "bytes32"
+			}
+		],
+		"name": "permit",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "callerConfirmation",
+				"type": "address"
+			}
+		],
+		"name": "renounceRole",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			}
+		],
+		"name": "revokeMINTERTROLE",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "revokeRole",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes4",
+				"name": "interfaceId",
+				"type": "bytes4"
+			}
+		],
+		"name": "supportsInterface",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "symbol",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "totalSupply",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "transfer",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "transferFrom",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "xmint",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+],
+    hloantokenv2: [
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [],
+		"name": "AccessControlBadConfirmation",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "neededRole",
+				"type": "bytes32"
+			}
+		],
+		"name": "AccessControlUnauthorizedAccount",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "ECDSAInvalidSignature",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "length",
+				"type": "uint256"
+			}
+		],
+		"name": "ECDSAInvalidSignatureLength",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "s",
+				"type": "bytes32"
+			}
+		],
+		"name": "ECDSAInvalidSignatureS",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "allowance",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "needed",
+				"type": "uint256"
+			}
+		],
+		"name": "ERC20InsufficientAllowance",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "balance",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "needed",
+				"type": "uint256"
+			}
+		],
+		"name": "ERC20InsufficientBalance",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "approver",
+				"type": "address"
+			}
+		],
+		"name": "ERC20InvalidApprover",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "receiver",
+				"type": "address"
+			}
+		],
+		"name": "ERC20InvalidReceiver",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			}
+		],
+		"name": "ERC20InvalidSender",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			}
+		],
+		"name": "ERC20InvalidSpender",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "deadline",
+				"type": "uint256"
+			}
+		],
+		"name": "ERC2612ExpiredSignature",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "signer",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			}
+		],
+		"name": "ERC2612InvalidSigner",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "currentNonce",
+				"type": "uint256"
+			}
+		],
+		"name": "InvalidAccountNonce",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "InvalidShortString",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "str",
+				"type": "string"
+			}
+		],
+		"name": "StringTooLong",
+		"type": "error"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "Approval",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [],
+		"name": "EIP712DomainChanged",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "previousAdminRole",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "newAdminRole",
+				"type": "bytes32"
+			}
+		],
+		"name": "RoleAdminChanged",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			}
+		],
+		"name": "RoleGranted",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			}
+		],
+		"name": "RoleRevoked",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "Transfer",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "DAO_ROLE",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "DEFAULT_ADMIN_ROLE",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "DOMAIN_SEPARATOR",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			}
+		],
+		"name": "GRANTMINTERTROLE",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			}
+		],
+		"name": "INFINITEallowanceLOCAL",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "MINTER_ROLE",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			}
+		],
+		"name": "allowance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "approve",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "balanceOf",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "counter",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "decimals",
+		"outputs": [
+			{
+				"internalType": "uint8",
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "eip712Domain",
+		"outputs": [
+			{
+				"internalType": "bytes1",
+				"name": "fields",
+				"type": "bytes1"
+			},
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "version",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "chainId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "verifyingContract",
+				"type": "address"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "salt",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "extensions",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getDaysSinceMinted",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			}
+		],
+		"name": "getRoleAdmin",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "grantRole",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "hasRole",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "isTrue",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "mint",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "mintTimestamp",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "name",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			}
+		],
+		"name": "nonces",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "deadline",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint8",
+				"name": "v",
+				"type": "uint8"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "r",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "s",
+				"type": "bytes32"
+			}
+		],
+		"name": "permit",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "callerConfirmation",
+				"type": "address"
+			}
+		],
+		"name": "renounceRole",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			}
+		],
+		"name": "revokeMINTERTROLE",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "revokeRole",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes4",
+				"name": "interfaceId",
+				"type": "bytes4"
+			}
+		],
+		"name": "supportsInterface",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "symbol",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "totalSupply",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "transfer",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "transferFrom",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+],
     ERC6551Registry: [
 	{
 		"inputs": [],
@@ -5029,7 +6680,9 @@ ERC6551Account: [
     txverification:"Verify Tx",
     stopqrvideo:"stop scanning",
     retry: "retry",
-    scanqr:"Scan QR"
+    scanqr:"Scan QR",
+    makedeposit:"Make a deposit",
+	cancel:"Cancel"
   },
   fr: {
     IAMDescription:'IAM-(Les initiales de vos noms )-(Votre date de naissance )',
@@ -5084,7 +6737,9 @@ ERC6551Account: [
     txverification:"Verifier Tx",
     stopqrvideo:"stop qr scanner",
     retry: "réessayer",
-    scanqr:"scanner le code QR"
+    scanqr:"scanner le code QR",
+    makedeposit:"Make a deposit",
+	cancel:"Cancel"
   },
   es: {
     IAMDescription:'IAM-(Las iniciales de su nombre )-(fecha de nacimiento )',
@@ -5139,7 +6794,9 @@ ERC6551Account: [
     txverification:"Verificar Tx",
     stopqrvideo:"stop qr scanner",
     retry: "reintentar",
-    scanqr:"Escanear QR"
+    scanqr:"Escanear QR",
+    makedeposit:"Deposita fondos",
+	cancel:"Cancelar"
   }
   };
   
@@ -5392,10 +7049,8 @@ if (isMobile.matches) {
 
 }
 
-    // cons qrSize = 
     //QR
     const qrCode = new QRCodeStyling({ width: `${qrSize}`, height: `${qrSize}`, type: "png", data: addr, image: `troqv3.png`, 
-    // const qrCode = new QRCodeStyling({ width: 300, height: 300, type: "png", data: addr, image: `troqv3.png`, 
     // dotsOptions: { color: "#1568B0", type: "extra-rounded" }, 
     dotsOptions: { color:  `${qrColor}`, type: "extra-rounded" }, 
     backgroundOptions: { color: "var(--qrbackground)", }, 
@@ -5852,43 +7507,61 @@ else {
 
 
 
+
         await initChatClient(wallet)
 
         setTimeout(() => {
 
           let buttons = `
-          <button class="btn btn-secondary" onclick="backupWallet(${wallet})">Now</button>
+          <button class="btn btn-secondary" onclick="now(${wallet})">Now</button>
           <button class="btn btn-success" onclick="restore()">Restore</button>
-
+          
           `
+          // <button class="btn btn-success" onclick="forgetToBackup()">No..</button>
 
-          Swal.fire({
-                title: "Backup your wallet!",
-                // icon: "warning",
-                html: buttons,
-          // showConfirmButton: false,
-          // showCancelButton: false,
-          // toast: true,
-          html: buttons,
-          position: "bottom-end",
-          showConfirmButton: true,
-          // showDenyButton: false,
-          // showCancelButton: true,
-          // cancelButtonText: 'Now!',
-          confirmButtonText: 'later ...',
-          // denyButtonText: `Close`,
-          // iconColor: 'white',
-          customClass: {
-          popup: 'colored-toast'
-          },
-        })
-            // fixedToast.fire( 'Warning:','Backup your wallet!', "error").then((result) => {
-            // if (result.isConfirmed) { console.log('LATER...!') }
-            // else if (result.isDismissed	) { 
-            //     console.log('BACKUP X:'); 
-            //     backupWallet(wallet);
-            //     return false }
-            // })
+let backupRecordatory=  localStorage.getItem('remebertoBackupWallet' )
+if(!backupRecordatory){
+  console.log('there is no recordatory set')
+  remember()
+
+
+} else{
+  console.log("backupRecordatory:",backupRecordatory )
+  if(backupRecordatory==='true'){
+    console.log('MAKE RECORDATORY')
+    remember()
+  } else{
+    console.log('FORGET')
+
+  }
+}
+
+function remember(){
+
+  Swal.fire({
+        title: "Backup your wallet!",
+        html: buttons,
+        position: "bottom-end",
+        showConfirmButton: true,
+        confirmButtonText: 'dont bother ...',
+        customClass: {
+        popup: 'colored-toast'
+  },
+})
+    .then((result) => {
+    if (result.isConfirmed) { 
+      console.log('DONT BOTHER...!') 
+      localStorage.setItem('remebertoBackupWallet', false )
+      
+    }
+    else if (result.isDismissed	) { 
+      console.log('BACKUP X:'); 
+      localStorage.setItem('remebertoBackupWallet', true )
+      }
+    }
+    )
+
+}
 
         }, 5000);
 
@@ -5910,13 +7583,18 @@ function later (){
   console.log('later ...')
 }
 
-function now (){
+function now (wallet){
   console.log('now ...')
+  // backupWallet(wallet)
 }
 
 function restore (){
   console.log('restore ...')
 }
+// function forgetToBackup(){
+//   console.log('forget ...')
+
+// }
 
 
 // BACKUP
@@ -5924,16 +7602,16 @@ function restore (){
       /*********************************************************************************************
       .) MANAGE MODALS
       **********************************************************************************************/
-      function openModal(id,event){
-        console.log('openingModal...',id)
-        // console.log('openingModal', id,event)
-        // if (!user) { 
+      // function openModal(id,event){
+      //   console.log('openingModal...',id)
+      //   // console.log('openingModal', id,event)
+      //   // if (!user) { 
        
-        setTimeout(() => {
-           myModal = new bootstrap.Modal(document.querySelector(`${id}`))
-          myModal.show(event)
-        }, 50);
-      }
+      //   setTimeout(() => {
+      //      myModal = new bootstrap.Modal(document.querySelector(`${id}`))
+      //     myModal.show(event)
+      //   }, 50);
+      // }
     
       function closeModal(){
         console.log('closing Modal')
@@ -5943,8 +7621,18 @@ function restore (){
       function openModalId(id,event){
         console.log('openingModal', id,event)
         setTimeout(() => {
-           xModal = new bootstrap.Modal(document.querySelector(`${id}`))
-          xModal.show(event)
+              window[id + 'Modal'] = new bootstrap.Modal(document.querySelector(`${id}`));
+            window[id + 'Modal'].show(event);
+
+          //  xModal = new bootstrap.Modal(document.querySelector(`${id}`))
+          // xModal.show(event)
+
+          // Check if the modal is open
+          var isModalOpen = window[id + 'Modal']._isShown;
+          console.log('Is modal open?',window[id + 'Modal'], isModalOpen);
+
+
+
         }, 50);
       }
 
@@ -5952,7 +7640,11 @@ function restore (){
 
       function closeModalId(id,event){
         console.log('closing modal', id,event)
-          xModal.hide(event)
+        window[id + 'Modal'].hide(event)
+            // Check if the modal is open
+            var isModalOpen =  window[id + 'Modal']._isShown;
+            // Log the result
+            console.log('Is modal open?', window[id + 'Modal'], isModalOpen);
       }
    
 
@@ -6234,6 +7926,135 @@ async function addUser(){
     console.log('ADDING NEW USER ADDRESS')
 }
 
+
+/*********************************************************************************************
+.) DEPOSIT FUNCTIONS
+**********************************************************************************************/
+closeDepositModal.onclick = function(e){ 
+      console.log('clicked closeDepositModal')
+	  closeModalId('#depositModal')
+
+    };
+
+async function prepareDeposit(){
+console.log('prepareDeposit()')
+	var selectedNetwork = networkSelector.value;
+	console.log('Selected Network: ' + selectedNetwork);
+	const mintingPrice = depositAmountInput.value; //get price
+	const currency = currencySelect.value; // get currency (ETH,MATIC,USD)
+	priceConversor(mintingPrice, currency); // Has to do this from MUMBAI
+	console.log('MUSICcurrencySelect', mintingPrice, currency);
+
+	showDepositqr(optionsList[0].DEPOSIT_CONTRACT)
+}
+async function makeDeposit(){
+  console.log('MAKE A DEPOSIT!')
+openModalId('#depositModal')
+
+
+ 
+		// DEPOSIT PRICE
+		AMDcrypto.addEventListener('change', function (){
+			console.log('Deposit amount changed:', AMDusd.value);
+			  const valueInUSD = AMDusd.value; //get price
+				const currency = currencySelect.value; // get currency (ETH,MATIC,USD)
+					//   const currency = 'avalanche'; // get currency (ETH,MATIC,USD)
+				priceConversor(valueInUSD, currency); // Has to do this from MUMBAI
+			// const depositAmount = depositAmountInput.value;
+
+		})
+
+ 
+
+}
+
+
+
+// priceConversor = (mintingPrice, currency) => {
+	priceConversor = (usdvalue, currency) => {
+  console.log('priceConversor()',usdvalue, currency)
+  fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${currency}&vs_currencies=usd`).then(response => {
+    return response.json();
+  })
+    .then(data => {
+      let currencyValue = data[currency].usd;
+      console.log('currencyValue: ',currencyValue);
+      console.log('usdvalue: ',usdvalue);
+      
+      let result = usdvalue * currencyValue;
+      let roundedNumber = result.toFixed(2);
+      console.log('result: ', result);
+        let msg = "(aprox " + "$" + roundedNumber + " USD)";
+        currencyConversor.innerHTML = msg;
+      },
+      error => {
+        console.log(error.message);
+      }
+    );
+
+};
+
+
+
+reversepriceConversor = (usdvalue, currency) => {
+  console.log('priceConversor()',usdvalue, currency)
+  fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${currency}&vs_currencies=usd`).then(response => {
+    return response.json();
+  })
+    .then(data => {
+      let currencyValue = data[currency].usd;
+      console.log('currencyValue: ',currencyValue);
+      console.log('usdvalue: ',usdvalue);
+      
+      let result = usdvalue * currencyValue;
+      let roundedNumber = result.toFixed(2);
+      console.log('result: ', result);
+        let msg = "(aprox " + "$" + roundedNumber + " USD)";
+        currencyConversor.innerHTML = msg;
+      },
+      error => {
+        console.log(error.message);
+      }
+    );
+
+};
+
+
+
+
+async function showDepositqr(addr) {
+    const qrColor = getComputedStyle(document.body).getPropertyValue('--qr');
+
+    var isMobile = window.matchMedia("only screen and (max-width: 768px)");
+
+    // let qrSize
+if (isMobile.matches) {
+    // Code for mobile screens
+    console.log("Mobile screen detected");
+     qrSize = 310;
+     window.scrollTo(0, 0);
+
+
+} else {
+    // Code for larger screens
+    console.log("Not a mobile screen");
+     qrSize = 370
+
+}
+
+    //QR
+    const qrCode = new QRCodeStyling({ width: `${qrSize}`, height: `${qrSize}`, type: "png", data: addr, image: `troqv3.png`, 
+    // dotsOptions: { color: "#1568B0", type: "extra-rounded" }, 
+    dotsOptions: { color:  `${qrColor}`, type: "extra-rounded" }, 
+    backgroundOptions: { color: "var(--qrbackground)", }, 
+    imageOptions: { crossOrigin: "anonymous", margin: 0 } });
+    qrCode.append(document.getElementById("depositqrcanvas"));
+    console.log('qr code APPENDED')
+  }
+
+
+// **********************************************************************************************/
+
 async function scanAddress(){
     console.log('SCANNING FOR A NEW USER ADDRESS')
     var audioContext = new AudioContext();
@@ -6475,13 +8296,16 @@ async function listenNewChats(addr){
         
         }
         else{
-        console.log('else, new messag')
+        console.log('THIS ADDRESS IS NOT IN YOUR CONTACTS')
 
           addUnknownContact(message.senderAddress, message.content)
 
         }
         document.getElementById('chatBadge').style.display='inline'
         console.log(`New message from ${message.senderAddress}: ${message.content}`)
+        // save latest unseen  msg to localstorage hack, clear after opened
+        let msg = { address: message.senderAddress, message: message.content}
+        SaveLatestMsgToLocalStorage(msg)
         // agregar mensaje a localstorage
         
         // y contalos para agregarlo al badge
@@ -6492,15 +8316,87 @@ async function listenNewChats(addr){
        let localAddr=  preElement.getAttribute('address');
 
          // UPLOAD BALANCE ON RECIPIENT
-      let balancetroq = await checkERC20Balance(localAddr)//troq
-      let balanceeth = await checkGasBalance(localAddr)//main eth
-      console.log('NEW BALANCE:', balanceeth)
-      troqamount.innerHTML = `${optionsList[0].TOKEN_NAME}: ${Number(balanceeth).toFixed(3)}`
+      let balanceerc20 = await checkERC20Balance(localAddr)//troq
+      let balancegas = await checkGasBalance(localAddr)//main eth
+      console.log('NEW BALANCE:', balancegas,balanceerc20)
+      // troqamount.innerHTML = `${optionsList[0].TOKEN_NAME}: ${Number(balancetroq).toFixed(3)}`
+
+      troqamount.innerHTML = `${optionsList[0].TOKEN_NAME}: ${Number(balanceerc20).toFixed(3)}`
+      miniversion.innerHTML = `GAS: ${Number(balancegas).toFixed(5)}`
+
+
+      // troqamount.innerHTML = `${optionsList[0].TOKEN_NAME}: ${Number(balanceeth).toFixed(3)}`
 
 }
 
 }
 
+
+// SAVE LATEST MSGs
+// let msg = { address: toAddr, username: null, avatar: null,did: null }
+// 
+function SaveLatestMsgToLocalStorage(message) {
+    var msg = [];
+    msg = JSON.parse(localStorage.getItem('latestMsgs')) || [];
+
+    // Find index of the message with the same address
+    var index = a.findIndex(existingMsg => existingMsg.address === message.address);
+
+    if (index === -1) {
+        // No message with the same address found, add the new message
+        msg.push(message);
+        console.log('No matching address found. Added new message.');
+    } else {
+        // Message with the same address found, overwrite or delete based on your requirement
+        // If you want to overwrite the existing message, use the following line
+        // a[index] = message;
+
+        // If you want to delete the existing message, use the following line
+        // a.splice(index, 1);
+        console.log('OVERWRITE!.');
+        console.log('INDEX:', msg[index],index )
+        msg[index] = message;
+
+    }
+
+    localStorage.setItem('latestMsgs', JSON.stringify(msg));
+}
+
+// function SaveLatestMsgToLocalStorage(message) {
+//     var a = [];
+//     a = JSON.parse(localStorage.getItem('latestMsgs')) || [];
+
+//     // filter by address
+//     var msgByAddr = a.some(existingMsgs => existingMsgs.address === message.address);
+//     if (!msgByAddr) {
+//       console.log('ninguna address coincide(esto debe ser un errorr??).');
+//       a.push(message);
+//       localStorage.setItem('latestMsgs', JSON.stringify(a));
+
+//     } else {
+//         console.log('OVERWRITE? last message from this address.');
+//     }
+
+// }
+
+
+// SAVE CONTACTS
+// EJEMPLO let contact = { address: toAddr, username: null, avatar: null,did: null }
+
+function SaveContactsToLocalStorage(contact) {
+    var a = [];
+    a = JSON.parse(localStorage.getItem('contacts')) || [];
+
+    // Check if the address already exists
+    var isDuplicate = a.some(existingContact => existingContact.address === contact.address);
+
+    if (!isDuplicate) {
+        a.push(contact);
+        localStorage.setItem('contacts', JSON.stringify(a));
+    } else {
+        console.log('Address already exists in your contacts, skipping save.');
+    }
+}
 
 
 async function reloadBalanceAfterReceiving(addr,amount){
@@ -6516,10 +8412,15 @@ async function reloadBalanceAfterReceiving(addr,amount){
     //       // UPLOAD BALANCE
         let preElement = document.getElementById('yourAddress');
        let localAddr=  preElement.getAttribute('address');
-         let balancetroq = await checkERC20Balance(localAddr)//troq
-      let balanceeth = await checkGasBalance(localAddr)//main eth
-      console.log('NEW BALANCE:', balanceeth)
-      troqamount.innerHTML = `${optionsList[0].TOKEN_NAME}: ${Number(balanceeth).toFixed(3)}`
+         
+       let balanceerc20 = await checkERC20Balance(localAddr)//troq
+      let balancegas = await checkGasBalance(localAddr)//main eth
+      console.log('NEW BALANCE:', balancegas,balanceerc20)
+      // troqamount.innerHTML = `${optionsList[0].TOKEN_NAME}: ${Number(balancetroq).toFixed(3)}`
+
+      troqamount.innerHTML = `${optionsList[0].TOKEN_NAME}: ${Number(balanceerc20).toFixed(3)}`
+      miniversion.innerHTML = `GAS: ${Number(balancegas).toFixed(5)}`
+      // troqamount.innerHTML = `${optionsList[0].TOKEN_NAME}: ${Number(balanceeth).toFixed(3)}`
 
     // let balancetroq = await checkERC20Balance(addr)//troq
     //   let balanceeth = await checkGasBalance(addr)//main eth
@@ -6595,23 +8496,27 @@ async function deleteChat(){
 
 }
 
+fontlogo.onclick = function(e){ 
+console.log('GO TO MAIN')
+      const swiperEl = document.getElementById('troqContainer');
+    swiperEl.swiper.slidePrev();
+}
 
 
+async function loadLatestMsg(addr){
+    // console.log('LOADING TROQ CONTACTS')
+    // let contct= document.getElementById('troqContacts')
+    // contct.innerHTML=''
+    var troqMsgs = [];
+    // let troqMsgs = JSON.parse(window.localStorage.getItem('latestMsgs'));
+    troqMsgs = JSON.parse(localStorage.getItem('latestMsgs')) || [];
 
-
-// SAVE CONTACTS
-function SaveContactsToLocalStorage(contact) {
-    var a = [];
-    a = JSON.parse(localStorage.getItem('contacts')) || [];
-
-    // Check if the address already exists
-    var isDuplicate = a.some(existingContact => existingContact.address === contact.address);
-
-    if (!isDuplicate) {
-        a.push(contact);
-        localStorage.setItem('contacts', JSON.stringify(a));
+    // filter by address
+    var msgByAddr = troqMsgs.some(existingMsgs => existingMsgs.address === message.address);
+    if (!msgByAddr) {
+      console.log('ninguna address coincide(esto debe ser un errorr).');
     } else {
-        console.log('Address already exists in your contacts, skipping save.');
+        console.log('This is the message filtered by addr.');
     }
 }
 
@@ -6728,7 +8633,7 @@ async function checkERC20Balance(userAddress){
         const balance = await tokenContract.balanceOf(formattedAddress);
         b=balance;
         const formatedBalance = ethers.utils.formatEther(balance);
-        console.log(`Balance of ERC-20 ${optionsList[0].ERC20_CONTRACT_ADDRESS}: ${formatedBalance} TROK`);
+        console.log(`Balance of ERC-20 ${optionsList[0].ERC20_CONTRACT_ADDRESS}: ${formatedBalance} ${optionsList[0].TOKEN_NAME}`);
 
         return formatedBalance
       } catch (error) {
@@ -6741,11 +8646,11 @@ async function checkGasBalance(walletAddress) {
   let provider = await new ethers.providers.JsonRpcProvider(`${optionsList[0].API}`);
   try {
     const balance = await provider.getBalance(walletAddress);
-    const etherBalance = ethers.utils.formatEther(balance);
+    const gasBalance = ethers.utils.formatEther(balance);
     // console.log(`Balance of ERC-20 ${optionsList[0].ERC20_CONTRACT_ADDRESS}: ${etherBalance} ETH`);
-    console.log(`GAS Balance of ${optionsList[0].ERC20_CONTRACT_ADDRESS}: ${etherBalance} GTROK`);
+    console.log(`GAS Balance of ${optionsList[0].ERC20_CONTRACT_ADDRESS}: ${gasBalance} GAS`);
 
-    return etherBalance;
+    return gasBalance;
   } catch (error) {
     console.error('Error checking balance:', error);
     return null;
@@ -6786,7 +8691,7 @@ async function sendERC20Tokens( toAddress, amount) {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.29/Tone.min.js"></script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" /> -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script> -->
 
 <script type="module">
