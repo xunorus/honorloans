@@ -11,6 +11,13 @@
 
 [![HONORLOANS INTRO](https://img.youtube.com/vi/u54hrv1Vlc8/0.jpg)](https://youtu.be/u54hrv1Vlc8?si=t_qBelEkvizGDkKE&t=2 "HonorLoans Intro")
 
+
+
+### [MINTING HONORLOANS NFT](https://youtu.be/G_wB22T7TIs "HonorLoans NFT Minting")
+
+[![MINTING HONORLOANS NFT](https://img.youtube.com/vi/G_wB22T7TIs/0.jpg)](https://youtu.be/G_wB22T7TIs "HonorLoans NFT Minting")
+
+
 ### [HONORLOANS's TROK SUBNET](https://youtu.be/u54hrv1Vlc8)
 
 ## Description
