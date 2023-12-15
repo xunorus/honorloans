@@ -1,14 +1,21 @@
 //SPDX-License-Identifier: MIT
 
 pragma solidity 0.8.19;
+// COMO FUNCIONA
+// PRE: autorizar al contrato DEPOSITCONTRACT a ejecutar la funcion en el HLOANtoken usando GRANTMINER con la address del DEPOSITCONTRACT
+// El usuario que quiere el token (ver minter para saber su address), viene a este contrato DEPOSIT, 
+//  y recibe lo que deposita en tokens con relacion al dolar
 
-// DEPLOYED ON Fuji at 0x6D0260C0E12883a7582ba0c434B53a75E2F3e680
-// for token 0x0c08791679577b50671C6540766C9A4684D2745f 
+
+//  DEPLOYED EN SEPOLIA   0x7B27826a45e6460aEd92F17f568Caf45e74954e1 
+//  HLOAN TOKEN SEPOLIA 0x0118148a6E156b5B39d1D184F8763e65Df8d36C7
+ 
+ 
 // DATA FEED
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
 interface TokenInterface {
-        function mint (address account, uint256 amount) external returns (bool);
+        function xmint (address to, uint256 amount) external returns (bool);
 }
 
 
@@ -21,14 +28,17 @@ contract depositContract {
 
     constructor (address tokenAddress) {
         minter = TokenInterface (tokenAddress);
-           /**
-        Network: fuji
-        Aggregator: AVAX / USD
-        Address: 0x5498BB86BC934c8D34FDA08E81D444153d0D06aD
+               /**
+        Network: sepolia
+        Aggregator: ETH / USD
+        Address: 0x694AA1769357215DE4FAC081bf1f309aDC325306
         https://docs.chain.link/data-feeds/price-feeds/addresses?network=ethereum&page=1&search=
         */
-            priceFeed = AggregatorV3Interface (0x5498BB86BC934c8D34FDA08E81D444153d0D06aD);
+           
+            priceFeed = AggregatorV3Interface (0x694AA1769357215DE4FAC081bf1f309aDC325306);
             owner = msg.sender;
+           
+        
 
     } 
  
@@ -58,7 +68,7 @@ function getLatestPrice() public view returns (int) {
 
     receive() external payable {
         uint256 amountToken = tokenAmount (msg.value);
-        minter.mint (msg.sender, amountToken);
+        minter.xmint (msg.sender, amountToken);//ejecuta la funcion mint de la addres de minter(el hloan token)
     }
 
     modifier onlyOwner(){
