@@ -17,11 +17,13 @@
   --c4: #eee;
   --bk: linear-gradient(var(--c0), var(--c0b));
   --qr: red;
+  --qrDeposit: green;
+  --qrbackground: transparent;
+  --qrbackgroundSweetalert: #262626;
   --contrast: #000 linear-gradient(var(--c3), var(--c2));
   --bckmodal: #262626;
   --font: lawngreen;
   --navbar: var(--c1);
-  --qrbackground: transparent;
   --font1: #fff;
   --font2: #00bc8c;
   --font3: #2196f3;
@@ -52,6 +54,7 @@
   --c4: #1568b0;
   --contrast: #000 linear-gradient(var(--c3), var(--c2));
   --bckmodal: #262626;
+  --qrDeposit: green;
 }
 
 .colored-toast.swal2-icon-success {
@@ -478,6 +481,7 @@ svg.darklight {
 }
 
 .nav li {
+  cursor: pointer;
   width: 100%;
   list-style-type: none;
 }
@@ -803,6 +807,47 @@ svg.darklight {
 
 #currencySelect {
   color: #f5f5f5;
+}
+
+#chatheader {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+#chatAddress {
+  margin-right: auto;
+}
+
+#mintinSteps {
+  width: 100%;
+}
+
+.step {
+  word-wrap: break-word;
+}
+
+.break {
+  word-break: break-word !important;
+}
+
+#depositqrcanvas > rect {
+  x: 0;
+  y: "0";
+  width: 370px;
+  height: 370px;
+}
+
+.swal2-html-container {
+  color: green;
+}
+
+#AMDcrypto {
+  max-width: 100% !important;
+}
+
+.coloredAmount {
+  color: red;
 }
 
 /*# sourceMappingURL=index.e933388b.css.map */

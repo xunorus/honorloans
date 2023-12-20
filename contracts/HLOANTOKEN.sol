@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/draft-ERC20Permit.sol";
 
 
-// SEPOLIA0x0118148a6E156b5B39d1D184F8763e65Df8d36C7
+// SEPOLIA 0x0118148a6E156b5B39d1D184F8763e65Df8d36C7
 
 contract HLOANTOKENV6 is ERC20, AccessControl, ERC20Permit {
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
