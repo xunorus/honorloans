@@ -1,13 +1,17 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.20;
 
+// SIN AUTOMATION EN TROK 0xc7a280CbF424d76cf42FcE9d739032E72658490D
 
+// CON AUTOMATION
+// deployed on fuji  
 
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/draft-ERC20Permit.sol";
 import "./HLOANTOKEN.sol";
+// import "./slaveERC20TROK-v4.sol";
 import "./nativeMinter.sol";
 import "@chainlink/contracts/src/v0.8/automation/AutomationCompatible.sol";
 
@@ -59,16 +63,21 @@ contract SUBNETMASTER  is ERC721, AccessControl{
 // TROK's NETWORK PERMISSIONS
 // allows an address to participate in trok network
   function allowAddress(address addr) external   {
-        IAllowList(address(0x0200000000000000000000000000000000000002)).setNone(addr);
+        IAllowList(address(0x0200000000000000000000000000000000000002)).setEnabled(addr);
         // IAllowList(address(0x0200000000000000000000000000000000000002)).setEnabled(addr);
     }
 
 // bans an address to participate in trok network
   function revokeAddress(address addr) external   {
-        IAllowList(address(0x0200000000000000000000000000000000000002)).setEnabled(addr);
+        IAllowList(address(0x0200000000000000000000000000000000000002)).setNone(addr);
         // IAllowList(address(0x0200000000000000000000000000000000000002)).setEnabled(addr);
     }
 
+  function isAllowed(address addr) external  view  returns (uint256 role){
+        // IAllowList(address(0x0200000000000000000000000000000000000002)).readAllowList(addr);
+        // IAllowList(address(0x0200000000000000000000000000000000000002)).setEnabled(addr);
+        return IAllowList(address(0x0200000000000000000000000000000000000002)).readAllowList(addr);
+    }
 
 // gives free gas for free transactinos!
 // cada ve que el gas de cierta address, luego de una transaccion, es menor a x(<10000 ,x ej), le airdropea mas gas/
