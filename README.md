@@ -41,6 +41,9 @@ At the end of the cycle, if Bob didn't pay for the loan, he loses his honourabil
 
 ## Tech
 This project uses:
+- Chainlink's CCIP, Automation, functions and Feed data.
+- ethers js
+- Avalanche's subnet
 
 
 
