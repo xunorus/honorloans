@@ -56,7 +56,7 @@ Project built during CONSTALLATION hachathon
 3- Start Interacting
 
 
-## Installation
+<!-- ## Installation
 ```
 yarn 
 yarn parcel src/index.html   --port 2122 --https 
@@ -71,7 +71,7 @@ firebase deploy
 if errors
 ```
 nvm install 18                                               
-```
+``` -->
 
 ## Support
 Write me to @xunorus
